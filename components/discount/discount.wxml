@@ -1,0 +1,10 @@
+<!--components/discount/discount.wxml-->
+<view class='discount' wx:if="{{show}}">
+  <view class='discount_c'>
+    <!-- <slot name="title"></slot> -->
+    <view class='content'><slot name="content"></slot></view>
+    <view class='scene'><slot name="scene"></slot></view>
+    <view class='get'><image src='/images/button_01.png' catchtap='getDiscount'></image></view>
+  </view>
+  <view class='cancel' catchtap='cancel'><image src='/images/cancel_01.png' ></image></view>
+</view>

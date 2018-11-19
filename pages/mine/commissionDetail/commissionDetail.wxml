@@ -1,0 +1,56 @@
+<!--pages/mine/commissionDetail/commissionDetail.wxml-->
+<!-- <view class="weui-tab">
+    <view class="weui-navbar">
+        <block wx:for="{{tabs}}" wx:key="*this">
+            <view id="{{index}}" class="weui-navbar__item {{activeIndex == index ? 'weui-bar__item_on' : ''}}" bindtap="tabClick">
+                <view class="weui-navbar__title">{{item}}</view>
+            </view>
+        </block>
+        <view class="weui-navbar__slider" style="left: {{sliderLeft}}px; transform: translateX({{sliderOffset}}px); -webkit-transform: translateX({{sliderOffset}}px);"></view>
+    </view>
+    <view class="weui-tab__panel">
+        <view class="weui-tab__content" hidden="{{activeIndex != 0}}">
+          <view class='commission_item'>
+              <view class='commission_c commission_b'>
+                <text>HL25665</text>
+                <text>￥20.00</text>
+              </view>
+              <view class='commission_c'>
+                <text>HL25665</text>
+                <text>￥20.00</text>
+              </view>
+          </view>
+        </view>
+        <view class="weui-tab__content" hidden="{{activeIndex != 1}}">选项二的内容</view>
+    </view>
+</view> -->
+<header title="佣金结算明细"></header>
+<view>
+  <view class='commission_hd'>
+    <picker mode="date" value="{{date}}" start="2018-01-01" bindchange="bindDateChange" fields="month">
+      <view class="picker">
+        <image src='/images/date.png'></image>
+        时间
+      </view>
+    </picker>
+    <view>预估收入</view>
+  </view>
+  <view class='commission_item'>
+  <!-- commission_b -->
+      <view class='commission_c ' wx:for="{{listData}}" wx:key="{{index}}">
+        <image src='{{item.goods_pic}}' class='good'></image>
+        <text class='good-name'>{{item.goods_title}}</text>
+        <text class='good-money'>￥{{item.commision}}</text>
+        
+      </view>
+       <!-- <view class='commission_c'>
+        <text>HL25665</text>
+        <text>￥20.00</text>
+      </view>  -->
+  </view>
+  <view class='commission_f' wx:if="{{isShowNoData}}">还没有更多内容</view>
+   <view class="weui-loadmore no-data" wx:else>
+        <view class="weui-loading"></view>
+        <view class="weui-loadmore__tips">正在加载</view>
+    </view>  
+</view>

@@ -1,0 +1,34 @@
+<!--pages/index/assurance/assurance.wxml-->
+<header title="爱聚优选三大承诺" back-num="1"></header>
+<view class='assurance'>
+  <image src='https://youxuan.ecbao.cn/default/1532504991404_17.png' class='assurance_haed'></image>
+  <view class='assurance_top'>
+    <view class='assurance_top_c'>
+      <image src='/images/youxuan.png'></image>
+      <text>爱聚优选三大承诺</text>
+    </view>
+  </view>
+  <view class='assurance_con'>
+    <view class='assurance_item'>
+      <view class='assurance_item_t'>
+        <image src='/images/compensate.png'></image>
+        <text>厂家好货</text>
+      </view>
+      <view class='assurance_item_c'>正品保障，假货商家假一赔三。</view>
+    </view>
+    <view class='assurance_item'>
+      <view class='assurance_item_t'>
+        <image src='/images/lightning.png'></image>
+        <text>48小时发货</text>
+      </view>
+      <view class='assurance_item_c'>自订单付款后，将会在48小时内完成发货。</view>
+    </view>
+    <view class='assurance_item'>
+      <view class='assurance_item_t'>
+        <image src='/images/seven.png'></image>
+        <text>七天无理由售后</text>
+      </view>
+      <view class='assurance_item_c'>自确认收货后享受7天无理由售后。</view>
+    </view>
+  </view>
+</view>

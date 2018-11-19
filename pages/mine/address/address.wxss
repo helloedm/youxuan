@@ -1,0 +1,76 @@
+/* pages/mine/address/address.wxss *//* pages/mine/phone/phone.wxss *//* pages/mine/userSet/userSet.wxss */
+
+.h134{
+  height: 134rpx;
+}
+.address-list{
+  margin-top:16rpx;
+  padding:  0 20rpx;
+}
+.add-address{
+  margin-top:50rpx;
+  width: 100%;
+  text-align: center
+}
+
+.c1{
+  color: #1F2D3D;
+  font-size: 32rpx;
+  font-family:PingFang-SC-Regular;
+}
+.c4{
+  color:#475669;
+  font-size: 26rpx;
+
+}
+.c9{
+  color:#95AAC1;
+  font-size: 28rpx;
+  
+}
+.tag{
+  color:#E31436;
+  border:1px solid #E31436;
+  padding:0 5rpx;
+  border-radius: 4rpx;
+  font-size: 20rpx;
+  background-color: #FFF4F2;
+  margin-right: 15rpx;
+}
+.df{
+  display: flex;
+  align-items: center;
+}
+
+.bt{
+  border-top: 1px solid #E4E7ED;
+}
+.btn{
+  width: 124rpx !important;
+  height: 40rpx !important;
+  line-height: 40rpx !important;
+  font-size: 22rpx !important;
+  border:1px solid #95AAC1 !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  color:#1B2D3E;
+  margin-left:30rpx !important;
+  font-weight: 400;
+}
+.bgf{
+  background-color: #fff;
+}
+.ml15{
+  margin-left: 15rpx;
+}
+.img-btn{
+  width: 30rpx;
+  height: 32rpx;
+}
+.noadders{
+  font-size:28rpx;
+  text-align: center;
+  margin-bottom:60rpx;
+  color:rgba(94,109,130,1);
+}
+

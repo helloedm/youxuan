@@ -1,0 +1,110 @@
+<wxs module="toFixed2">
+module.exports=function(v){
+  var v2=  v * 2 / 300;
+  return v2.toFixed(2);
+}
+</wxs>
+<wxs module="slice4">
+module.exports=function(v){
+  return v.slice(0,4);
+}
+</wxs>
+<wxs module="slice8">
+module.exports=function(v){
+  return v.slice(4,8);
+}
+</wxs>
+<wxs module="slice12">
+module.exports=function(v){
+  return v.slice(8,12);
+}
+</wxs>
+<wxs module="slice14">
+module.exports=function(v){
+  return v.slice(12,14);
+}
+</wxs>
+<view class='banner'>
+  <!-- banner -->
+  <view style='background:#FF9BA9' class='end'>
+    <image src="http://youxuan.ecbao.cn/material/1533871849290_16.png"  mode="widthFix"></image>
+    <image src='http://youxuan.ecbao.cn/material/1533873222598_86.png'  mode="widthFix"></image>
+    <view class='bg' > 
+          <view class='good' wx:for="{{slice4(listData)}}"  wx:key="{{index}}" data-id="{{item.id}}" catchtap='detail'>
+            <image src='{{item.main_pic}}' style='width:266rpx;height:266rpx'></image>
+            <view class='good-info'>
+              <view style='color:#1B2E3E;font-size:28rpx;' class='title'>{{item.title}}</view>
+              <view class='huiyuanzhuan'><text>会员赚</text><text>￥{{toFixed2(item.inner_price * item.rebate_percent)}}</text></view>
+              <view class='price' style='color:#E31436;font-size:46rpx;'>
+                <text style='margin-left:-10rpx'>￥{{item.inner_price}} </text>
+                <view class='goods_btn'> 
+                  <button>立即抢</button>
+                </view>
+              </view>
+            </view>
+          </view>
+      </view>  
+  </view>
+    <!-- 表白结束 -->
+    <view class='end'>
+      <image src='http://youxuan.ecbao.cn/material/1533879497439_70.png'  mode="widthFix"></image>
+      <view class='bg' > 
+            <view class='good'  wx:for="{{slice8(listData)}}"  wx:key="{{index}}" data-id="{{item.id}}" catchtap='detail' style='border:6rpx solid #F07C8C;'>
+              <image src='{{item.main_pic}}' style='width:266rpx;height:266rpx'></image>
+              <view class='good-info'>
+                <view style='color:#1B2E3E;font-size:28rpx;' class='title'>{{item.title}}</view>
+                <view class='huiyuanzhuan'><text>会员赚</text><text>￥{{toFixed2(item.inner_price * item.rebate_percent)}}</text></view>
+                <view class='price' style='color:#E31436;font-size:46rpx;'>
+                  <text style='margin-left:-10rpx'>￥{{item.inner_price}} </text>
+                  <view class='goods_btn'> 
+                    <button>立即抢</button>
+                  </view>
+                </view>
+              </view>
+            </view>
+        </view>  
+    </view>
+    <!-- 护肤礼盒 -->
+    <view class='end' style='background:#FFC1A6;'>
+      <image src='http://youxuan.ecbao.cn/material/1533880263150_97.png'  mode="widthFix"></image>
+      <view class='bg' > 
+
+            <view class='good' wx:for="{{slice12(listData)}}"  wx:key="{{index}}" data-id="{{item.id}}" catchtap='detail' style='border:6rpx solid #FF9B70;'>
+              <image src='{{item.main_pic}}' style='width:266rpx;height:266rpx'></image>
+              <view class='good-info'>
+                <view style='color:#1B2E3E;font-size:28rpx;' class='title'>{{item.title}}</view>
+                <view class='huiyuanzhuan'><text>会员赚</text><text>￥{{toFixed2(item.inner_price * item.rebate_percent)}}</text></view>
+                <view class='price' style='color:#E31436;font-size:46rpx;'>
+                  <text style='margin-left:-10rpx'>￥{{item.inner_price}} </text>
+                  <view class='goods_btn'> 
+                    <button>立即抢</button>
+                  </view>
+                </view>
+              </view>
+            </view>
+        </view>  
+    </view>
+    <!-- 男士礼品 -->
+    <view class='end' style='background:#F6B4C0;'>
+      <image src='http://youxuan.ecbao.cn/material/1533880347113_53.png'  mode="widthFix"></image>
+      <view class='bg' > 
+
+            <view class='good' wx:for="{{slice14(listData)}}"  wx:key="{{index}}" data-id="{{item.id}}" catchtap='detail' style='border:6rpx solid #F87991;'>
+              <image src='{{item.main_pic}}' style='width:266rpx;height:266rpx'></image>
+              <view class='good-info'>
+                <view style='color:#1B2E3E;font-size:28rpx;' class='title'>{{item.title}}</view>
+                <view class='huiyuanzhuan'><text>会员赚</text><text>￥{{toFixed2(item.inner_price * item.rebate_percent)}}</text></view>
+                <view class='price' style='color:#E31436;font-size:46rpx;'>
+                  <text style='margin-left:-10rpx'>￥{{item.inner_price}} </text>
+                  <view class='goods_btn'> 
+                    <button>立即抢</button>
+                  </view>
+                </view>
+              </view>
+            </view>
+        </view>  
+        <view class='check_more' bindtap='check_more'>查看更多</view>    
+        <view style='height:50rpx;width:100%;background：#F6B4C0;'></view>
+    </view>
+    <!-- 查看更多 -->
+</view>

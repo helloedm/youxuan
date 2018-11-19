@@ -1,0 +1,210 @@
+<!--pages/goods/detail/detail.wxml-->
+<import src="../../../wxParse/wxParse.wxml" />
+<wxs module="returnActive">
+ module.exports=function(detail,id,attr_id){
+  var sku=detail.sku;
+  var attr=detail.attr;
+  var activeIds=detail.attr_name_id?detail.attr_name_id:[];
+  if(activeIds.indexOf(id)!=-1){
+    return "active";
+  }
+  return '';
+ }
+</wxs>
+<wxs module="returnDisabled">
+ module.exports=function(arr,index,id){
+  if(arr[index] && arr[index].indexOf(id)==-1){
+    return true
+  }
+    return false
+ }
+</wxs>
+<wxs module="toFixed2">
+module.exports=function(v){
+  var v2=  v * 2 / 300;
+  return v2.toFixed(2);
+}
+
+</wxs>
+<header title="商品详情" back-num="1"></header>
+<view class='detail'>
+    <!-- swiper -->
+    <view class='top_swiper'>
+      <view style='border-radius:20rpx;overflow:hidden;'>
+        <swiper indicator-dots="false" autoplay="true" interval="5000" duration="200" circular="true" class='detail_swiper' indicator-dots="{{true}}" indicator-color="rgba(255,255,255,0.5)" indicator-active-color="#FFF" >
+          <block wx:for="{{imgUrls}}">
+            <swiper-item>
+              <image src="{{item}}" class="slide-image" width="355" height="150"/>
+            </swiper-item>
+          </block>
+        </swiper>
+      </view>
+    </view>
+    <!-- 热卖 -->
+    <view class='detail_hot' wx:if="{{detail.special_status==2}}">
+      <view class='detail_hot_left'>
+        <view class='detail_hot_t'>
+          <text class='limit'>限时价</text>
+          <view class='member_price'>
+            <text><text class='fs_24'>￥</text>{{detail.inner_price}}</text>
+            <view class='memberget'>
+              <view style='background:#FFE89F;color:#E31436;'>会员返</view>
+              <view>
+                ¥  {{toFixed2(detail.inner_price * detail.rebate_percent)}}          
+              </view> 
+            </view>
+          </view>
+        </view>
+        <!-- <view class='detail_hot_b'>预估佣金 ¥{{toFixed2(detail.inner_price * detail.rebate_percent)}}</view> -->
+      </view>
+      <view class='detail_hot_right'>
+        <view>距结束仅剩</view>
+        <view class='detail_hot_time'><text>{{h<10?'0'+ h:h}}</text>:<text>{{m<10?'0'+ m:m}}</text>:<text>{{s<10?'0'+ s:s}}</text></view>
+      </view>
+    </view>
+    <!-- 商品名称 -->
+    <view class='detail_name {{detail.special_status!=2?"h_240":""}}'>
+      <view class='price_c' wx:if="{{detail.special_status!=2}}">
+        <view class='price_title'>¥<text>{{detail.inner_price}}</text></view>
+        <view class='memberget'>
+          <view>会员返</view>
+          <view>
+            ¥  {{toFixed2(detail.inner_price * detail.rebate_percent)}}          
+          </view> 
+        </view>
+        <!-- <view class='price_taobao'>￥{{detail.outer_price}}</view> -->
+        <!-- <view class='price_b'>预估佣金 ¥{{toFixed2(detail.inner_price * detail.rebate_percent)}}</view> -->
+        <!-- <view class='price_limit' wx:if="{{detail.on_sale==2}}">限时价</view> -->
+      </view>
+      <text class='name'>{{detail.title}}</text>
+      <view class='price'>
+        <!-- <view class='price_c'>
+          <view class='price_title'>¥<text>{{detail.inner_price}}</text></view>
+          <view class='price_taobao'>￥{{detail.outer_price}}</view>
+          <view class='price_limit' wx:if="{{detail.on_sale==2}}">限时价</view>
+        </view> -->
+        <!-- <view>{{detail.sale_num}}人已买</view> -->
+        <view>库存剩{{detail.stock_num}}件</view>
+      </view>
+      <view class='supermember' wx:if='{{isShowShare}}' wx:if='{{!issuper}}'  bindtap='jumptobuy'>
+        <view class='description'>购买本商品返现{{toFixed2(detail.inner_price * detail.rebate_percent)}}元</view>
+      </view>
+      <view class='shareprd'  catchtap='showShareFn' wx:if='{{isShowShare}}' wx:if='{{issuper}}'>
+        <view class='description'>分享该商品最高可获得{{toFixed2(detail.inner_price * detail.rebate_percent)}}元</view>
+      </view>
+    </view>
+    <!-- 选择商品规格 -->
+    <view class='specification' catchtap='openSku' wx:if="{{detail.sku_type==2}}">
+      <view class='specification_con'>选择：{{skuObj?skuObj.goods_sku_title:'规格'}}</view>
+      <view class='weui-cell__ft_in-access'></view>
+    </view>
+    <!-- 店铺信息 -->
+    <view class='shop'>
+      <view class="weui-cells weui-cells_after-title shop_wrap">
+        <view class='weui-cell weui-cell_access shop_safeguard' catchtap='assurance'>
+          <view class='shop_s_item'>
+            <image src='/images/shop_01.png'></image>
+            <text>七天无理由退换</text>
+          </view>
+          <view class='shop_s_item'>
+            <image src='/images/shop_01.png'></image>
+            <text>厂家好货</text>
+          </view>
+          <view class='shop_s_item'>
+            <image src='/images/shop_01.png'></image>
+            <text>48小时发货</text>
+          </view>
+        </view>
+      </view>
+    </view>
+    <view class='goods_con'>
+      <view class="weui-tab__content">
+         <template  is="wxParse" data="{{wxParseData:description.nodes}}" /> 
+      </view>
+    </view>
+    <!-- 加入购物车 -->
+    <view class='cart {{isiphoneX ? "cart-flag":""}}'>
+      <view class='goindex' catchtap='goIndex'>
+        <image src='/images/index_2.png'></image>
+        <text>首页</text>
+      </view>
+      <view class='gocart' catchtap='goCart'>
+        <image src='/images/cart_2.png'></image>
+        <text>购物车</text>
+      </view>
+      <view class='joincart {{detail.status!=3 ? "disabled" : ""}}' catchtap='addCart' data-type='1' wx:if="{{detail.sell_out!=1}}">加入购物车</view>
+      <view class='buy {{detail.status!=3 ? "disabled" : ""}}' catchtap='immediately' data-type='1' wx:if="{{detail.sell_out!=1}}">立即购买</view>
+      <view class='joincart sell_out c0' data-type='1' wx:if="{{detail.sell_out==1}}">加入购物车</view>
+      <view class='buy sell_out' data-type='1' wx:if="{{detail.sell_out==1}}">已售罄</view>
+      <view class='goods_sold' wx:if="{{detail.status!=3}}">商品已经下架</view>
+      <view class='special_status' wx:if="{{detail.special_status==1}}">活动还未开始</view>
+    </view>
+    <!-- 选择规格 -->
+    <view class='specification_dialog' wx:if="{{specificationShow}}" catchtouchmove='true'>
+      <view class='specification_bg' catchtap='cancelSpecification'></view>
+      <view class='specification_c'>
+          <view class='specification_name'>
+            <image src='{{detail.main_pic}}'></image>
+            <view class='specification_c_right'>
+              <view class='name2'>
+                <!-- <text>{{detail.title}}</text> -->
+                <view class='price1'>
+                  <text>¥</text>
+                  <text>{{skuObj?skuObj.inner_price:detail.inner_price}}</text>
+                  <text>￥{{skuObj?skuObj.outer_price:detail.outer_price}}</text>
+                </view>
+                    <icon type="clear" size="20" color="grey" catchtap='cancelSpecification'/>
+              </view>
+              <view class='specification_price'>
+                <view class='price2'>
+                  <text>库存剩{{skuObj?skuObj.stock_num:detail.stock_num}}件</text>
+                </view>
+              </view>
+              <view class='specification_price'>
+                <text>已选择：{{goods_sku_title}}</text>
+              </view>
+            </view>
+          </view>
+          <scroll-view style='height:600rpx;overflow-y:auto;' scroll-y>
+              <view class='color' wx:for="{{detail.attr}}" wx:for-item="item1" wx:for-index='index1'>
+                <view class='color_title'>{{item1.attr}}</view>
+                <view class='color_con'>
+                  <button 
+                  class="{{returnActive(detail,item2.attr_name_id,item1.attr_id)}}" 
+                  disabled="{{returnDisabled(disabledArr,index1,item2.attr_name_id)}}"
+                  wx:for="{{item1.value}}" 
+                  wx:for-index='index2'
+                  wx:for-item="item2" 
+                  catchtap='chooseSku' 
+                  data-item='{{item2}}' 
+                  data-index="{{index1}}">{{item2.attr_name}}</button>
+                </view>
+              </view>
+              <view class='buy_num'>
+                <view class='buy_num_con'>
+                  <view class='buy_num_t'>购买数量</view>
+                  <view class='buy_num_c'>
+                    <image src='/images/jianhao.png' catchtap='addCartNum' data-num='{{-1}}'></image>
+                    <text>{{addNum}}</text>
+                    <image src='/images/jiahao.png' catchtap='addCartNum' data-num='{{1}}'></image>
+                  </view>
+                </view>
+              </view>
+          </scroll-view>
+          <view class='specification_b {{isiphoneX ? "cart-flag":""}}' wx:if="{{detail.sell_out!=1}}">
+            <view data-type='2' catchtap='addCart' class='{{detail.status!=3 ? "disabled" : ""}}'>加入购物车</view>
+            <view data-type='2' catchtap='immediately' class='{{detail.status!=3 ? "disabled" : ""}}'>立即购买</view>
+          </view>
+          <view class='specification_b {{isiphoneX ? "cart-flag":""}}' wx:if="{{detail.sell_out==1}}">
+            <view data-type='2' class='sell_out c0'>加入购物车</view>
+            <view data-type='2' class='sell_out'>已售罄</view>
+          </view>
+      </view>
+    </view>
+    <!-- 服务保障弹层 -->
+    <assurance show="{{assuranceShow}}"></assurance>
+</view>
+<image src="/images/mine/recommend.png" class="recommend-btn" hidden="{{ismypage}}" catchtap="goRecommend"></image>
+<image src='http://youxuan.ecbao.cn/material/1535357532189_37.png' class='share-btn' wx:if='{{isShowShare}}' catchtap='showShareFn'></image>
+<canvas canvas-id='share' style='width:400px;height:320px;padding: 0 10px;' hidden='{{canvasHidden}}' class='canvas'></canvas> 
+<share show="{{showShare}}" kind="1" detail="{{detail}}"></share>

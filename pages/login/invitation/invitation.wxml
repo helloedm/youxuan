@@ -1,0 +1,29 @@
+<!--pages/login/invitation/invitation.wxml-->
+<header title="填写邀请码" back-num="1"></header>
+<view class='invitation'>
+<view class='bgf phone'>
+  <view class="weui-cell weui-cell_input h88">
+    <view class="weui-cell__bd c1">
+        <input class="weui-input" placeholder="请输入邀请码"  placeholder-class="c9"  type='text' value="{{value}}"   bindinput="getInput"  />
+    </view>
+  </view>
+</view>
+
+<view style='margin-top:80rpx' >
+    <button type="warn" size="default" loading="{{loading}}" 
+      plain="{{plain}}"  disabled="{{disabled}}"              
+      style='width:90%;' 
+      class='{{disabled ? "bg_f":"" }} invitation_btn'
+      catchtap='bindInvitation'
+       >确定</button>
+</view>
+<view class='jiangli'>
+  <image src='/images/hongbao.png'></image>
+  <view class='jiangli_c'>填写邀请码,可获得<text class="color_F03914">5元</text>优惠券</view>
+</view>
+<view class='guize'>
+  <text>邀请码规则:</text>
+  <text>1.可联系你的好友获得爱聚优选邀请码；</text>
+  <text>2.一个用户只能绑定一个邀请码，绑定后不得修改。</text>
+</view>
+</view>

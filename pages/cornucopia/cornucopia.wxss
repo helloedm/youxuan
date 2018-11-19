@@ -1,0 +1,123 @@
+/* pages/cornucopia/cornucopia.wxss */
+/* @import "/template/tabbar/tabbar.wxss"; */
+
+.article {
+  padding: 20rpx 30rpx 20rpx 20rpx;
+  background-color: #fff;
+}
+
+.article_list {
+  padding-left: 94rpx;
+  position: relative;
+  border-bottom: 1rpx solid #e7ecf1;
+  margin-top:25rpx;
+  padding-bottom: 20rpx;
+}
+.article_list:last-child{
+  border: 0
+}
+
+.article_headImg {
+  width: 80rpx;
+  height: 80rpx;
+  border-radius: 50%;
+  position: absolute;
+  top: 10rpx;
+  left: 0;
+}
+
+.article_hd {
+  display: flex;
+  justify-content: space-between;
+  /* align-items: center; */
+}
+
+.article_hd_left {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.article_hd_title {
+  color: #E31436;
+  font-size: 32rpx;
+}
+
+.article_hd_date {
+  color: #99a9bf;
+  font-size: 26rpx;
+}
+
+.article_hd_right image {
+  width: 28rpx;
+  height: 30rpx;
+  margin-right: 10rpx;
+  vertical-align: middle;
+  line-height: 60rpx;
+}
+
+.article_hd_right {
+  width: 156rpx;
+  height: 60rpx;
+  padding: 0;
+  line-height: 60rpx;
+  font-size: 26rpx;
+  margin: 0;
+  border: 1rpx solid #E31436;
+  background: #fff;
+  border-radius: 8rpx;
+  color: #E31436;
+}
+
+.article_bd {
+  margin-top: 20rpx;
+}
+
+.article_bd_con {
+  color: #475669;
+  font-size: 26rpx;
+  line-height: 34rpx;
+  text-align: justify;
+  word-break: break-all;
+}
+
+.article_bd_img {
+  display: flex;
+  flex-wrap: wrap;
+}
+.article_bd_img image {
+  width: 188rpx;
+  height: 188rpx;
+  display: block;
+}
+.img-box{
+  margin: 20rpx 0 0 20rpx;
+}
+.img-box:nth-child(3n-2) {
+  margin-left: 0;
+}
+
+.no-data {
+  /* margin-top: 20rpx; */
+  text-align: center;
+  color: #c0ccda;
+  font-size: 22rpx;
+  line-height: 66rpx;
+}
+.img-box{
+  position: relative;
+}
+.price{
+  position: absolute;
+  padding: 5rpx;
+  display: flex;
+  width: 98rpx;
+  height: 30rpx;
+  color:#fff;
+  font-size: 22rpx;
+  justify-content: center;
+  align-items: center;
+  bottom: 0rpx;
+  right: 0;
+  background-image: url('http://pax6ums6h.bkt.clouddn.com//default/1531990315250_63.png')
+}

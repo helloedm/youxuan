@@ -1,0 +1,52 @@
+<!--pages/index/category/category.wxml-->
+<wxs module="toFixed2">
+  module.exports=function(v,v1){
+    var answer =  v-(v * (v1-0)*2/300);
+    return answer.toFixed(2);
+  }
+</wxs>
+<view class='good_head'>
+  <image src='{{image}}' mode="widthFix"></image>
+</view> 
+<view class='good-box'>
+  <view class='panic_item' wx:for="{{listData}}" catchtap='detail' wx:key="{{index}}" data-id="{{item.id}}">
+    <image src='https://youxuan.ecbao.cn/default/1533377607079_53.png' class='sell_out' wx:if="{{item.sell_out==1}}"></image>
+    <image src='{{item.main_pic}}' class=''></image>
+      <view class='good_right'>
+        <view class='good_right_title'>{{item.title}}</view>
+        <view class='good_price'>
+          <view>
+            <text class='good_price1'><text class='good_price1_icon'>¥</text>{{item.inner_price}} </text>
+            <!-- <text class='good_price2'>￥{{item.outer_price}} </text> -->
+          </view>
+          <!-- <view class='good_commission_right'>{{item.sale_num}}人已买</view> -->
+        </view>
+        <view class='good_commission'>
+          <!-- <view class='good_commission_left'>预估佣金：￥{{item.inner_price * item.rebate_percent / 100}}</view> -->
+          <view class='good_commission_left'>
+            <!-- <image src='/images/commission_icon.png' class='commission_icon'></image> -->
+            <text class='supermember'>￥{{toFixed2(item.inner_price,item.rebate_percent)}}</text>
+            <image src='/images/commission_02.png' class='commission1' mode="widthFix"></image>
+          </view>
+          <button class='good_price_btn'>立即购买</button>
+          <view wx:if='{{!ismypage}}' class="classifylist_btns">
+            <view class="indexlist_recommend_btn" data-id="{{item.id}}" wx:if="{{item.isStoreGoods == 0}}" catchtap='goRecommend'>推荐到首页</view>
+            <view class="indexlist_recommends_btn" wx:else>已推荐</view>
+          </view>
+        </view>
+      </view>
+  </view>
+</view>
+<view class='no-data' wx:if="{{isShowNoData}}">--暂无更多数据--</view>  
+  <view class="weui-loadmore no-data" wx:else>
+      <view class="weui-loading"></view>
+      <view class="weui-loadmore__tips">正在加载</view>
+  </view>  
+
+<image src='http://youxuan.ecbao.cn/material/1535357532189_37.png' class='share-btn' catchtap='showShareFn'></image>
+
+<navigator class='index' url='/pages/index/index' open-type="switchTab">
+  <image src='http://youxuan.ecbao.cn/material/1535361605992_2.png'></image>
+</navigator>
+
+<share show="{{showShare}}" kind="2" list="{{[listData[0],listData[1],listData[2]]}}" activity-id="{{id}}" title="{{title}}"></share>

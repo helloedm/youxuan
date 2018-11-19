@@ -1,0 +1,21 @@
+/**index.wxss**/
+ @import "/pages/index/index.wxss"; 
+ /* .selection_good_list{
+   margin-top: 0;
+ } */
+ .index_show{
+  width: 80rpx;
+  height: 80rpx;
+  position: fixed;
+  bottom: 100rpx;
+  right: 20rpx;
+  background-color: transparent;
+  padding: 0;
+}
+.index_show image{
+  width: 80rpx;
+  height: 80rpx;
+  margin-right:10rpx;
+  vertical-align:middle;
+  line-height:80rpx;
+}

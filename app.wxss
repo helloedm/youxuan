@@ -1,0 +1,86 @@
+/**app.wxss**/
+@import "style/weui.wxss"; 
+@import "style/font-awesome.wxss"; /*****https://fontawesome.com/icons?d=gallery***/
+@import "wxParse/wxParse.wxss"; 
+page{
+  background-color: #F5F8FA;
+  width: 100%;
+  overflow-x: hidden;
+  /* font-family:PingFang-SC-Regular; */
+}
+button::after{
+  border: none;
+}
+.weui-cell__ft_in-access::after{
+  border-color: #8492A6;
+  width: 16rpx;
+  height: 16rpx;
+  margin-top:-7rpx;
+}
+.weui-cells::before{
+  content: none;
+}
+.weui-cells::after{
+  content: none;
+}
+.font-weight_600{
+  font-weight: 600;
+}
+.bottom-no-data{
+  text-align:center;
+  color:#c0ccda;
+  font-size:22rpx;
+  line-height: 66rpx;
+}
+
+.no_goods{
+  color: #5E6D82;
+  font-size: 28rpx;
+  margin-top: 150rpx;
+}
+.no_goods image{
+  width: 250rpx;
+  height: 250rpx;
+  display: block;
+  margin: 0 auto;
+}
+.no_goods view{
+  color: #5E6D82;
+  font-size: 28rpx;
+  text-align: center;
+  margin-top: 20rpx;
+}
+button {
+  background-color: #fff;
+}
+.share-btn{
+  position: fixed;
+  bottom:200rpx;
+  right:20rpx;
+  background-color:transparent;
+  padding: 0;
+  width: 80rpx;
+  height: 80rpx;
+}
+.share-btn image{
+  width:80rpx;
+  height:80rpx;
+  margin-right:10rpx;
+  vertical-align:middle;
+  line-height:60rpx;
+}
+.fs_24{
+  font-size: 24rpx;
+}
+.opacity{
+  opacity: 0;
+}
+.good_head{
+  background-color: #fff;
+  padding: 0 20rpx 20rpx;
+}
+.good_head image{
+  display: block;
+  width:710rpx; 
+  border-radius: 20rpx;
+}

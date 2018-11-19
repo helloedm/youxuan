@@ -1,0 +1,147 @@
+
+<!-- 注册超级会员 -->
+<view hidden='{{rank==2}}'>
+    <view class='w100 h518 info'>
+      <view class='intro ' bindtap='openIntro'>
+        <image src='/images/intro.png' ></image>
+      </view>
+    </view>
+    <view>
+      <image src='http://pax6ums6h.bkt.clouddn.com//avatar/1530512464024_47.png' class='w100 h702'></image>
+    </view>
+    <view>
+      <image src='http://pax6ums6h.bkt.clouddn.com//avatar/1530512514009_35.png' class='w100 h544'></image>
+    </view>
+    <view class='goods' id='goods'>
+      <view class='goods_t'>
+        <text>超级会员专属礼包</text>
+        <text class='two'></text>
+        <text class='three'></text>
+      </view>
+      <view class='goods_c'>(礼包最高价值89元, 购买59元超级会员免费领取)</view>
+      <view class='goods_b'>
+        <view class='image' wx:for="{{rows}}" catchtap='activeGoods' data-index='{{index}}'>
+          <image src='{{item.main_pic}}' ></image>
+          <view class='active' wx:if="{{active==index}}">
+            <icon type='success'></icon>
+          </view>
+        </view>
+      </view>
+      <!-- <image src='http://pax6ums6h.bkt.clouddn.com//avatar/1530512632280_52.png' class='w100 h680'></image> -->
+    </view>
+    <view>
+      <image src='http://pax6ums6h.bkt.clouddn.com//avatar/1530512667097_33.png' class='w100 h350'></image>
+    </view>
+    <view>
+      <image src='http://pax6ums6h.bkt.clouddn.com//avatar/1530512997407_75.png' class='w100 h350'></image>
+    </view>
+    <view>
+      <image src='https://youxuan.ecbao.cn/default/1533022550289_93.png' class='w100 h976'></image>
+    </view>
+    <view class='w100 btn footer_btn'> 
+      <image src='http://pax6ums6h.bkt.clouddn.com//avatar/1530513058281_21.png' bindtap='becomeVip'></image>
+    </view>
+    <view class='w100 btn' style='opacity:0;'> 
+      <image src='http://pax6ums6h.bkt.clouddn.com//avatar/1530513058281_21.png' bindtap='becomeVip'></image>
+    </view>
+</view>
+<view wx:if="{{isShowIntro}}" class='intro-box ' catchtouchmove='false'>
+  <view class='mask' bindtap='closeIntro'></view>
+  <view class='intro-text'>
+    <!-- <view class='title-box'>
+      <text class='title'>规则说明</text>
+      <text class='del' bindtap='closeIntro'>x</text>
+    </view> -->
+    <scroll-view class='intro_con' scroll-y>
+      <view>1.付费59元即成为超级会员，可挑选一个最高价值89元的专属礼包；</view>
+      <view>2.邀请好友成为超级会员，最高可得25元/人；</view>
+      <view>3.消费佣金是指您或您的邀请会员在爱聚平台下单并确认收货，爱聚奖励给您的佣金；</view>
+      <view>4.您邀请的好友，注册成为普通会员后，在爱聚平台下单并确认收货，您将获得100%的佣金；</view>
+      <view>5.您邀请的好友，付费成为超级会员后，在爱聚平台下单并确认收货，Ta将获得100%佣金，
+      您将获得消费佣金20%作为消费津贴；</view>
+      <view>6.当您或您的会员取消订单、退款退货或因订单异常等情况，系统将会扣除相应的佣金；</view>
+      <view>7.消费佣金每月20日结算上一个自然月确认收货的订单，
+      未确认收货的订单将在下月20日结算。结算后的佣金可进行提现。</view>
+    </scroll-view>
+    <view class='del' bindtap='closeIntro'></view>
+  </view>
+</view>
+
+<view hidden='{{rank==1}}'>
+  <view class='guize' bindtap='openIntro'>
+    <image src='https://youxuan.ecbao.cn/goods/1534834564753_39.png'></image>
+  </view>
+  <view>
+    <image src='https://youxuan.ecbao.cn/goods/1534833939918_68.png' mode='widthFix' class='w100'></image>
+    <!-- <image src='http://pax6ums6h.bkt.clouddn.com//avatar/1530517691413_30.png' class='w100 h620'></image> -->
+  </view>
+  <!-- <view class='mt15'>
+    <button class='invite_btn' open-type="share"></button>
+    <image src='http://youxuan.ecbao.cn/material/1533043759113_63.png' class='w100 h990'></image>
+  </view>
+   <view class='mt15'>
+    <image src='http://pax6ums6h.bkt.clouddn.com//avatar/1530518151237_31.png' class='w100 h240'></image>
+  </view> -->
+  <view class='invitation'>
+    <button class='invite_btn' open-type="share">立即邀请好友</button>
+    <view class='invite_code'>
+      <text>我的邀请码：{{invite_code}}</text>
+      <button catchtap='copy'>复制</button>
+    </view>
+  </view>
+  <view>
+    <image src='https://youxuan.ecbao.cn/goods/1534834025972_52.png' mode='widthFix' class='w100'></image>
+    <!-- <image src='https://youxuan.ecbao.cn/goods/1534834042118_75.png' mode='widthFix' class='w100'></image> -->
+  </view>
+  <!-- 我的战绩 -->
+  <view class='record'>
+    <view class='record-info-box'>
+      <view class='record-info'>
+        <text class='record-info-title'>今日邀请人数</text>
+        <text class='record-info-text'>{{myCom.invite_num}}人</text>
+      </view>
+      <view class='record-info'>
+        <text class='record-info-title'>今日邀预估奖金</text>
+        <text class='record-info-text'>{{myCom.invite_amount}}元</text>
+      </view>
+      <view class='record-info'>
+        <text class='record-info-title'>累计邀请人数</text>
+        <text class='record-info-text'>{{myCom.total_invite_num}}人</text>
+      </view>
+      <view class='record-info'>
+        <text class='record-info-title'>累计预估奖金</text>
+        <text class='record-info-text'>{{myCom.total_invite_amount}}元</text>
+      </view>
+    </view>
+    <view class='tip'>
+      <view>奖金数据每24小时更新一次</view>
+      <view>奖金将于8月20日与7月份佣金一起发放</view>
+      <!-- <view>邀请新人购买年会员才能获得拉新奖励</view> -->
+    </view>
+
+  </view>
+  <view>
+    <image src='https://youxuan.ecbao.cn/goods/1534834064992_76.png' mode='widthFix' class='w100'></image>
+    <view class='invite_list'>
+      <view class='invite_item' wx:for="{{inviteFans}}" wx:key="{{index}}">
+        <view class='invite1'>
+          <image src='/images/mine/first_1.png' wx:if="{{index==0}}"></image>
+          <image src='/images/mine/second_1.png' wx:elif="{{index==1}}"></image>
+          <image src='/images/mine/third_1.png' wx:elif="{{index==2}}"></image>
+          <text wx:else>{{index + 1}}</text>
+        </view>
+        <view class='invite2'>
+          <image src='{{item.avatar}}' class='head'></image>
+          <image src='/images/mine/first_2.png' class='icon' wx:if="{{index==0}}"></image>
+          <image src='/images/mine/second_2.png' class='icon' wx:if="{{index==1}}"></image>
+          <image src='/images/mine/third_2.png' class='icon' wx:if="{{index==2}}"></image>
+        </view>
+        <view class='invite3'>
+          <view class='invite3_name'>{{item.nickname}}</view>
+          <view class='invite3_con'>已邀请<text>{{item.invite_fans_total}}</text>人</view>
+        </view>
+      </view>
+    </view>
+  </view>
+
+</view>

@@ -1,0 +1,37 @@
+/* pages/mine/userSet/userSet.wxss */
+
+.user-info{
+  background-color: #fff;
+  margin-top:16rpx;
+  padding:0 20rpx;
+  
+}
+.h88{
+  height: 88rpx;
+}
+.h120{
+  height: 120rpx;
+}
+.c1{
+  color: #1F2D3D;
+  font-size: 30rpx;
+  /* font-weight: 500 */
+}
+.c9{
+  color:#95AAC1;
+  font-size: 28rpx;
+  
+}
+.df{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.img{
+  width: 80rpx;
+  height: 80rpx;
+  border-radius: 50%;
+}
+.bt{
+  border-top: 1px solid #eee;
+}

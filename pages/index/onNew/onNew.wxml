@@ -1,0 +1,55 @@
+<header title="今日上新" back-num="1"></header>
+<view class='index'>
+   <!-- 精选好货  -->
+  <view class='selection_good'>
+    <!-- <view class='selection_good_title'>精选好货</view> -->
+    <view class='selection_good_list'>
+      <view class='panic_item' wx:for="{{lists}}" catchtap='detail' wx:key="{{index}}" data-id="{{item.id}}">
+        <image src='{{item.main_pic}}' class=''></image>
+          <view class='good_right'>
+            <view class='good_right_title'>{{item.title}}</view>
+            <view class='good_commission'>
+              <!-- <view class='good_commission_left'>预估佣金：￥{{item.inner_price * item.rebate_percent / 100}}</view> -->
+              <view class='good_commission_left'>
+                <image src='/images/commission_icon.png' class='commission_icon'></image>
+                <text>{{item.inner_price * item.rebate_percent / 100}}</text>
+                <image src='/images/commission_01.png' class='commission1'></image>
+              </view>
+              <view class='good_commission_right'>{{item.sale_num}}人已买</view>
+            </view>
+            <view class='good_price'>
+              <view>
+                <text class='good_price1'><text class='good_price1_icon'>¥</text>{{item.inner_price}} </text>
+                <text class='good_price2'>￥{{item.outer_price}} </text>
+              </view>
+              <button class='good_price_btn'>立即购买</button>
+              <!-- <view class='good_commission_right'>{{item.discount}}元券</view> -->
+              <!-- <view>
+                <view class='shop-car' wx:if="{{item.num==0}}" catchtap='openCar' data-item="{{item}}" data-index="{{index}}" data-num="{{1}}" data-skutype='{{item.sku_type}}' data-on_sale="{{item.on_sale}}">                      
+                  <image src='/images/index_cart.png'></image> 
+                </view>
+                
+                  <view class='df' wx:if="{{item.num!=0}}">
+                      <view data-item="{{item}}" class='jian car-btn active' data-num="{{item.num}}" data-index="{{index}}" catchtap='openCar' data-num="{{-1}}">-</view>
+                      <text class='num'> {{item.num}} </text>
+                      <view  data-item="{{item}}" class='add car-btn ' data-index="{{index}}" catchtap='openCar' data-num="{{1}}">+</view>
+                  </view>
+              
+              </view> -->
+            </view>
+          </view>
+      </view>
+    </view>
+  </view>
+  <view class="weui-loadmore bottom-no-data" wx:if="{{!nonemore}}">
+    <view class="weui-loading"></view>
+    <view class="weui-loadmore__tips">正在加载</view>
+  </view>
+  <view class="weui-loadmore weui-loadmore_line bottom-no-data" wx:else>
+    <view class="weui-loadmore__tips weui-loadmore__tips_in-line">暂无更多数据</view>
+  </view>
+</view>
+<discount discount-id="{{regCoupon.id}}" wx:if="{{regCoupon}}">
+  <view slot="content">满50减10</view>
+  <view slot="scene">【全场通用】</view>
+</discount>

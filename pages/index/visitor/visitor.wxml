@@ -1,0 +1,10 @@
+<!-- pages/index/visitor/visitor.wxml -->
+<header title="我的店铺访问者"></header>
+<view class="visitor-info">
+   <view class="visitornum">
+       共{{visitornum}}位访问者
+   </view>
+   <view class="visitordata">
+       <image wx:for="{{visitordata}}" wx:key="{{index}}" src="{{item.avatar}}" ></image>
+   </view>
+</view>

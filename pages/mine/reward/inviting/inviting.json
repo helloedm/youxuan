@@ -1,0 +1,6 @@
+{
+  "navigationBarTitleText": "邀请奖励明细",
+  "usingComponents": {
+    "header": "/components/header/header"
+  }
+}

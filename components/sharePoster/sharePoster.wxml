@@ -1,0 +1,30 @@
+<!--components/sharePoster/sharePoster.wxml-->
+<view class='share' wx:if="{{show}}">
+  <view class='mask'></view>
+  <view class='content'>
+    <view class='content_title'>
+      <text>分享商品购买成功，可获得推荐奖励</text>
+    </view>
+    <view class='content_item'>
+      <button open-type='share' hover-class='none' class='item_btn' catchtap='closeBtn'>
+        <image src='http://youxuan.ecbao.cn/material/1535362283360_21.png'></image>
+        <text>发送给朋友</text>
+      </button>
+      <button hover-class='none' class='item_btn' catchtap='draw'>
+        <image src='http://youxuan.ecbao.cn/material/1535362311742_49.png'></image>
+        <text>发送到朋友圈</text>
+      </button>
+    </view> 
+    <view class='cancel' catchtap='close'>取消</view>
+  </view>
+</view>
+
+<!-- canvas -->
+<canvas canvas-id="canvas4" style="width: 750px; height: 1334px;" class='canvas4'></canvas>
+
+<!-- showImg  -->
+<view class='show_img' wx:if="{{showImg}}" bindtap='closeShowImg'>
+  <view class='show_con'>
+    <image src='{{showImgurl}}' mode='widthFix'></image>
+  </view>
+</view>

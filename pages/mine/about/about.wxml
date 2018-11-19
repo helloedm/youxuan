@@ -1,0 +1,3 @@
+<!--pages/mine/about/about.wxml-->
+<header title="关于爱聚优选" back-num="1"></header>
+<image src='https://youxuan.ecbao.cn/default/1532657901813_11.jpg'></image>

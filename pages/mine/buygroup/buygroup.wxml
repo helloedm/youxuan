@@ -1,0 +1,18 @@
+<!--pages/mine/buygroup/buygroup.wxml-->
+<view class='content'>
+  <view class='line'>
+    <image src='http://youxuan.ecbao.cn/material/1536138871451_11.png' mode='widthFix' class='image'></image>
+    <view class='center join'>加入爱聚优选<text class='red'>购物群</text></view>
+    <view class='description'>
+        <text class='center des'>·获得每日精选推荐</text>
+        <text class='center des'>·优质用户实时经验交流</text>
+        <text class='center des'>·官方专业购物咨询&答疑</text>
+        <text class='center des'>·群内各种免单，超级会员</text>
+        <text class='center des'>·免费赠送活动</text>
+    </view>
+    <view class='joingroup center'>请添加下面的微信备注（加群）</view>
+    <view class='joingroup center' style='margin-top:30rpx;font-weight:normal;'>等待邀请入群即可</view>
+    <view class='center weixin'>微信号：<text class='red'>jbb1008520</text></view>
+    <image src='http://youxuan.ecbao.cn/material/1536141787844_59.png' mode='widthFix' class='ercode'></image>
+  </view>
+</view>

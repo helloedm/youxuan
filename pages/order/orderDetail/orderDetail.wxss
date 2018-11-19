@@ -1,0 +1,218 @@
+/* pages/order/orderDetail/orderDetail.wxss */
+.order_head{
+  height: 310rpx;
+  background: url(http://pax6ums6h.bkt.clouddn.com//goods/1531712816985_65.png) no-repeat center top;
+  background-size: 750rpx auto;
+  padding: 20rpx;
+  box-sizing: border-box;
+}
+.order_head.h_200{
+  height: 200rpx;
+  box-sizing: border-box;
+}
+.order_hc{
+  color: #fff;
+  font-size: 30rpx;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.h_200 .order_hc{
+  height: 150rpx;
+}
+.order_hc_l view{
+  margin-top: 10rpx;
+}
+.order_hc_l view:nth-child(3){
+  font-size: 24rpx;
+}
+.h_200 .order_hc_l view:nth-child(3){
+  font-size: 24rpx;
+  margin-top: 20rpx;
+}
+.cancel_order{
+  width: 150rpx;
+  height: 50rpx;
+  border-radius: 6rpx;
+  border: 1rpx solid #fff;
+  font-size: 24rpx;
+  text-align: center;
+  line-height: 50rpx;
+}
+.order_hc_r{
+   padding-top: 20rpx; 
+}
+.order_hc_r image{
+  width: 140rpx;
+  height: 120rpx;
+  margin-right: 50rpx;
+  /* margin-top: 20rpx; */
+}
+.order_head button{
+  margin-top: 30rpx;
+  color: #E31436;
+  font-size: 32rpx;
+}
+.address{
+  min-height: 140rpx;
+  background-color: #fff;
+  padding: 30rpx 50rpx 20rpx 20rpx;
+  box-sizing: border-box;
+  font-size: 30rpx;
+  color: #1F2D3D;
+  position: relative;
+}
+.address_name{
+  display: flex;
+  justify-content: space-between;
+}
+.address .weui-cell__ft_in-access{
+  position: absolute;
+  right: 20rpx;
+  top: 50%;
+}
+.buy_message{
+  font-size: 28rpx;
+  color: #475669;
+  padding:0 20rpx 20rpx;
+  background-color: #fff;
+}
+.buy_message_c{
+  border-top: 1rpx solid #E0E6ED;
+  padding-top: 20rpx;
+}
+.buy_message_c>text:nth-child(2){
+  color: #1F2D3D;
+}
+.goods_list{
+  margin-top: 20rpx;
+  background-color: #fff;
+  padding: 0 20rpx;
+}
+.goods_item_left image{
+  width: 88rpx;
+  height: 88rpx;
+  border-radius: 8rpx;
+}
+.goods_item{
+  display: flex;
+  justify-content: space-between;
+  padding: 20rpx 0;
+}
+.goods_item + .goods_item{
+  border-top: 1rpx solid #E0E6ED;
+}
+.goods_item_left{
+  display: flex;
+}
+.goods_item_lc>text{
+  display: block;
+  font-size: 30rpx;
+  color: #43566B;
+  width: 434rpx;
+  line-height: 34rpx;
+  padding-top: 10rpx;
+  margin-left: 20rpx;
+  overflow:hidden; 
+  text-overflow:ellipsis;
+  white-space: nowrap;
+}
+.goods_item_lc>text:nth-child(2){
+  font-size: 24rpx;
+  color:#99A9BF;
+}
+.goods_item_num{
+  display: flex;
+  flex-direction: column;
+  max-width: 150rpx;
+  text-align: right;
+  line-height: 34rpx;
+  font-size: 28rpx;
+  color: #43566B;
+  padding-top: 10rpx;
+}
+.goods_item_num>text:nth-child(1){
+  color: #1B2E3E;
+}
+.goods_item_num>text:nth-child(2){
+  color: #99A9BF;
+}
+.goods_price_wrap{
+  background-color: #fff;
+  padding: 10rpx 20rpx 30rpx;
+  margin-top: 20rpx;
+}
+.goods_price{
+  display: flex;
+  justify-content: space-between;
+  font-size: 26rpx;
+  color: #95AAC1;
+  /* margin-top: 20rpx; */
+}
+.goods_price>text:nth-child(2){
+  color: #95AAC1;
+}
+.order_number{
+  font-size: 26rpx;
+  color: #95AAC1;
+  margin-top: 20rpx;
+  border-top: 1rpx solid #E0E6ED;
+  padding-top: 20rpx;
+  vertical-align: center;
+}
+.goods_status{
+  color: #F09A40;
+  font-size: 26rpx;
+  height: 70rpx;
+  line-height: 70rpx;
+  text-align: right;
+}
+.goods_status text{
+  margin-left: 30rpx;
+  display: inline-block;
+}
+.goods_status .btn{
+  width: 150rpx;
+  height: 50rpx;
+  border: 1rpx solid #99A9BF;
+  color: #475669;
+  line-height: 50rpx;
+  border-radius: 6rpx;
+  text-align: center;
+}
+.goods_status .logistics{
+  width: 150rpx;
+  height: 50rpx;
+  border: 1rpx solid #E31436;
+  color: #E31436;
+  line-height: 50rpx;
+  border-radius: 6rpx;
+  text-align: center;
+}
+.address_con{
+  font-size: 28rpx;
+  line-height: 34rpx;
+}
+.order_number_btn{
+  font-size: 22rpx;
+  color: #E31436;
+  border: 1rpx solid #E31436;
+  width: 80rpx;
+  height: 40rpx;
+  margin: 0;
+  padding: 0;
+  line-height: 40rpx;
+  text-align: center;
+  display: block;
+}
+.order_no{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  line-height: 34rpx;
+  font-size: 28rpx;
+  height: 50rpx;
+}
+.order_no textg{
+  display: block;
+}

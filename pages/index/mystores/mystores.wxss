@@ -1,0 +1,117 @@
+/* page/index/myStores/myStores.wxss */
+.myStores{
+    margin-top: 16rpx;
+}
+.myStores-bg{
+    background-color: #fff;
+    height: 305rpx;
+    padding: 30rpx 20rpx;
+}
+.title{
+    font-size: 32rpx;
+    color: #1F2D3D;
+}
+.bg-content{
+    width: 460rpx;
+    height: 184rpx;
+    margin: 0 auto;
+    position: relative;
+    padding-top: 35rpx;
+}
+.bg-content-img,.avatar-img{
+    width: 100%;
+    height: 100%;
+    border-radius: 10rpx;
+}
+.bg-size{
+    font-size: 24rpx;
+    position: absolute;
+    left: 0;
+    right: 0;
+    text-align:center;
+    bottom:-45rpx;
+    margin: 0 auto;
+    color: #96AAC2;
+}
+.bg-content-icon{
+    position: absolute;
+    top:135rpx;
+    right:-45rpx;
+    height:80rpx;
+    width:82rpx;
+}
+.myStores-avatar{
+    background-color: #fff;
+    height: 249rpx;
+    padding: 0 20rpx;
+}
+.avatar-main{
+    border-top: 2rpx solid #f5f8fa;
+    padding: 30rpx 0;
+}
+.avatar-content{
+    position: relative;
+    height: 128rpx;
+    width: 128rpx;
+    border-radius: 50%;
+    margin: auto;
+}
+.avatar-icon{
+    position: absolute;
+    height:66rpx;
+    width:70rpx;
+    top:54rpx;
+    right:-34rpx;
+}
+.myStores-name{
+    background-color: #fff;
+    padding: 0 20rpx;
+    height: 150rpx;
+}
+.name-main{
+    padding: 30rpx 0 10rpx;
+    border-top: 2rpx solid #f5f8fa;
+}
+.name-input,.introduction-input{
+    width: 100%;
+    font-size: 30rpx;
+    font-weight: 400;
+    color: #000;
+}
+.introduction-input{
+    height: 90rpx;
+}
+.name-num,.introduction-num text{
+    color: #99A9BF;
+    font-size: 24rpx;
+    float: right;
+}
+.myStores-introduction{
+    background: #fff;
+    padding: 0 20rpx;
+    height: 230rpx;
+    margin-bottom: 80rpx;
+}
+.name-content{
+    position: relative;
+}
+.name-num{
+    position: absolute;
+    top:10rpx;
+    right:0rpx;
+}
+.introduction-main{
+    padding: 30rpx 0;
+    border-top: 2rpx solid #f5f8fa;
+}
+.myStores-btn{
+    color: #fff;
+    background: #E31436;
+    margin: auto 20rpx;
+    font-size: 36rpx;
+    font-weight: 400;
+    height: 88rpx;
+    line-height: 88rpx;
+    text-align: center;
+    border-radius: 44rpx;
+}

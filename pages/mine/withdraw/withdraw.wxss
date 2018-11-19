@@ -1,0 +1,87 @@
+/* pages/mine/withdraw/withdraw.wxss */
+page{
+  box-sizing: border-box;
+  padding-top: 20rpx;
+  background: #fff;
+}
+.tixian{
+  background-color: #fff;
+  box-sizing: border-box;
+  height: 100%;
+}
+.tixian_head{
+  font-size: 28rpx;
+  color: #43566A;
+  display: flex;
+  justify-content: space-between;
+}
+.tixian_head>view:nth-child(2){
+  color: #E31436;
+}
+.weui-cell{
+  padding: 30rpx 0 0;
+}
+.weui-input{
+  border: 1rpx solid #A7B5C8;
+  border-radius: 10rpx;
+  height: 70rpx;
+  display: block;
+  text-align: right;
+  padding: 0 20rpx;
+  font-size: 32rpx;
+  color: #1F2D3D;
+}
+.tixian_tip{
+  color: #95AAC1;
+  font-size: 22rpx;
+  margin: 29rpx 0 0 20rpx;
+
+}
+.tixian_button{
+  width:710rpx;
+  height:88rpx;
+  background:rgba(227,20,54,1);
+  border-radius:44px;
+  margin: 80rpx auto;
+}
+.tixian_button button{
+  background-color: #E31436;
+  color: #fff;
+  font-size: 36rpx;
+  border-radius:44px;
+
+}
+.allmoney{
+  font-size:50rpx;
+  text-align: center;
+  color:rgba(27,45,62,1);
+  margin-top:21rpx;
+}
+.myeranmoney{
+  font-size:28rpx;
+  color:rgba(149,170,193,1);
+  text-align: center;  
+}
+.eranmoney .des{
+  font-size:26rpx;
+  margin-left:20rpx;
+  color:rgba(153,169,191,1);
+}
+.eranmoney .operate{
+  width:90%;
+  border-bottom:1px solid #F5F8FA;
+  margin: 0 auto;
+  display: flex;
+  align-items:center;
+  justify-content: space-between;
+}
+.eranmoney .operate .RMB{
+  font-size:60rpx;
+  color:rgba(27,45,62,1);
+}
+.eranmoney .operate .allwarn{
+  font-size:26rpx;
+  color:rgba(227,20,54,1);
+  margin: 0;
+  padding: 0;
+}

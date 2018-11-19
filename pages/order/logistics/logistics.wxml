@@ -1,0 +1,38 @@
+<!-- <view>{{logistics_company}}</view>
+<view>{{logisticsinfo.nu}}</view> -->
+<header title="物流详情" />
+<view class='top'>
+  <view class='logistics'>物流状态 <text class='logistics_status'>{{logisticsinfo.logisticsinfo_status}}</text></view>
+  <view class='info'>承运来源：{{logistics_company}} </view>
+  <view class='info'>运单编号：{{id}} <button class='copy' catchtap='copy'>复制</button></view>
+  <!-- <view class='phone'>官方电话： <text class='phone_num'>暂无</text></view>   -->
+</view>
+
+<view class='list'>
+  <view class="show {{index == 0?'first':''}}" wx:for="{{logisticsinfo.data}}" wx:key='{{index}}'>
+    <view class='ball' wx:if="{{index != 0}}"></view>
+    <view class='imgbox' wx:if="{{index == 0}}">
+      <image src='/images/wlfirst.png'></image>
+    </view>    
+    <view class='line'></view>
+    <view class='des'>
+      <view class="content">{{item.context}}</view>
+      <view class="time">{{item.time}}</view>
+    </view>
+  </view>
+</view>
+
+<!-- <view class='logistics' wx:for="{{logisticsinfo.data}}" wx:key='{{index}}'>
+  <view class='logistics_type'>快递方式：
+    {{item.context}}
+  </view>
+  <view class='logistics_type'>快递编号：
+    <text  class='logistics_info'></text>   
+  </view>
+  <view class='logistics_type'>发货时间：
+    <text  class='logistics_info'>{{item.time}}</text>
+  </view>
+  <view class='logistics_type'>确认收货：
+    <text  class='logistics_info'>{{item.ftime}}</text>
+  </view>  
+</view> -->

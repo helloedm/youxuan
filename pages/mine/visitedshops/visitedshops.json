@@ -1,0 +1,10 @@
+{
+  "navigationBarTitleText": "店铺访问",
+  "backgroundColorTop": "#F5F8FA",
+  "backgroundColorBottom": "#F5F8FA",
+  "backgroundColor": "#F5F8FA",
+  "enablePullDownRefresh": true,
+  "usingComponents": {
+    "header": "/components/header/header"
+  }
+}

@@ -1,0 +1,98 @@
+<!--pages/order/order.wxml-->
+<!-- <wxs module="tofixd">
+  exports.
+</wxs> -->
+<header title="提交订单" />
+<view class='order'>
+<!-- 收货地址 -->
+  <view class='address' catchtap='goAddress' wx:if="{{address}}">
+      <view class='address_name'>
+        <view>
+          <text>收货人：{{address.receiver_name}}</text>
+        </view>
+        <view>{{address.receiver_phone}}</view>
+      </view>
+      <view class='address_con'>
+        <text>收货地址：{{address.receiver_state}}  {{address.receiver_city}}  {{address.receiver_district}}  {{address.receiver_address}}</text>
+      </view>
+      <view class='weui-cell__ft_in-access'></view>
+      <image src='/images/address_border.png' class='border_bottom'></image>
+      <image src='/images/address_icon.png' class='icon_left'></image>
+  </view>
+  <!-- 没有收货地址 -->
+  <view class='address_none' wx:else>
+    <view class="weui-cells weui-cells_after-title">
+        <navigator url="/pages/mine/address/address?from=order" class="weui-cell weui-cell_access" hover-class="none">
+          <!-- <view class="weui-cell__hd">
+              <image src="/images/shop.png" style="margin-right: 5px;vertical-align: middle;width:20px; height: 20px;"></image>
+          </view> -->
+          <view class="weui-cell__bd">您还没有设置默认收货地址</view>
+          <view class="weui-cell__ft weui-cell__ft_in-access">添加地址</view>
+        </navigator>
+    </view>
+    <image src='/images/address_border.png' class='border_bottom'></image>
+    <image src='/images/address_icon.png' class='icon_left'></image>
+  </view>
+  <!-- 商品列表 -->
+  <view class='goods_list' wx:for="{{items}}" wx:for-item="item1">
+      <view class='goods_item' wx:for="{{item1.detail}}" wx:for-item="item2">
+        <view class='goods_item_left'>
+          <image src='{{item2.goods.main_pic}}'></image>
+        </view>
+        <view class='goods_item_right'>
+            <text class='title'>{{item2.goods.title}}</text>
+            <view class='sku_title'>
+              <text wx:if="{{item2.goods.sku_type==2}}">{{item2.sku.attr_names}}</text>
+            </view>
+            <view class='sku_price'>
+              <text>¥{{item2.sku.inner_price}}</text>
+              <text>x{{item2.quantity}}</text>
+            </view>
+        </view>
+      </view>
+  </view>
+  <!-- 商品金额 -->
+  <view class='goods_price_wrap'>
+    <view class='goods_price'>
+      <text class='goods_price_left'>运费</text>
+      <text class='goods_price_right'>¥0.00</text>
+    </view>
+    <!-- <view class='goods_price' catchtap='chooseCoupon'> -->
+    <view class='goods_price'>
+      <text class='goods_price_left'>优惠券</text>
+      <text wx:if="{{platform_discount_money==0}}" class='weui-cell__ft_in-access goods_price_right'>无可用</text>
+      <text wx:else class='weui-cell__ft_in-access goods_price_right'>平台优惠券¥{{platform_discount_money}}元</text>
+    </view>
+    <!-- 买家留言 -->
+    <view class='buy_message goods_price'>
+        <view class="weui-cells weui-cells_after-title">
+            <view class="weui-cell weui-cell_input">
+                <view class="weui-cell__hd">
+                    <view class="weui-label">备注</view>
+                </view>
+                <view class="weui-cell__bd">
+                    <input class="weui-input" placeholder="选填" placeholder-style='text-align:right;' bindinput='bindRemark'/>
+                </view>
+            </view>
+        </view>
+    </view>
+    <!-- 合计 -->
+    <view class='total_goods'>
+        <text>共{{total_quantity}}件商品 </text>
+        <text>  小计:<text style='color:#E31436;font-size:34rpx;'>￥{{total_pay_money}}</text></text>
+    </view>
+  </view>
+  <!-- 去支付 -->
+  <view class='practical_price {{isiphoneX ? "cart-flag":""}}'>
+    <view class='shifu_price'>
+      <text>实付：</text>
+      <text>¥{{total_pay_money}}</text>
+    </view>
+    <view>
+      <form report-submit="{{true}}" bindsubmit="getFromId">
+        <button catchtap='payment' formType="submit">去支付</button>
+      </form>
+    </view>
+  </view>
+  <coupon open="{{open}}" couponArr="{{couponArr}}" bind:myevent="onMyEvent"></coupon>
+</view>

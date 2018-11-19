@@ -1,0 +1,17 @@
+/* pages/index/visitor/visitor.wxss */
+.visitor-info{
+
+}
+.visitornum{
+    text-align:center;
+    padding:15rpx 0;
+    font-size:32rpx;
+}
+.visitordata{
+
+}
+.visitordata image{
+    width:80rpx;
+    height:80rpx;
+    margin:0 20rpx 20rpx 20rpx;
+}

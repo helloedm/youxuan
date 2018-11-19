@@ -1,0 +1,131 @@
+/* pages/mine/earnings/earnings.wxss */
+.header{
+  /* background: -webkit-linear-gradient(left, #E48F22 , #E74E18); 
+  background: -o-linear-gradient(right, #E48F22, #E74E18); 
+  background: -moz-linear-gradient(right, #E48F22, #E74E18); 
+  background: linear-gradient(to right, #E48F22 , #E74E18);  */
+  background:url("http://pax6ums6h.bkt.clouddn.com//goods/1531712816985_65.png") no-repeat left top;
+  background-size:750rpx auto;
+  display: flex;  
+  height: 265rpx;
+  box-sizing: border-box;
+  padding: 56rpx 20rpx 0 20rpx;
+  justify-content: space-between;
+}
+.header_left_t{
+  color: #fff;
+  font-size: 24rpx;
+  line-height: 40rpx;
+  display: inline-block;
+}
+.header_left_t image{
+  width: 30rpx;
+  height: 30rpx;
+  vertical-align: middle;
+  margin-left: 20rpx;
+  margin-top: -3rpx;
+}
+.header_left_c{
+  color: #fff;
+  font-size: 40rpx;
+  font-weight: 600
+}
+.header_right button{
+  width: 158rpx;
+  height: 50rpx;
+  border-radius: 50px;
+  line-height: 50rpx;
+  font-size: 26rpx;
+  color: #E31436;
+  padding: 0;
+  margin: 17rpx 0 0 0;
+}
+.accumulative{
+  background-color: rgba(0, 0, 0, 0.23);
+  height: 60rpx;
+  color: #fff;
+  font-size: 22rpx;
+  line-height: 60rpx;
+  padding-left: 20rpx;
+  margin-top:-60rpx;
+}
+.yueshou{
+  width: 710rpx;
+  margin: 20rpx auto 0;
+  background-color: #fff;
+  border-radius: 10rpx;
+}
+.yueshou .weui-flex{
+  border-radius: 10rpx;
+  padding-top: 30rpx;
+}
+.yueshou_item{
+  padding-left: 20rpx;
+  font-size: 24rpx;
+  color: #43576B;
+  text-align: center;
+}
+.yueshou_item_border{
+  border-left: 1rpx solid #E0E6ED;
+}
+.yueshou_item>view:nth-child(1){
+  font-size: 32rpx;
+  font-weight: 600;
+  color: #1B2D3E;
+  margin-top: 10rpx;
+}
+.yueshou_item>view:nth-child(3){
+  margin-top: 10rpx;
+}
+
+.color_47AEFA{
+  color: #47AEFA;
+}
+.color_F03914{
+  color: #E31436;
+}
+.yugu_tip{
+  font-size: 22rpx;
+  color: #95AAC1;
+  height: 60rpx;
+  line-height: 60rpx;
+  margin: 20rpx 20rpx 0;
+  border-top: 1rpx solid #E0E6ED;
+}
+.day_income{
+  width: 710rpx;
+  background-color: #fff;
+  border-radius: 10rpx;
+  margin: 20rpx auto 0;
+  text-align: center;
+  padding: 30rpx 0;
+}
+.day_income_item{
+  display: flex;
+  flex-direction: column;
+  font-size: 28rpx;
+  color: #1B2D3E;
+}
+.day_income_item>text:nth-child(1){
+  font-size: 22rpx;
+  color: #43576B;
+}
+.day_income_border{
+  border-left: 1rpx solid #E0E6ED;
+}
+.skip_wrap{
+  width: 710rpx;
+  margin: 20rpx auto 0;
+  border-radius: 10rpx;
+  box-sizing: border-box;
+  background-color: #fff;
+}
+.skip_wrap .weui-cell{
+  font-size: 32rpx;
+  padding: 26rpx 20rpx;
+  color:#1B2D3E;
+}
+.skip_wrap .weui-cell::before{
+  margin-right: 20rpx;
+  left: 20rpx;
+}

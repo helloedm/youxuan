@@ -1,0 +1,97 @@
+.top{
+  width: 750rpx;
+  background: #fff;
+  margin: 16rpx 0;
+  padding: 20rpx 0 20rpx 0;
+  overflow: hidden;
+}
+.top view{
+  margin-left: 20rpx;
+}
+.top .logistics{
+  color: #1B2E3F;
+  font-size:30rpx;
+}
+.top .logistics .logistics_status{
+  color: #E31436;
+  font-size:30rpx;
+}
+.top .info{
+  color: #95AAC2;
+  font-size: 26rpx;
+  line-height: 40rpx;
+}
+.top .phone{
+  color: #95AAC2;
+  font-size: 26rpx;
+}
+.top .phone .phone_num{
+  color: #47AEFA;
+  font-size: 26rpx;
+}
+.list{
+  background: #fff;
+  padding-bottom:50rpx;
+  width: 750rpx;
+}
+.list .show{
+  font-size:28rpx;
+  color:rgba(149,169,193,1);
+  display: flex;
+  align-items: center;
+  position: relative;
+  width: 100%;
+}
+.list .show.first{
+  color:#4ECC80;
+}
+.list .show .imgbox image{
+  width:34rpx;
+  height:34rpx;
+  margin:0 16rpx 0 16rpx;
+  position: relative;
+  z-index: 9;
+}
+.list .show .des{
+  width: 85%;
+  display: flex;
+  flex-direction: column;
+  padding: 20rpx 0;
+  border-bottom:1px solid #e4e4e4;
+}
+.list .show .des .content{
+  text-align: justify;
+  word-break: break-all;
+}
+.list .show .ball{
+  width:18rpx;
+  height:18rpx;
+  background:rgba(224,230,237,1);
+  border-radius: 50%;
+  margin:0 22rpx;
+  position: relative;
+}
+.list .show  .line{
+  position: absolute;
+  top:50%;
+  left:30rpx;
+  bottom:-100rpx;
+  width: 1rpx;
+  background: #e5e5e5;
+}
+.list .show:last-child  .line{
+  opacity: 0;
+}
+.copy{
+  display: inline-block;
+  margin: 0;
+  padding: 0;
+  font-size: 22rpx;
+  line-height: 40rpx;
+  width: 80rpx;
+  height: 40rpx;
+  margin-left: 30rpx;
+  color: #E31436;
+  border: 1rpx solid #E31436;
+  vertical-align: middle;
+}

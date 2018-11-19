@@ -1,0 +1,15 @@
+<!--pages/mine/share/share.wxml-->
+<view class='share'>
+  <view class='show_img' wx:if="{{showImg}}" bindtap='closeShowImg'>
+    <view class='show_con'>
+      <image src='{{showImgurl}}' mode='widthFix'></image>
+    </view>
+  </view>
+
+  <canvas canvas-id='canvas1' class='canvas'></canvas>
+
+  <view class='footer {{isiphoneX ? "cart-flag":""}}'>
+    <button open-type='share' class="sharefriend">发送给朋友</button>
+    <button bindtap='saveImage' class="sharefriends">分享到朋友圈</button>
+  </view>
+</view>

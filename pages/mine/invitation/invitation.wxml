@@ -1,0 +1,198 @@
+<!--pages/mine/invitation/invitation.wxml-->
+<wxs module="toFixed2">
+module.exports=function(v){
+  var v2=  v * 2 / 300;
+  return v2.toFixed(2);
+}
+</wxs>
+<view class='header'>
+  <view class='rule' bindtap='openRule'>
+    <view>规</view>
+    <view>则</view>
+  </view>
+  <view class='balance-info'>
+    <view class='balance'  bindtap='openMoney'>待提现金额</view>
+    <view class='balance-money-box'>
+      <!-- <view class='balance_left'> -->
+        <text><text style='font-size:54rpx'>￥</text><text style='font-weight:600;'>{{amount}}</text></text>
+      <!-- </view> -->
+      <view class='forward' catchtap='getmoney'>提现</view>
+    </view>
+    <form report-submit="{{true}}" bindsubmit="getFromId">
+      <button bindtap='showShareFn' class='index_share' wx:if="{{showNickname}}" formType="submit">邀请群好友帮开</button>
+      <button open-type='getUserInfo' class='index_share' bindgetuserinfo="getUser" wx:else formType="submit">邀请群好友帮开</button>
+    </form>
+    <view class='record'>
+      <text>已成功邀请<text style='color:#FDE700' bindtap='openRecord'> {{share_num}}人 </text>帮开</text>
+      <text bindtap='openRecord'>帮开记录 ▶</text>
+    </view>
+  </view>
+</view>
+<view class='bg bangkai_wrap'>
+  <view class='bangkai_box'>
+    <view class='bangkai_head'>
+      <view>帮开排行榜</view>
+      <image src="https://youxuan.ecbao.cn/material/1536202109616_14.png" mode='widthFix'></image>
+    </view>
+    <scroll-view class='bangkai_list' scroll-y>
+      <view class='bangkai_item' wx:for="{{shareList}}">
+        <view class='bangkai1'>
+          <image src='/images/mine/first_1.png' wx:if="{{index==0}}"></image>
+          <image src='/images/mine/second_1.png' wx:elif="{{index==1}}"></image>
+          <image src='/images/mine/third_1.png' wx:elif="{{index==2}}"></image>
+          <text wx:else>{{index+1}}</text>
+        </view>
+        <view class='bangkai2'>
+          <image src='{{item.avatar}}' class='head'></image>
+          <image src='/images/mine/first_2.png' wx:if="{{index==0}}" class='icon'></image>
+          <image src='/images/mine/second_2.png' wx:elif="{{index==1}}" class='icon'></image>
+          <image src='/images/mine/third_2.png' wx:elif="{{index==2}}" class='icon'></image>
+        </view>
+        <view class='bangkai3'>
+          <view class='bangkai3_name'>{{item.nickname}}</view>
+          <view class='bangkai3_con'>已邀请<text>{{item.share_num}}人</text>帮开红包</view>
+        </view>
+      </view>
+    </scroll-view>
+    <view class='bangkai_foot'>
+      我的排名：第{{shareRank}}位
+    </view>
+  </view>
+</view>
+ <view class='bg' > 
+    <view class='goods_list_head'></view>
+      <view class='good' wx:for="{{likeData}}"  wx:key="{{index}}" data-id="{{item.id}}" catchtap='detail'>
+        <image src='{{item.main_pic}}' style='width:266rpx;height:266rpx'></image>
+        <view class='good-info'>
+          <view style='color:#1B2E3E;font-size:28rpx;' class='title'>{{item.title}}</view>
+          <view class='huiyuanzhuan'><text>会员赚</text><text>￥{{toFixed2(item.inner_price * item.rebate_percent)}}</text></view>
+          <view class='price' style='color:#E31436;font-size:46rpx;'>
+            <text style='margin-left:-10rpx'>￥{{item.inner_price}}  </text>
+            <view class='goods_btn'> 
+              <button>立即抢</button>
+            </view>
+          </view>
+        </view>
+
+      </view>
+  </view>
+  
+<view class='no-data' wx:if="{{isShowNoData}}" style='margin: 40rpx 0;'>已经到底了,不挑几件好货么?</view>  
+  <view class="weui-loadmore no-data" wx:else>
+      <view class="weui-loading"></view>
+      <view class="weui-loadmore__tips">正在加载</view>
+ </view>
+ <!-- 规则 -->
+ <view wx-if="{{isShowRule}}">
+    <view class='mask'  bindtap='closeRule'  catchtouchmove='true'></view>
+    <view class='rule-bomb' catchtouchmove='true'>
+      <view style='font-size:32rpx;text-align: center;margin:40rpx 0'>活动规则 </view>
+      <!-- <view class='close'> x </view> -->
+      <scroll-view class='content' scroll-y>
+        <text>{{rules}}</text>
+        <!-- <view>  1.付费59元即成为超级会员，可挑选一个最高价值89元的专属礼包；</view>
+        <view>  2.邀请好友成为超级会员，最高可得25元/人；</view>
+        <view>  3.消费佣金是指您或您的邀请会员在爱聚平台下单并确认收货，爱聚奖励给您的佣金；</view>
+       <view>  4.您邀请的好友，注册成为普通会员后，在爱聚平台下单并确认收货，您将获得100%的佣金；</view>
+        <view>  5.您邀请的好友，付费成为超级会员后，在爱聚平台下单并确认收货，Ta将获得100%佣金，您将获得消费佣金20%作为消费津贴；</view>
+        <view>  6.当您或您的会员取消订单、退款退货或因订单异常等情况，系统将会扣除相应的佣金；</view> -->
+        <!-- <view>  7.消费佣金每月20日结算上一个自然月确认收货的订单，未确认收货的订单将在下月20日结算。结算后的佣金可进行提现。</view> -->
+      </scroll-view>
+      <form report-submit="{{true}}" bindsubmit="getFromId">
+        <button bindtap='showShareFn' class='share share2 share1 rule_share' style='width:490rpx;' wx:if="{{showNickname}}" form-type='submit'></button>
+        <button class='share share2 share1 rule_share' style='width:490rpx;' open-type='getUserInfo' bindgetuserinfo="getUser" wx:else form-type='submit'></button>
+      </form>
+    </view>
+ </view>
+ <!-- 帮开记录 -->
+ <view  wx-if="{{isShowRecord}}">
+    <view class='mask' bindtap='closeRecord' catchtouchmove='true'></view>
+    <view class='record-box' catchtouchmove='true'>
+      <view class='record-title'>帮开记录</view>
+      <!-- <view class='close'> x </view> -->
+      <scroll-view class='record-list-box' scroll-y bindscrolltolower="next">
+          <view class='record-list-info' wx:for="{{recordList}}">
+            <image src='{{item.avatar}}' style='width:70rpx;height:70rpx;border-radius:50%;margin-top:20rpx'></image>
+            <view class='firend-open' style='margin-left:10rpx;'>
+                <view class='c1 firend-open-info {{item.status==1?"c99A9BF":"c99A9BF"}}'> <text>{{item.type==2?"首开红包":"好友帮开"}}</text>  <text class='ce c9'  style='color:{{item.status!=1?"#99A9BF":"#E31436"}};'>￥{{item.amount}}</text></view>
+                <view class='c9 firend-open-info' wx:if="{{item.status==1}}"> <text>{{item.create_at}}</text>  <text ></text> </view>
+                <view class='c9 firend-open-info' wx:else> <text>{{item.create_at}}</text>  <text >{{item.status==2?"已提现":"已过期"}}</text> </view>
+            </view>
+          </view>
+          <view class='no-data' wx:if="{{moreHelp}}" style='margin: 40rpx 0;'>暂无更多数据</view>  
+            <view class="weui-loadmore no-data" wx:else >
+                <view class="weui-loading"></view>
+                <view class="weui-loadmore__tips">正在加载</view>
+          </view>
+      </scroll-view>
+      <form report-submit="{{true}}" bindsubmit="getFromId">
+        <button bindtap='showShareFn' class='share share2 share1 record_share'  style='margin-top: 18rpx;width:500rpx;' wx:if="{{showNickname}}" form-type='submit'></button>
+        <button class='share share2 share1 record_share'  style='margin-top: 18rpx;width:500rpx;' open-type='getUserInfo' bindgetuserinfo="getUser" wx:else form-type='submit'></button>
+      </form>
+    
+    </view>
+ </view>
+ <view>
+ <!--  -->
+ </view>
+  <!-- 余额 -->
+ <view  wx-if="{{isShowMoney}}">
+    <view class='mask' bindtap='closeMoney' catchtouchmove='true'></view>
+    <view class='money-box' catchtouchmove='true'>
+      <!-- <view class='close'> x </view> -->
+      <view class='money-info' style='margin-top:320rpx;'>
+        <text class='my_money'>我的余额</text>
+        <view style='font-size:54rpx;color:#FDE700'>￥<text style='font-size:107rpx;'>{{amount}}</text></view>
+      </view>
+      <form report-submit="{{true}}" bindsubmit="getFromId">
+        <button bindtap='showShareFn' class='share share2 share1 money_share' wx:if="{{showNickname}}" form-type='submit'></button>
+        <button class='share share2 share1 money_share' open-type='getUserInfo' bindgetuserinfo="getUser" wx:else form-type='submit'></button>
+      </form>
+    
+    </view>
+ </view>
+   <!-- 余额 -->
+ <view  wx-if="{{isShowHelp}}">
+ <!--  -->
+    <view class='mask' bindtap='closeHelp' catchtouchmove='true'></view>
+    <view class='help-box' catchtouchmove='true'>
+      <!-- <view class='close' > x </view> -->
+      <view class='help_head' wx:if="{{helpOpen}}">
+        <image src='{{helpOpen.avatar}}' class='head_img'></image>
+        <view class='help_head_con' wx:if="{{helpOpen.status==1}}">你今日已帮我开过</view>
+        <view class='help_head_con' wx:else>帮朋友开得<text>￥{{helpOpen.amount}}</text></view>
+      </view>
+      <view class='help_head' wx:else>{{errorMsg}}</view>
+      <view class='money-info'>
+        <text class='help_my'>我的余额</text>
+        <view class='help_num'>￥<text>{{amount}}</text></view>
+      </view>
+      <form report-submit="{{true}}" bindsubmit="getFromId">
+        <button bindtap='showShareFn' class='share share2 share1 help_share' wx:if="{{showNickname}}" form-type='submit'></button>
+        <button class='share share2 share1 help_share' open-type='getUserInfo' bindgetuserinfo="getUser" wx:else form-type='submit'></button>
+      </form>
+    
+    </view>
+ </view>
+ <button class='go_index' bindtap='goIndex'>
+  <image src='/images/mine/index.png'></image>
+ </button>
+ <!-- 左侧提现滚动 -->
+<view class='left_scroll'>
+  <view class='left_item left_item1' wx:if="{{item1}}" animation="{{animation2}}">
+    <image src='{{item1.avatar}}'></image>
+    <view class='left_con'>
+      <text>{{item1.nickname}}</text>
+      <text>刚提现{{item1.amount}}元</text>
+    </view>
+  </view>
+  <view class='left_item left_item2' wx:if="{{item2}}" animation="{{animation2}}">
+    <image src='{{item2.avatar}}'></image>
+    <view class='left_con'>
+      <text>{{item2.nickname}}</text>
+      <text>刚提现{{item2.amount}}元</text>
+    </view>
+  </view>
+</view>
+
+<share show="{{showShare}}" kind="4"></share>

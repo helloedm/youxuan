@@ -1,0 +1,76 @@
+<!--pages/mine/phone/phone.wxml-->
+
+<header title="修改手机号"></header>
+<view class='bgf phone' wx:if="{{!isShowNew}}">
+  <view class="weui-cell weui-cell_input h88">
+    <view class="weui-cell__hd">
+        <view class="weui-label c1">原手机号</view>
+    </view>
+    <view class="weui-cell__bd c1">
+       {{phone}}
+    </view>
+  </view>
+  
+ <view class="weui-cell weui-cell_input weui-cell_vcode h100 df">
+    <view class="weui-cell__hd">
+        <view class="weui-label c1">验证码</view>
+    </view>
+    <view class="weui-cell__bd c1">
+        <input class="weui-input" placeholder="请输入验证码"  placeholder-class="c9"  type='number'   bindinput="getInputCode"  />
+    </view>
+    <button type="warn"  
+            size="mini"  
+            disabled='{{code_disabled}}' 
+            plain="{{code_plain}}" 
+            bindtap='getAjaxCode'
+            class='{{code_disabled?"c-b":""}}'
+            >
+        {{code_btn}}
+    </button>
+  </view>
+</view>
+
+<view class='bgf phone' wx:if="{{isShowNew}}">
+  <view class="weui-cell weui-cell_input h88">
+    <view class="weui-cell__hd">
+        <view class="weui-label c1">新手机号</view>
+        
+    </view>
+    <view class="weui-cell__bd c1">
+        <input class="weui-input" placeholder="请输入新手机号"  placeholder-class="c9"  type='number'   bindinput="getInputNewTel"  />
+    </view>
+  </view>
+  
+ <view class="weui-cell weui-cell_input weui-cell_vcode h100 df">
+    <view class="weui-cell__hd">
+        <view class="weui-label c1">验证码</view>
+    </view>
+    <view class="weui-cell__bd c1">
+        <input class="weui-input" placeholder="请输入验证码"  placeholder-class="c9"  type='number'   bindinput="getInputCode"  />
+    </view>
+    <button type="warn"  
+            size="mini"  
+            disabled='{{code_disabled}}' 
+            plain="{{code_plain}}" 
+            bindtap='getNewAjaxCode'
+            class='{{code_disabled?"c-b":""}}'
+            >
+        {{code_btn}}
+    </button>
+  </view>
+</view>
+
+<view style='margin-top:80rpx' wx:if="{{!isShowNew}}">
+    <button type="warn" size="default" loading="{{loading}}" 
+      plain="{{plain}}"  disabled="{{disabled}}"              
+      style='width:90%' bindtap="checkPhone" 
+      class='{{disabled ? "bg_f":"" }}'
+       >验证后绑定新手机 </button>
+</view>
+<view style='margin-top:80rpx' wx:if="{{isShowNew}}">
+    <button type="warn" size="default" loading="{{loading}}" 
+      plain="{{plain}}"  disabled="{{disabled}}"              
+      style='width:90%' bindtap="updatePhone" 
+      class='{{disabled ? "bg_f":"" }}'
+       >绑定新手机 </button>
+</view>

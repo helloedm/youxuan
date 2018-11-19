@@ -1,0 +1,198 @@
+<!--index.wxml-->
+<import src="/template/paniclist/paniclist.wxml" />
+<wxs module="sliceName">
+module.exports=function(name){
+  return name.slice(0,1)+'**'+name.slice(-1);
+}
+</wxs>
+<wxs module="toFixed2">
+module.exports=function(v,v1){
+  var answer =  v-(v * (v1-0) * 2 / 300);
+  return answer.toFixed(2);
+}
+</wxs>
+<wxs module="splitD">
+  module.exports=function(price,num){
+    if(!num){
+      num=0
+    }
+    return price.split('.')[num];
+  }
+</wxs>
+
+<!-- 价格前面的数 -->
+<wxs module="front">
+module.exports=function(v){
+  var v2=  v.split(".")[0];
+  return v2;
+}
+</wxs>
+<!-- 价格后面的数 -->
+<wxs module="after">
+module.exports=function(v){
+  var v2=  v.split(".")[1];
+  return v2;
+}
+</wxs>
+
+<view class='index' bindtouchstart='hideHongbao' bindtouchend='showHongbaoF'>
+  <view class="mystore-title" wx:if="{{ismypage || !isgomystore}}">
+    <view class="mystore-titleleft" hidden="{{!ismypage}}">你正在浏览{{storename}}</view>
+    <view class="mystore-titleright" hidden="{{isgomystore}}" catchtap="goMystores">回自己的店铺</view>
+  </view>
+  <view class="mystore" wx:if="{{isshowstore}}">
+    <view class="mystore-head">
+      <view class="mystore-image">
+        <view class="mystore-comentimg">
+          <image class="mystore-bg" src="{{storebackground_img}}" mode="widthFix"></image>
+        </view>
+        <view class="mystore-avator">
+          <image src="{{storeimg}}"></image>
+        </view>
+      </view>
+      <view class="mystore-info">
+        <view class="mystore-name">
+          <text>{{storename}}</text>
+          <image src="/images/mine/storeedit.png" hidden="{{ismypage}}" catchtap="editMystores"></image>
+        </view>
+        <view class="mystore-remod">{{storedes}}</view>
+      </view>
+      <view class="mystore-visit">
+        <view class="visit-content">
+          <view class="visit-text">
+          <text>店主最近上架了</text>
+          <text class="visit-num">{{shopnum}}款</text>
+          <text>商品，有</text>
+          <text class="visit-num">{{recordnum}}位</text>
+          <text>客人访问了店铺</text>
+        </view>
+        <view class="visit-img" wx:if="{{recordavator}}">
+          <image wx:for="{{recordavator}}" wx:key="{{index}}" src="{{item.avatar}}"></image>
+          <view class="visit-more" catchtap="goVisitor">
+              ...
+          </view>
+        </view>
+        </view>
+      </view>
+    </view>
+    <!-- 特卖 -->
+    <view style='background:#fff;margin:16rpx 0;' wx:if="{{isshowsale}}">
+        <view class='limit_sale'>
+          <image src="http://youxuan.ecbao.cn/material/1539763793278_3.png"></image>
+          <view class='time_djs'>
+            <view class='kuang'>{{h<10?'0'+ h:h}}</view><text>:</text><view class='kuang'>{{m<10?'0'+ m:m}}</view><text>:</text><view class='kuang'>{{s<10?'0'+ s:s}}</view>
+          </view>
+        </view>
+        <scroll-view scroll-x style="white-space: nowrap;" bindscrolltoupper="upper" bindscrolltolower="lower" bindscroll="scroll" scroll-into-view="{{toView}}" scroll-top="{{scrollTop}}">
+        <view id="sale_prd" class="sale_prd" wx:for="{{specialArr2}}" wx:key="index" data-id="{{item.id}}" catchtap='detail'>
+          <image src="{{item.main_pic}}" class='sale_prd_img'></image>
+          <view class='sale_prd_des'>
+            <view class='sale_prd_title'>{{item.title}}</view>
+            <view class='price_about'>
+              <view class='sale'>秒杀价</view>
+              <view class='price'>
+                <text>￥</text><text>{{front(item.inner_price)}}.</text><text>{{after(item.inner_price)}}</text>
+              </view>
+            </view>
+          </view>
+        </view>
+      </scroll-view>
+    </view>
+
+    <view class="mystore-shop">
+      <view class="shop-main" wx:for="{{myselfgoodslist}}" wx:key="index">
+        <view class="goods-head">
+          <image src="/images/mine/point.png"></image>
+          <text>{{item.recommend_des}}</text>
+        </view>
+        <view class="goods-main" data-id="{{item.id}}" catchtap='detail'>
+          <view class="goods-left">
+            <image src="{{item.main_pic}}"></image>
+          </view>
+          <view class="goods-right">
+            <view class="goods-title">
+              {{item.title}}
+            </view>
+            <view class="goods-prices">
+              <text class='inner_price'><text>¥</text>{{splitD(item.inner_price)}}<text>.{{splitD(item.inner_price,1)}}</text></text>
+              <text class='outer_price'>¥{{splitD(item.outer_price)}}</text>
+            </view>
+          </view>
+        </view>
+        <view class="goods-footer">
+          <view wx:if="{{!ismypage}}" class="goods-operation">
+            <image src="/images/mine/goodsedit.png" data-id="{{item.id}}" catchtap='goRecommend' class="goods-edit"></image>
+            <image src="/images/mine/goodsdele.png" data-key="{{index}}" data-id="{{item.id}}" catchtap='deletStoreShops' class="goods-dele"></image>
+            <image src="/images/mine/goodsshare.png" data-item="{{item}}" catchtap='shareGoods' class="goods-share"></image>
+          </view>
+          <view class="hearts">
+            <image src="/images/mine/heart1.png" data-id="{{item.store_goods_id}}" data-key="{{index}}" wx:if="{{item.click_num > 0}}" catchtap='giveshopthumbs' class="good-heart"></image>
+            <image src="/images/mine/heart2.png" data-id="{{item.store_goods_id}}" data-key="{{index}}" catchtap='giveshopthumbs' class="good-heart" wx:else></image>
+            <text>{{item.click_num}}</text>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+  <view class="no-store" wx:if="{{noshowstore}}">
+    <image src="/images/addadders.png" class="no-store-img"></image>
+    <view class="no-store-text">该店铺已下架</view>
+  </view>
+  <view style='position:relative'>
+    <view class='roll {{(ismypage || !isgomystore) ? "rolls" : ""}}' wx:if="{{cartItem}}" catchtap='detail' data-id="{{cartItem.goods_id}}">
+      <!-- <image src='/images/svip.png' style="width:60rpx;height:60rpx;border-radius:50%; "></image> -->
+      <image src='{{cartItem.avatar}}' style="width:60rpx;height:60rpx;border-radius:50%; "></image>
+      <view class='scroll-left-box'>
+        <text decode="{{true}}" class='scroll-left-text'>{{sliceName(cartItem.username)}}刚刚购买了{{cartItem.goods_title}}</text>
+        <text decode="{{true}}" class='scroll-left-arrow'></text>
+        
+      </view>
+    </view>
+  </view>
+  <!-- 所有商品 -->
+  <view class='allgoods'>
+    <view class='allgoods_title'>
+      <image src='http://youxuan.ecbao.cn/material/1539766386982_98.png' mode="widthFix"></image>
+    </view>
+    <view class='allgoods_con'>
+      <!-- 左边 -->
+      <view class='all_left'>
+        <view class='allgoods_item' wx:for="{{goods}}" wx:key="{{index}}" wx:if="{{index % 2==0}}"  data-id='{{item.id}}' catchtap='detail'>
+          <template is="indexlist" data="{{item}}" />
+        </view>
+      </view>
+      <!-- 右边 -->
+      <view class='all_right'>
+        <view class='allgoods_item' wx:for="{{goods}}" wx:key="{{index}}" wx:if="{{index % 2==1}}"  data-id='{{item.id}}' catchtap='detail'>
+          <template is="indexlist" data="{{item}}" />
+        </view>
+      </view>
+    </view>
+  </view>
+  <view class="weui-loadmore bottom-no-data" wx:if="{{!nonemore}}">
+    <view class="weui-loading"></view>
+    <view class="weui-loadmore__tips">正在加载</view>
+  </view>
+  <!-- <view class="weui-loadmore weui-loadmore_line bottom-no-data" wx:else>
+    <view class="weui-loadmore__tips weui-loadmore__tips_in-line">已经到底了,不挑几件好货么?</view>
+  </view> -->
+  <view class='bottom-no-data' wx:if="{{noReqest}}">已经到底了,不挑几件好货么?</view>
+<!-- </scroll-view> -->
+</view>
+<discount discount-id="{{regCoupon.id}}" show="{{showReg}}">
+  <view slot="content">满{{regCoupon.least_money-0}}减{{regCoupon.reduce_money-0}}</view>
+  <view slot="scene">【全场通用】</view>
+</discount>
+<modal hidden="{{isdeleshop}}" class="delemod" title="" confirm-text="删除" cancel-text="取消" bindconfirm="deleshop" bindcancel="cancelshop">
+  <view class="delemod-text">确认要删除这件商品吗</view>
+</modal>
+<view class='to_hongbao {{showHongbao?"":"scroll"}}' catchtap='toHongbao'>
+  <image src='/images/to_hongbao.png'></image>
+</view>
+
+<image src='https://youxuan.ecbao.cn/goods/1534926115850_36.png' class='to_top' bindtap='toTop'></image>
+
+<share show="{{showShare}}" kind="1" detail="{{detail}}"></share>
+<!-- <view   class='ball'  style="top:{{bus_y}}rpx;left:{{bus_x}}rpx" hidden="{{hide_good_box}}"  ></view> -->
+
+<!-- <template is="tabbar" data="{{type:type,num:num}}"  />  -->

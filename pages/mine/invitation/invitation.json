@@ -1,0 +1,10 @@
+{
+  "navigationBarTitleText": "开红包领现金",
+  "navigationBarBackgroundColor":"#FDE700",
+  "backgroundColor": "#FDE700",
+  "backgroundColorTop": "#FDE700",
+  "backgroundColorBottom": "#FED8DC",
+  "usingComponents": {
+    "share": "/components/sharePoster/sharePoster"
+  }
+}

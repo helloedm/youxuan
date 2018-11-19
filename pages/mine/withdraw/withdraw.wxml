@@ -1,0 +1,39 @@
+<!--pages/mine/withdraw/withdraw.wxml-->
+<header title="提现"></header>
+<view class='tixian'>
+  <view style='width:100%;height:16rpx;background:#F5F8FA;'></view>  
+  <view style='overflow:hidden;padding-bottom:64rpx'>
+    <image src='/images/nowmoney.png' 
+           style='width:70rpx;height:80rpx;margin:0 auto;display:block;margin-top:82rpx;'></image>
+    <view class='allmoney'>￥{{balance}}</view>
+    <view class='myeranmoney'>（我的余额）</view>
+  </view>
+  <view style='width:100%;height:16rpx;background:#F5F8FA;'></view>
+  <view class='eranmoney'>
+    <text class='des'>提现金额</text>
+    <view class='operate'>
+      <text class='RMB'>￥</text>    
+      <input  placeholder="请输入提现金额" type='digit' bindinput='getMoney' value='{{money}}'/>
+      <form report-submit="{{true}}" bindsubmit="getFromId">
+        <button class='allwarn' hover-class="none" form-type="submit" catchtap='allwarn'>全部提现</button>          
+      </form>
+    </view>
+  </view>
+  <!-- <view class="tixian_head">
+    <view>余额</view>
+    <view>￥{{balance}}</view>
+  </view>
+  <view class="weui-cells weui-cells_after-title">
+      <view class="weui-cell weui-cell_input">
+          <view class="weui-cell__bd">
+              <input class="weui-input" placeholder="请输入提现金额" type='digit' bindinput='getMoney'  />
+          </view>
+      </view>
+  </view> -->
+  <view class='tixian_tip'>温馨提示：提现金额最低5元，单次提现金额最高500元</view>
+  <view class='tixian_button'>
+    <form report-submit="{{true}}" bindsubmit="getFromId">
+      <button bindtap='reflect' form-type="submit" hover-class="none" disabled=''>提现</button>  
+    </form>
+  </view>
+</view>

@@ -1,0 +1,32 @@
+/* pages/mine/reward/intro/intro.wxss */
+.title{
+  color:1B2D3E;
+  font-size: 32rpx;
+  font-weight: 600;
+  position: relative;
+}
+.title::after{
+  color:red;
+  content: "";
+  width: 10%;
+  height: 4px;
+  background-color: red;
+  position: absolute;
+  left: 0rpx;
+  bottom: -3rpx;
+}
+.tip{
+  color:#43566B;
+  font-size: 26rpx;
+  margin-top: 20rpx;
+}
+.about{
+  font-size: 30rpx;
+  margin:20rpx 0;
+}
+.bgf{
+  background-color: #fff;
+  margin-top:16rpx;
+  padding: 20rpx;
+  
+}

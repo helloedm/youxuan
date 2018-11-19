@@ -1,0 +1,104 @@
+/* pages/mine/fans/fans.wxss */
+.fans-info{
+  padding: 0 20rpx;
+  margin-top:16rpx;
+  margin-bottom: 20rpx;
+}
+
+.img{
+  width: 80rpx;
+  height: 80rpx;
+  border-radius: 50%;
+}
+.svip_icon{
+  width:130rpx;
+  height:40rpx;
+  display:inline-block;
+  vertical-align:middle;
+  margin-right: 20rpx;
+}
+.svip_icon2{
+  color:#BB6F1F;
+  display: inline-block;
+  vertical-align: middle;
+  margin-right: 20rpx;
+  font-size: 22rpx;
+  height: 40rpx;
+  line-height: 40rpx;
+  border-radius: 20rpx;
+  background-color: #FFC223;
+  background: linear-gradient(#F8D77B,#FCEFA7);
+  padding: 0 20rpx;
+}
+.detail-info{
+  margin-left: 15rpx;
+  width:90%;
+}
+.tab-bar{
+  position: fixed;
+  bottom: 0;
+  height: 98rpx;
+  display: flex;
+  align-items: center;
+  width: 100%;
+  justify-content: space-around;
+}
+.seize_a_seat{
+  width: 100%;
+  height: 98rpx;
+}
+.no-data{
+  line-height: 60rpx;
+  text-align: center;
+  color:#C0CCDA;
+  font-size: 22rpx;
+}
+.df{
+  display: flex;
+  align-items: center;
+}
+.h148{
+  height: 148rpx;
+}
+.bt{
+  border-top: 1px solid #E4E7ED;
+}
+.c1{
+  color: #1F2D3D;
+  font-size: 32rpx;
+  font-family:PingFang-SC-Regular;
+}
+.c9{
+  color:#95AAC1;
+  font-size: 28rpx;
+  
+}
+.cf{
+  color:#F09A40;
+  font-size: 32rpx;
+}
+.bgf{
+  background-color: #fff;
+}
+.dfsb{
+  display: flex;
+  justify-content: space-between;
+}
+.mb110{
+  margin-bottom: 110rpx;
+}
+.name_icon1 {
+  display:inline-block;
+  width:130rpx;
+  height:40rpx;
+  background-color:rgba(11,22,33,0.2);
+  color:#fff;
+  font-size:22rpx;
+  text-align:center;
+  line-height:40rpx;
+  border-radius:20rpx;
+  margin-right:18rpx;
+}
+.weui-loadmore{
+  line-height: 60rpx;
+}

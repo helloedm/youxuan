@@ -1,0 +1,6 @@
+{
+  "navigationBarTitleText": "绑定支付宝",
+  "usingComponents": {
+    "header": "/components/header/header"
+  }
+}

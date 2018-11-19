@@ -1,0 +1,73 @@
+/* pages/mine/buygroup/buygroup.wxss */
+page{
+  background: #fff;
+}
+.content{
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  padding-bottom: 70rpx;
+}
+.content .line{
+  width:610rpx;
+  /* height:1042rpx; */
+  padding-bottom: 77rpx;
+  border:2px dashed rgba(224,230,237,1);
+  border-radius:50px;
+  margin: 0 auto;
+  margin-top: 94rpx;
+}
+.content .line .image{
+  width: 130rpx;
+  margin: 0 auto;
+  display: block;
+  /* margin-top: -50%; */
+  transform: translateY(-50%);
+}
+.ercode{
+  width: 246rpx;
+  margin: 0 auto;
+  display: block;
+  margin-top: 31rpx;
+}
+.center{
+  text-align: center;
+}
+.red{
+  color: #E31436;
+}
+.des{
+  color: #95AAC1;
+  font-size: 26rpx;
+  margin-bottom: 24rpx;
+  letter-spacing: 3rpx;
+  align-self: flex-start;
+}
+.content .line .join{
+  font-size: 42rpx;
+  font-weight: bold;
+  color: #0C1722;
+  margin: 15rpx 0 44rpx 0;
+}
+.joingroup{
+  color: #1B2E3F;
+  font-size: 28rpx;
+  font-weight: bold;
+  width: 70%;
+  margin: 0 auto;
+  margin-top: 50rpx;
+  letter-spacing: 3rpx;
+}
+.weixin{
+  color: #43566B;
+  font-size: 30rpx;
+  margin-top: 73rpx;
+}
+.description{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 65%;
+  margin: 0 auto;
+  padding-left: 100rpx;
+}

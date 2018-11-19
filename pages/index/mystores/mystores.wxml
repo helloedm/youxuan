@@ -1,0 +1,45 @@
+<!-- page/index/myStores/myStores.wxml -->
+<view class="myStores">
+    <view class="myStores-bg">
+        <view class="title">店铺背景</view>
+        <view class="bg-content">
+            <image class="bg-content-img" src="{{background_img}}"></image>
+            <image src="/images/storesbg.png" data-id="1" class="bg-content-icon" catchtap="changechooseImg"></image>
+            <text class="bg-size">图片大小建议尺寸（750*320）</text>
+        </view>
+    </view>
+    <view class="myStores-avatar">
+        <view class="avatar-main">
+            <view class="title">店铺头像</view>
+            <view class="avatar-content">
+                <image class="avatar-img" src="{{img}}"></image>
+                <image src="/images/storesavatar.png" data-id="2" class="avatar-icon" catchtap="changechooseImg"></image>
+            </view>
+        </view>
+    </view>
+    <view class="myStores-name">
+        <view class="name-main">
+            <view class="title">店铺名称</view>
+            <view class="name-content">
+                <input class="name-input" value="{{name}}" placeholder="请输入您的店铺名称" bindinput="changenametext"></input>
+                <view class="name-num">
+                    <text>{{namefontNum}}/16</text>
+                </view>
+            </view>
+        </view>
+    </view>
+    <view class="myStores-introduction">
+        <view class="introduction-main">
+            <view class="title">店铺简介</view>
+            <view class="introduction-content">
+                <textarea class="introduction-input" value="{{des}}" placeholder="请输入您对店铺的介绍" bindinput="changeintroductiontext"></textarea>
+                <view class="introduction-num">
+                    <text>{{introductionNum}}/30</text>
+                </view>
+            </view>
+        </view>
+    </view>
+    <view class="myStores-btn" bindtap="editMyselfShopInfo">
+        保存
+    </view>
+</view>

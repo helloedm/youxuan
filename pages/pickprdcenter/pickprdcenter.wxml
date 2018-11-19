@@ -1,0 +1,211 @@
+<!--index.wxml-->
+<import src="/template/paniclist/paniclist.wxml" />
+<wxs module="sliceName">
+module.exports=function(name){
+  return name.slice(0,1)+'**'+name.slice(-1);
+}
+</wxs>
+<wxs module="toFixed2">
+module.exports=function(v,v1){
+  var answer =  v-(v * (v1-0) * 2 / 300);
+  return answer.toFixed(2);
+}
+</wxs>
+<wxs module="splitD">
+  module.exports=function(price,num){
+    if(!num){
+      num=0
+    }
+    return price.split('.')[num];
+  }
+</wxs>
+<view class='search' catchtap="search">
+  <view class='search_button'>
+      <image src="../../images/search.png"></image>
+      <view class='search_des'>搜索商品名称或品牌</view>
+  </view>
+</view>
+<view class='index' bindtouchstart='hideHongbao' bindtouchend='showHongbaoF'>
+  <!-- 轮播 -->
+  <view style='position:relative'>
+    <view class='top-swiper' >
+      <swiper autoplay="true" interval="3000" circular="true" style='background-color:#fff;height:320rpx;' indicator-dots="{{true}}" indicator-color="rgba(255,255,255,0.5)" indicator-active-color="#FFF">
+          <block wx:for="{{activityList}}" wx:key="{{index}}">
+            <swiper-item>
+              <image src='{{item.image}}' class='swiper_image' data-id="{{item.id}}" catchtap='goonNew'></image>
+            </swiper-item>
+          </block>
+      </swiper>
+    </view>
+     <view class='roll' wx:if="{{cartItem}}" catchtap='detail' data-id="{{cartItem.goods_id}}">
+        <!-- <image src='/images/svip.png' style="width:60rpx;height:60rpx;border-radius:50%; "></image> -->
+        <image src='{{cartItem.avatar}}' style="width:60rpx;height:60rpx;border-radius:50%; "></image>
+        <view class='scroll-left-box'>
+          <text decode="{{true}}" class='scroll-left-text'>{{sliceName(cartItem.username)}}刚刚购买了{{cartItem.goods_title}}</text>
+          <text decode="{{true}}" class='scroll-left-arrow'></text>
+          
+        </view>
+      </view>
+  </view>
+  <!-- 保障 -->
+  <view class='assurance' catchtap='goassurance'>
+    <view class='assurance_con'>
+      <view class='assurance_item'>
+        <image src='/images/compensate.png'></image>
+        <text>厂家好货</text>
+      </view>
+      <view class='assurance_item'>
+        <image src='/images/lightning.png'></image>
+        <text>48小时发货</text>
+      </view>
+      <view class='assurance_item'>
+        <image src='/images/seven.png'></image>
+        <text>七天无理由售后</text>
+      </view>
+    </view>
+  </view>
+ 
+  <!-- 运营活动 -->
+  <view class='operation'>
+    <!-- <image src='https://youxuan.ecbao.cn/default/1532504993534_93.png' class='operation_svip' mode='aspectFit' catchtap='goSvip'></image> -->
+    <view class='operation_con'>
+      <view catchtap='goonNew' data-id="1">
+        <image src='https://youxuan.ecbao.cn/default/20180918160842.png'></image>
+      </view>
+      <view catchtap='exclusive' style='position:relative'>
+        <image src='https://youxuan.ecbao.cn/default/1533023687350_23.png' ></image>
+        <image src='/images/index_02.gif' class='lijichakan'></image>
+      </view>
+    </view>
+
+    <!-- 分类列表 -->
+    <view class='classify_content'>
+        <view wx:for="{{classify}}" wx:key="{{index}}"  wx:for-item="item2" wx:for-index="index2" class='classify_new' catchtap='category' data-val="{{item2.val}}">
+            <image src='{{item2.tip}}' mode="widthFix" class='classify_tip'></image>
+            <view class='classify_des'>{{item2.text}}</view>
+        </view>
+    </view>
+    <!-- <image src='https://youxuan.ecbao.cn/default/1532504991404_17.png'></image> -->
+  </view>
+   <!-- 抢购 -->
+  <!-- <view class='panic_buying'>
+    <view class="page__bd">
+        <view class="weui-tab ">
+            <view class="weui-navbar buy_wrap">
+                <block wx:for="{{panicArr}}" wx:key="index">
+                    <view id="{{index}}" class="weui-navbar__item {{panicActive == index ? 'weui-bar__item_on' : ''}}" bindtap="panicClick">
+                        <view class="weui-navbar__title pantic_title">{{item.title}}</view>
+                        <view class="weui-navbar__title pantic_tip">{{item.tip}}</view>
+                    </view>
+                </block>
+                <view class="weui-navbar__slider panic_bottom" style="left: {{sliderLeft}}px; transform: translateX({{panicOffset}}px); -webkit-transform: translateX({{panicOffset}}px);"></view>
+            </view>
+            <view class="weui-tab__panel">
+                <view class="weui-tab__content" hidden="{{panicActive != 0}}">
+                  <view wx:for="{{specialArr1}}" wx:key="{{index}}" class="panic_list" data-id='{{item.id}}' catchtap='detail'>
+                    <template is="paniclist" data="{{...item,startTime1,endTime1,ismypage}}"/>
+                  </view>
+                </view>
+                <view class="weui-tab__content" hidden="{{panicActive != 1}}">
+                  <view wx:for="{{specialArr2}}" wx:key="{{index}}" class="panic_list" data-id='{{item.id}}' catchtap='detail'>
+                    <template is="paniclist" data="{{...item,startTime2,endTime2,ismypage}}"/>
+                  </view>
+                </view>
+                <view class="weui-tab__content" hidden="{{panicActive != 2}}">
+                  <view wx:for="{{specialArr3}}" wx:key="{{index}}" class="panic_list" data-id='{{item.id}}' catchtap='detail'>
+                    <template is="paniclist" data="{{...item,startTime3,endTime3,specialType,ismypage}}"/>
+                  </view>
+                </view>
+            </view>
+        </view>
+    </view>
+  </view> -->
+  <!-- 
+    https://youxuan.ecbao.cn/goods/1535094417822_18.png 服饰箱包
+    https://youxuan.ecbao.cn/goods/1535094332021_42.png 家居生活
+    https://youxuan.ecbao.cn/goods/1535094368833_21.png 美妆个护
+    https://youxuan.ecbao.cn/goods/1535094382576_23.png 母婴玩具
+    https://youxuan.ecbao.cn/goods/1535094396422_28.png 食品生鲜
+   -->
+   <!-- 分类列表 -->
+   <!-- <view class='classify' wx:for="{{classify}}" wx:key="{{index}}" wx:for-item="item2" wx:for-index="index2"> -->
+    <!-- <image src='https://youxuan.ecbao.cn/goods/1534922386281_19.png' mode="widthFix" class='classify_title'></image> -->
+    <!-- <image src='{{item2.tip}}' mode="widthFix" class='classify_tip' catchtap='category' data-val="{{item2.val}}"></image>
+    <view class='classify_con weui-grids'>
+      <view class='classify_list weui-grid' wx:for="{{item2.arr}}" wx:key="{{index}}" data-id='{{item.id}}' catchtap='detail' wx:for-item="item" wx:for-index="index">
+        <template is="classifylist" data="{{item,ismypage}}" />
+      </view>
+    </view>
+   </view> -->
+  <!-- 所有商品 -->
+  <view class='allgoods'>
+    <view class='allgoods_con'>
+      <view class='all_left'>
+        <view class='allgoods_item' wx:for="{{goods}}" wx:key="{{index}}" data-id='{{item.id}}' catchtap='detail'>
+          <template is="selected_center" data="{{item,ismypage,index}}" />
+        </view>
+      </view>
+    </view>
+  </view>
+
+   <!-- 精选好货  -->
+  <view class='selection_good' wx:if="{{false}}">
+    <view class='selection_good_title'>
+        <view>
+          <image src='/images/choiceness.png'></image>
+          <text>超值精选</text>
+        </view>
+    </view>
+    <view class='selection_good_list'>
+      <view class='panic_item' wx:for="{{}}" catchtap='detail' wx:key="{{index}}" data-id="{{item.id}}">
+        <image src='{{item.main_pic}}' class=''></image>
+        <image src='https://youxuan.ecbao.cn/default/1533377607079_53.png' class='sell_out' wx:if="{{item.sell_out==1}}"></image>
+        <!-- <image src='http://haiqihuocang.oss-cn-hangzhou.aliyuncs.com/product_img/20171128151184742522315395.jpg' class=''></image> -->
+          <view class='good_right'>
+            <view class='good_right_title'>{{item.title}}</view>
+            <view class='good_price'>
+              <view>
+                <text class='good_price1'>¥{{item.inner_price}} </text>
+                <!-- <text class='good_price2'>￥{{item.outer_price}} </text> -->
+              </view>
+              <!-- <view class='good_commission_right'>{{item.sale_num}}人已买</view> -->
+            </view>
+            <view class='good_commission'>
+              <!-- <view class='good_commission_left'>预估佣金：￥{{item.inner_price * item.rebate_percent / 100}}</view> -->
+              <view class='good_commission_left'>
+                <!-- <image src='/images/commission_icon.png' class='commission_icon'></image> -->
+                <text class='supermember'>￥{{toFixed2(item.inner_price,item.rebate_percent)}}</text>
+                <image src='/images/commission_02.png' class='commission1' mode="widthFix"></image>
+              </view>
+              <button class='good_price_btn' wx:if="{{item.sell_out!=1}}">立即购买</button>
+              <button class='good_price_btn disabled' wx:else>已售罄</button>
+            </view>
+          </view>
+      </view>
+    </view>
+  </view>
+  <view class="weui-loadmore bottom-no-data" wx:if="{{!nonemore}}">
+    <view class="weui-loading"></view>
+    <view class="weui-loadmore__tips">正在加载</view>
+  </view>
+  <!-- <view class="weui-loadmore weui-loadmore_line bottom-no-data" wx:else>
+    <view class="weui-loadmore__tips weui-loadmore__tips_in-line">已经到底了,不挑几件好货么?</view>
+  </view> -->
+  <view class='bottom-no-data' wx:if="{{noReqest}}">已经到底了,不挑几件好货么?</view>
+<!-- </scroll-view> -->
+</view>
+<discount discount-id="{{regCoupon.id}}" show="{{showReg}}">
+  <view slot="content">满{{regCoupon.least_money-0}}减{{regCoupon.reduce_money-0}}</view>
+  <view slot="scene">【全场通用】</view>
+</discount>
+
+<view class='to_hongbao {{showHongbao?"":"scroll"}}' catchtap='toHongbao'>
+  <image src='/images/to_hongbao.png'></image>
+</view>
+
+<image src='https://youxuan.ecbao.cn/goods/1534926115850_36.png' class='to_top' bindtap='toTop'></image>
+
+<share show="{{showShare}}" kind="1" detail="{{detail}}"></share>
+<!-- <view   class='ball'  style="top:{{bus_y}}rpx;left:{{bus_x}}rpx" hidden="{{hide_good_box}}"  ></view> -->
+
+<!-- <template is="tabbar" data="{{type:type,num:num}}"  />  -->

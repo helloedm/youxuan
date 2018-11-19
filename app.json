@@ -1,0 +1,95 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/cornucopia/cornucopia",
+    "pages/pickprdcenter/pickprdcenter", 
+    "pages/search/search",  
+    "pages/cart/cart",
+    "pages/mine/mine",
+    "pages/mine/earnings/earnings",
+    "pages/mine/withdraw/withdraw",
+    "pages/mine/commissionDetail/commissionDetail",
+    "pages/mine/withdrawRecord/withdrawRecord",
+    "pages/goods/list/list",
+    "pages/goods/detail/detail",
+    "pages/order/order",
+    "pages/order/payment/payment",
+    "pages/order/paysuccess/paysuccess",
+    "pages/order/list/list",
+    "pages/order/orderDetail/orderDetail",
+    "pages/mine/userSet/userSet",
+    "pages/mine/buygroup/buygroup",    
+    "pages/mine/phone/phone",
+    "pages/mine/bindAlipay/aiPay",
+    "pages/mine/fans/fans",
+    "pages/mine/address/address",
+    "pages/mine/addNewAddress/newAddress",
+    "pages/mine/order/order",
+    "pages/mine/coupon/coupon",
+    "pages/login/login",
+    "pages/login/invitation/invitation",
+    "pages/vip/vip",
+    "pages/mine/reward/reward",
+    "pages/mine/reward/intro/intro",
+    "pages/shop/list/list",
+    "pages/mine/reward/inviting/inviting",
+    "pages/index/assurance/assurance",
+    "pages/index/onNew/onNew",
+    "pages/index/exclusive/exclusive",
+    "pages/order/logistics/logistics",
+    "pages/mine/about/about",
+    "pages/vip/month/month",
+    "pages/mine/invitation/invitation",
+    "pages/mine/invitation/putforward/putforward",
+    "pages/index/freeShipping/freeShipping",
+    "pages/index/lover/lover",
+    "pages/mine/share/share",
+    "pages/index/category/category",
+    "pages/mine/visitedshops/visitedshops",
+    "pages/goods/recommend/recommend",
+    "pages/index/mystores/mystores",
+    "pages/index/visitor/visitor"
+  ],
+  "window": {
+    "backgroundTextStyle": "dark",
+    "navigationStyle": "default",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "WeChat",
+    "navigationBarTextStyle": "black",
+    "backgroundColor": "black",
+    "backgroundColorTop": "#ffffff",
+    "backgroundColorBottom": "#ffffff"
+  },
+  "tabBar": {
+    "color": "#999",
+    "selectedColor": "#E31436",
+    "backgroundColor": "#ffffff",
+    "borderStyle": "black",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "text": "首页",
+        "iconPath": "/images/index_0.png",
+        "selectedIconPath": "/images/index_1.png"
+      },
+      {
+        "pagePath": "pages/pickprdcenter/pickprdcenter",
+        "text": "全部商品",
+        "iconPath": "/images/cornucopia_0.png",
+        "selectedIconPath": "/images/cornucopia_1.png"
+      },
+      {
+        "pagePath": "pages/cart/cart",
+        "text": "购物车",
+        "iconPath": "/images/cart_0.png",
+        "selectedIconPath": "/images/cart_1.png"
+      },
+      {
+        "pagePath": "pages/mine/mine",
+        "text": "我的",
+        "iconPath": "/images/mine_0.png",
+        "selectedIconPath": "/images/mine_1.png"
+      }
+    ]
+  }
+}

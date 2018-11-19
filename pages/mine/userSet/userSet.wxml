@@ -1,0 +1,40 @@
+<!--pages/mine/userSet/userSet.wxml-->
+<header title="个人信息"></header>
+<view class='user-info'>
+   <navigator  class="h120 df" bindtap='changeHeaderImg' hover-class='none'>
+      <view class="c1">头像</view>
+      <block>
+        <image src="{{img}}"  class='img'></image>
+      </block>
+  </navigator>
+  <view class='h88 df bt  '> 
+    <text class='c1'>昵称</text> 
+    <block>
+      <text class='c9'>{{name}}</text>
+    </block>
+  </view>
+ <navigator class='h88 df bt weui-cell__ft_in-access' url="/pages/mine/phone/phone" open-type="navigate" hover-class='none'>  
+    <text class='c1'>手机</text> 
+    <block>
+      <text class='c9'>{{tel}}</text>
+    </block>
+  </navigator>
+   <view class='h88 df bt '> 
+    <text class='c1'>性别</text> 
+    <block>
+      <text class='c9'>{{sex}}</text>
+    </block>
+  </view>
+   <!-- <view class='h88 df bt '> 
+    <text class='c1'>生日</text> 
+    <block>
+      <text class='c9'>{{birthday}}</text>
+    </block>
+  </view> -->
+   <navigator class='h88 df bt weui-cell__ft_in-access ' url="/pages/mine/bindAlipay/aiPay" open-type="navigate"> 
+    <text class='c1 '>绑定支付宝</text> 
+    <block>
+      <text class='c9 '>{{alipay}}</text>
+    </block>
+  </navigator>
+</view>

@@ -1,0 +1,40 @@
+<!--pages/cornucopia/cornucopia.wxml-->
+<!-- <import src="/template/tabbar/tabbar.wxml" /> -->
+<import src="/wxParse/wxParse.wxml" />
+<header title="聚宝盆" back-num="0"></header>
+<view class='article'>
+  <view class='article_list' wx:for="{{listData}}" wx:key="{{index}}">
+    <image src='{{item.avatar}}' class='article_headImg'></image>
+    <view class='article_hd'>
+      <view class='article_hd_left'>
+        <!-- <text class='article_hd_title'>{{item.title}}</text> -->
+         <text class='article_hd_title'>爱聚优选</text>         
+        <text class='article_hd_date'>{{item.create_at}}</text>
+      </view>
+       <button class='article_hd_right' 
+              data-index="{{index}}" 
+              data-id="{{item.id}}" 
+              data-title="{{item.title}}"
+              bindtap='copy'
+              style='border:none'
+              data-content="{{item.content}}">
+        <image src='/images/share.png'></image>分享</button> 
+    </view>
+    <view class='article_bd'>
+      <view class='article_bd_con'>{{item.content}}</view>
+      <view class='article_bd_img'>
+        <view  wx:for="{{item.imgs}}" wx:for-item="item2" wx:key="{{index}}"  class='img-box'>
+          <image src='{{item2.img}}'  bindtap='goGoodDetail' data-id="{{item2.id}}" data-item="{{item}}" data-src="{{item2.img}}"></image>
+          <text class='price' wx:if="{{item2.id}}"> ￥{{item2.inner_price}}</text>
+        </view>
+
+      </view>
+    </view>
+  </view>
+</view>
+<view class='no-data' wx:if="{{isShowNoData}}">-- 暂无更多数据 --</view>
+<view class="weui-loadmore no-data" wx:else>
+  <view class="weui-loading"></view>
+  <view class="weui-loadmore__tips">正在加载...</view>
+</view>
+<!-- <template is="tabbar" data="{{type:type,num:num}}" /> -->

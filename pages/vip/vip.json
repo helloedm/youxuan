@@ -1,0 +1,10 @@
+{
+  "navigationBarTitleText": "超级会员",
+  "navigationBarTextStyle": "black",
+  "backgroundColorTop":"#F5F8FA",
+  "backgroundColorBottom":"#F5F8FA",
+  "backgroundColor": "#F5F8FA",
+  "usingComponents": {
+    "header": "/components/header/header"
+  }
+}

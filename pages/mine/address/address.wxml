@@ -1,0 +1,43 @@
+<!--pages/mine/address/address.wxml-->
+<header title="收货地址"></header>
+<radio-group class="radio-group bgf address-list" bindchange="radioChange">
+  <label class="radio df {{index!=0?'bt':''}}" wx:for="{{items}}" wx:key="index"  style='padding:24rpx;'>
+    <view class='df' style='flex:1'>
+      <radio value="{{item.id}}" checked="{{item.checked}}" color="#E31436"/>
+       <view class='ml15' style='flex:1'>
+          <view class='c1 font-weight_600 df'>
+            <text>{{item.receiver_name}}</text>
+            <text style='margin-left:20rpx;'>{{item.receiver_phone}}</text>
+            <button size="mini" plain="true" class='btn' type="default" wx:if="{{item.is_default==1}}" >默认地址</button>
+            <button size="mini" plain="true" class='btn' type="default" wx:elif="{{item.checked}}" catchtap='setDefault' data-id="{{item.id}}">设置默认</button>
+          </view>
+          <view class='c4 df' style='justify-content:space-between' >
+           <view class='df' style='flex:1'>
+            <text class='tag' wx:if="{{item.tag}}"> {{item.tag}}</text>
+            <view wx:if="{{selectIndex!=index}}" style=''>{{item.receiver_state}} {{item.receiver_city}} {{item.receiver_district}} {{item.receiver_address}}</view>
+            <input placeholder="{{item.address}}" wx:if="{{selectIndex==index}}" style='flex:1' focus type="text"></input>
+           </view>
+           <view>
+            <image src='/images/edit.png' class='img-btn' catchtap='editAddress' data-id="{{item.id}}"></image>
+            <image src='/images/del.png' class='img-btn' style='margin-left:15rpx;' catchtap='removeAddress' data-id="{{item.id}}"></image>
+          
+           </view>
+          </view>
+       </view>
+    </view>
+  </label>
+</radio-group>
+<view wx:if='{{items.length == 0 }}'>
+  <image src='/images/addadders.png' style='width:250rpx;height:250rpx;margin:187rpx auto;display:block;     margin-bottom:0'></image>
+  <view class='noadders'>您还没有添加收货地址哦~</view>
+  <button type="warn" 
+      style='width:400rpx;background:#E31436;border-radius:50rpx;' bindtap="addNewAddress" 
+       >+  添加新地址 </button>
+  <button type="warn" 
+  plain="{{true}}" style='width:400rpx;border-radius:50rpx;margin-top:50rpx;' bindtap="chooseAddress" 
+       >微信收货地址</button>
+</view>
+<view class='add-address' wx:if='{{items.length != 0 }}'>
+    <button type="warn" style='width:400rpx;background:#E31436;border-radius:50rpx;' bindtap="addNewAddress" >+  添加新地址 </button>
+    <button type="warn" plain="{{true}}" style='width:400rpx;border-radius:50rpx;margin-top:50rpx;' bindtap="chooseAddress">微信收货地址</button>
+</view>

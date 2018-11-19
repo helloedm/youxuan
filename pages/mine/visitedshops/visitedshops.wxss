@@ -1,0 +1,22 @@
+/* pages/mine/visitedshops/visitedshops.wxss */
+.visitedshops-info{
+    background-color:#fff;
+    margin-top:15rpx;
+}
+.visitedshops-item{
+    padding: 20rpx 0;
+    margin: 0 30rpx;
+    overflow: hidden;
+}
+.visitedshops-item-name{
+    font-size: 32rpx;
+    font-weight: bold;
+    color: #1B2D3E;
+}
+.no-datas{
+    text-align: center;
+    font-size: 24rpx;
+    font-weight: 400;
+    color: #95AAC1;
+    padding: 15rpx 0;
+}

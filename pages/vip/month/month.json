@@ -1,0 +1,8 @@
+{
+  "navigationBarTitleText": "一元购会员",
+  "navigationBarTextStyle": "black",
+  "enablePullDownRefresh": false,
+  "backgroundTextStyle": "light",
+  "backgroundColorTop": "#ffffff",
+  "backgroundColorBottom": "#ffffff"
+}

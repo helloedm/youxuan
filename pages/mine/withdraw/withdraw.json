@@ -1,0 +1,7 @@
+{
+  "navigationBarTitleText": "提现",
+  "backgroundColor": "ff0000",
+  "usingComponents": {
+    "header": "/components/header/header"
+  }
+}

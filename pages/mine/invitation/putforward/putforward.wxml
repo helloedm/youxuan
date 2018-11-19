@@ -1,0 +1,149 @@
+<wxs module="sliceName">
+module.exports=function(name){
+  if (name){
+    return name.slice(0,1)+'***'+name.slice(-1);  
+  }
+}
+</wxs>
+<wxs module="toFixed2">
+module.exports=function(v){
+  var v2=  v * 2 / 300;
+  return v2.toFixed(2);
+}
+
+</wxs>
+<view style='background:#fff;padding-bottom:60rpx;position:relative;overflow-x:hidden;width:100%;'>
+  <!-- 轮播文字 -->
+  <view class='roll' wx:if="{{cartItem.avatar}}">
+    <image src='{{cartItem.avatar}}' style="width:60rpx;height:60rpx;border-radius:50%; "></image>
+    <view class='scroll-left-box'>
+      <text decode="{{true}}" class='scroll-left-text'>{{sliceName(cartItem.nickname)}}刚刚提现了{{cartItem.amount}}元</text>
+      <!-- <text decode="{{true}}" class='scroll-left-arrow'></text> -->
+    </view>
+  </view>
+  <!-- 轮播文字 -->
+  <view class='getmoney'>
+    <view class='my_balance'>
+      <view class='balance'>
+        <view>我的余额</view>
+        <view>￥{{mymoney}}</view>          
+      </view>
+      <view class='record' bindtap='openRecord'>提现记录</view>
+    </view>
+  </view>
+  <view class='money'>
+    <view style='margin-left:40rpx;'>提现金额</view>
+    <view class='money_content'>
+      <view  wx:for="{{money_kind}}" data-index='{{index}}' data-item='{{item}}' 
+             class='single_chose  {{_num == index?"aa":""}}' catchtap="money_click" 
+             wx:key="{{index}}">
+          <text>{{item.amount}}元</text>
+          <view class='active' wx:if="{{_num == index}}">
+            <icon type='success_no_circle' size='10' color='#fff'></icon>
+          </view>
+      </view>  
+    </view>
+  </view>
+  <view class='getnow {{iscan == true?"active":""}}' bindtap="getmymoney">提现</view>
+  <view class='des'>提交后一个工作日内到账</view>
+</view>
+<!-- 购物车 -->
+<view class='selection_good'>
+
+    <view class='selection_good_title'>
+        <view>
+          <image src='/images/like.png'></image>
+          <text>猜你喜欢</text>
+        </view>
+    </view>
+
+    <view class='guess_youlike'>
+      <view class='content'> 
+        <view class='activity'>
+          <image src='https://youxuan.ecbao.cn/default/1533022642852_4.png' catchtap='goonNew'></image>
+        </view>
+        <view class='single_prd' wx:for="{{likeData}}" catchtap='detail' wx:key="{{index}}" data-id="{{item.id}}" wx:if="{{index%2!=0}}">
+          <view class='img-box'>
+            <image src='{{item.main_pic}}'></image>
+          </view>
+          <view class='des'>
+            <view class='title'>{{item.title}}</view>
+            <view class='prd_info'>
+              <view class='price'>￥{{item.inner_price}}
+              <text class='good_price2'>￥{{item.outer_price}} </text>
+              </view>
+              <!-- <view class='buy-num'>{{item.sale_num}}人已买</view>             -->
+            </view>
+          </view>
+        </view>
+      </view>
+
+      <view class='content'>
+        <view class='single_prd' wx:for="{{likeData}}" catchtap='detail' wx:key="{{index}}" data-id="{{item.id}}" wx:if="{{index%2==0}}">
+          <view class='img-box'>
+            <image src='{{item.main_pic}}'></image>
+          </view>
+          <view class='des'>
+            <view class='title'>{{item.title}}</view>
+            <view class='prd_info'>
+              <view class='price'>￥{{item.inner_price}}
+              <text class='good_price2'>￥{{item.outer_price}} </text>
+              </view>
+              <!-- <view class='buy-num'>{{item.on_sale}}人已买</view>             -->
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <view class='no-data' wx:if="{{isShowNoData}}">已经到底了,不挑几件好货么?</view>  
+    <view class="weui-loadmore no-data" wx:else>
+    <view class="weui-loading"></view>
+    <view class="weui-loadmore__tips">正在加载</view>
+  </view> 
+  <!-- 购物车 -->
+
+<!-- 帮开记录 -->
+ <view  wx-if="{{isShowRecord}}">
+    <view class='mask' bindtap='closeRecord'></view>
+    <view class='record-box'>
+      <view class='record-title'>提现记录</view>
+      <scroll-view class='record-list-box' scroll-y bindscrolltolower="next" catchtouchmove='true'>
+          <view class='record-list-info' wx:for="{{selfrecord}}">
+            <image src='{{item.avatar}}' style='width:70rpx;height:70rpx;border-radius:50%;'></image>
+            <view class='firend-open' style='margin-left:10rpx;'>
+                <view class='c1 firend-open-info'> <text>{{item.nickname}}</text>  <text class='ce c9' >+￥{{item.amount}}</text></view>
+                <view class='c9 firend-open-info'> 
+                  <text>{{item.create_at}}</text>  
+                  <text wx:if="{{item.status==1}}">待发放</text> 
+                  <text wx:if="{{item.status==2}}">发放中</text> 
+                  <text wx:if="{{item.status==3}}">已提现</text> 
+                  <text wx:if="{{item.status==4}}">发放失败</text> 
+                </view>
+            </view>
+          </view>
+          <view style='color:#ccc;text-align:center;padding:15rpx 0;' class='bottom_warn' wx-if="{{isShowbottom}}">已经到底了~</view>      
+      </scroll-view>
+    </view>
+ </view>
+ <!-- 帮开记录 -->
+
+
+ <!-- 提现成功 -->
+ <view wx-if="{{show_success}}">
+    <view class='mask' bindtap='closeRecord'>
+      <view style='position:relative;'>
+        <image src='http://youxuan.ecbao.cn/material/1533546255241_53.png' class='img_apply'></image>
+        <form report-submit="{{true}}" bindsubmit="getFromId">
+          <button open-type="share" class='img_share' form-type='submit'>
+              <image 
+              style='width:100%;height:100rpx;'
+              src='http://youxuan.ecbao.cn/material/1533546871562_64.png' 
+              ></image>
+          </button>
+        </form>
+      </view>
+    </view>
+ </view>
+ <!-- 提现成功 -->

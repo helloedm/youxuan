@@ -1,0 +1,74 @@
+/* pages/index/assurance/assurance.wxss */
+.assurance_haed{
+  width: 750rpx;
+  height: 320rpx;
+}
+.assurance_top{
+  width: 600rpx;
+  height: 60rpx;
+  margin: 20rpx auto;
+  position: relative;
+}
+.assurance_top::before{
+  content: " ";
+  position: absolute;
+  height: 4rpx;
+  width: 600rpx;
+  background-color: #E0E6ED;
+  left: 0;
+  top: 35rpx;
+  z-index: 9;
+}
+.assurance_top_c{
+  width: 400rpx;
+  margin: 0 auto;
+  text-align: center;
+  background-color: #F5F8FA;
+  position: relative;
+  z-index: 99;
+}
+.assurance_top_c image{
+  width: 34rpx;
+  height: 36rpx;
+  line-height: 60rpx;
+  vertical-align: middle;
+  margin-right: 15rpx;
+}
+.assurance_top_c text{
+  color: #0B1621;
+  font-size: 32rpx;
+  line-height: 60rpx;
+  vertical-align: middle;
+}
+.assurance_con{
+  width: 690rpx;
+  height: 460rpx;
+  background-color: #fff;
+  border-radius:10rpx;
+  box-shadow:2rpx 0rpx 9rpx rgba(84,100,118,0.11);
+  padding-top: 10rpx;
+  margin: 0 auto;
+}
+.assurance_item_t image{
+  width:32rpx;
+  height: 32rpx;
+  vertical-align: middle;
+  margin-right: 15rpx;
+}
+.assurance_item_t text{
+  font-size: 30rpx;
+  color: #43566B;
+  vertical-align: middle;
+}
+.assurance_item_c{
+  color: #95A9C1;
+  font-size: 26rpx;
+  margin-top: 10rpx;
+}
+.assurance_item{
+  margin-left: 30rpx;
+  margin-top: 20rpx;
+}
+.assurance_item + .assurance_item{
+  margin: 30rpx 0 0 30rpx;
+}

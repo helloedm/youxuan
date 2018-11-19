@@ -1,0 +1,68 @@
+<!--pages/mine/earnings/earnings.wxml-->
+<header title="爱聚会员收益"></header>
+<view class='earnings'>
+  <view class='header'>
+    <view class='header_left'>
+      <view class='header_left_t'><text>可提现金额</text><image src='/images/wenhao.png'></image></view>
+      <view class='header_left_c'>￥{{commision_banlance}}</view>
+    </view>
+    <view class='header_right'>
+      <form report-submit="{{true}}" bindsubmit="getFromId">
+        <button hover-class="none" bindtap='toTixian' form-type="submit">立即提现</button>
+      </form>
+    </view>
+  </view>
+  <!-- 累计收益 -->
+  <view class='accumulative'>累计结算收益：￥{{commision_total}}</view>
+  <!-- 月预估收入 -->
+  <view class='yueshou'>
+    <view class='weui-flex'>
+      <view class='weui-flex__item'>
+        <view class='yueshou_item'>
+          <view>￥{{pre_month_income}}</view>
+          <view>上月预估收入</view>
+          <view class='color_47AEFA'>{{status==1?'已结算':'未结算'}}</view>
+        </view>
+      </view>
+      <view class='weui-flex__item'>
+        <view class='yueshou_item yueshou_item_border'>
+         <view>￥{{cur_month_income}}</view>
+          <view>本月预估收入</view>
+          <view class='color_F03914'>未结算</view>
+        </view>
+      </view>
+    </view>
+    <view class='yugu_tip'>每月20日结算上月预估，本月预估收入则在下月20日结算。</view>
+  </view>
+  <!-- 日收入 -->
+  <view class='day_income'>
+    <view class='weui-flex'>
+      <view class='weui-flex__item'>
+        <view class='day_income_item'>
+          <text>今日</text>
+          <text>预计收入：￥{{today_income}}</text>
+        </view>
+      </view>
+      <view class='weui-flex__item'>
+        <view class='day_income_item day_income_border'>
+          <text>昨日</text>
+          <text>预计收入：￥{{yesterday_income}}</text>
+        </view>
+      </view>
+    </view>
+  </view>
+  <!-- 跳转 -->
+  <view class='skip_wrap'>
+    <view class="weui-cells weui-cells_after-title">
+        <navigator url="/pages/mine/commissionDetail/commissionDetail?type=earn" class="weui-cell weui-cell_access" hover-class="none">
+            <view class="weui-cell__bd">结算佣金明细</view>
+            <view class="weui-cell__ft weui-cell__ft_in-access"></view>
+        </navigator>
+        <navigator url="/pages/mine/withdrawRecord/withdrawRecord" class="weui-cell weui-cell_access" hover-class="none">
+            <view class="weui-cell__bd">提现记录</view>
+            <view class="weui-cell__ft weui-cell__ft_in-access"></view>
+        </navigator>
+    </view>
+  </view>
+
+</view>

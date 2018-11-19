@@ -1,0 +1,6 @@
+{
+  "navigationBarTitleText": "填写邀请码",
+  "usingComponents": {
+    "header": "/components/header/header"
+  }
+}

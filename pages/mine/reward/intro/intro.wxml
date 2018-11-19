@@ -1,0 +1,24 @@
+<!--pages/mine/reward/intro/intro.wxml-->
+<header title="规则说明"></header>
+<view class='bgf'>
+  <view class='title'>奖励说明</view>
+  <view class='tip'>当您成为超级会员以后，好友通过您的邀请码注册且好友成为超级会员，您可以获得邀请奖励。</view>
+  <view class='about'>关于邀请奖励。</view>
+  <view class='tip'>
+  (1)每月20日结算上一个自然月满足条件的邀请奖励，结算后的奖励自动计入您的邀请奖励余额中，您可以通过绑定支付宝随时申请提现，申请后收益将在72小时内到账；
+  </view>
+  <view class='tip' style='margin:0'>
+    (2)推荐成为超级会员，采取阶梯奖励，每日清算，规则如下：
+  </view>
+  <view class='tip'>
+    <view> 1-3人，15元/人；</view>
+    <view> 4-9人，20元/人；</view>
+    <view>10人以上，25元/人；</view>
+  </view>
+  <view class='title' style='margin:20rpx 0;'>名词解析</view>
+  <view class='tip' style='margin:0'>1.累计收益：累计结算的邀请奖励</view>
+  <view class='tip' style='margin:0'>2.累计邀请人数：累计结算的邀请人数。</view>
+  <view class='tip' style='margin:0'>3.结算奖励（上月奖励）：您邀请的好友在上个月内成为超级会员，您获得奖励；每月20号结算后，将累计到余额中。</view>
+  <view class='tip' style='margin:0'>4.预估奖励（本月奖励）：您邀请的好友在本月内成为超级会员，您即将获得的预估奖励。</view>
+  
+</view>

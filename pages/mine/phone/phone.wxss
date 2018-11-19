@@ -1,0 +1,48 @@
+/* pages/mine/phone/phone.wxss *//* pages/mine/userSet/userSet.wxss */
+
+.h88{
+  height: 88rpx;
+}
+.h100{
+  height: 100rpx;
+}
+.c1{
+  color: #1F2D3D;
+  font-size: 32rpx;
+  font-family:PingFang-SC-Regular;
+}
+.c9{
+  color:#95AAC1;
+  font-size: 28rpx;
+  
+}
+.df{
+  display: flex;
+  align-items: center;
+}
+
+.bt{
+  border-top: 1px solid #E4E7ED;
+}
+.bgf{
+  background-color: #fff;
+}
+.phone{
+  margin-top:16rpx;
+  padding:0 20rpx;
+}
+
+.btn{
+  margin:0;
+  color:#E31436 !important;
+  border:1px solid #E31436;
+  background-color: #fff !important;
+}
+.bg_f{
+  background-color: #95AAC1  !important;
+  color:#fff;
+}
+.c-b{
+  border:1px solod #95AAC1 !important;
+  color:#1F2D3D !important;
+}

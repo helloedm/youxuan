@@ -1,0 +1,10 @@
+{
+  "navigationBarTitleText": "爱聚优选三大承诺",
+  "enablePullDownRefresh": false,
+  "backgroundTextStyle": "light",
+  "backgroundColorTop": "#ffffff",
+  "backgroundColorBottom": "#ffffff",
+  "usingComponents": {
+    "header": "/components/header/header"
+  }
+}

@@ -1,0 +1,10 @@
+{
+  "navigationBarTitleText": "今日上新",
+  "enablePullDownRefresh": false,
+  "backgroundTextStyle": "light",
+  "backgroundColorTop": "#ffffff",
+  "backgroundColorBottom": "#ffffff",
+  "usingComponents": {
+    "header": "/components/header/header"
+  }
+}

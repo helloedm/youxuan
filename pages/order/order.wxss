@@ -1,0 +1,232 @@
+/* pages/order/order.wxss */
+page{
+  padding-bottom: 100rpx;
+}
+.address{
+  min-height: 140rpx;
+  background-color: #fff;
+  padding: 30rpx 50rpx 30rpx 70rpx;
+  box-sizing: border-box;
+  font-size: 30rpx;
+  color: #1F2D3D;
+  position: relative;
+}
+.address .icon_left,.address_none .icon_left{
+  width: 41rpx;
+  height: 41rpx;
+  position: absolute;
+  left: 20rpx;
+  top: 30rpx;
+}
+.address_none .icon_left{
+  top: 50%;
+  transform: translateY(-30rpx);
+}
+.address .border_bottom{
+  width: 750rpx;
+  height: 8rpx;
+  position: absolute;
+  bottom: 0;
+  left:0;
+}
+.address_name{
+  display: flex;
+  justify-content: space-between;
+  font-size: 28rpx;
+}
+.address_con{
+  font-size: 28rpx;
+}
+.address .weui-cell__ft_in-access{
+  position: absolute;
+  right: 20rpx;
+  top: 50%;
+}
+.goods_list{
+  margin-top: 20rpx;
+  background-color: #fff;
+  padding: 0 20rpx;
+}
+.goods_item_left image{
+  width: 160rpx;
+  height: 160rpx;
+  border-radius: 6rpx;
+}
+.goods_item{
+  display: flex;
+  justify-content: space-between;
+  padding: 20rpx 0;
+}
+.goods_item:last-child{
+  border-bottom: 1rpx solid #eee;
+}
+.goods_item_left{
+  display: flex;
+}
+.goods_item_left>text{
+  font-size: 28rpx;
+  color: #43566B;
+  width: 434rpx;
+  line-height: 34rpx;
+  padding-top: 10rpx;
+  margin-left: 20rpx;
+  overflow:hidden; 
+  text-overflow:ellipsis;
+  display:-webkit-box; 
+  -webkit-box-orient:vertical;
+  -webkit-line-clamp:2; 
+}
+.goods_item_num{
+  display: flex;
+  flex-direction: column;
+  max-width: 150rpx;
+  text-align: right;
+  line-height: 34rpx;
+  font-size: 28rpx;
+  color: #43566B;
+  padding-top: 10rpx;
+}
+.goods_item_right{
+  width: 530rpx;
+}
+.goods_item_right .title{
+  display: block;
+  font-size: 30rpx;
+  color: #1F2D3D;
+  width: 530rpx;
+  white-space: nowrap;
+  text-overflow:ellipsis;
+  overflow:hidden;
+  height: 60rpx;
+}
+.goods_item_right .sku_title{
+  height: 50rpx;
+  color: #95AAC1;
+  font-size: 24rpx;
+  white-space: nowrap;
+  text-overflow:ellipsis;
+  overflow:hidden;
+}
+.goods_item_right .sku_price{
+  color: #43576B;
+  font-size: 30rpx;
+  display: flex;
+  justify-content: space-between;
+}
+.goods_item_right .sku_price > text:nth-child(2){
+  color: #95AAC1;
+  font-size: 28rpx;
+}
+.goods_item_num>text:nth-child(1){
+  color: #1B2E3E;
+}
+.goods_item_num>text:nth-child(2){
+  color: #99A9BF;
+}
+.goods_price_wrap{
+  background-color: #fff;
+  padding: 0rpx 20rpx;
+}
+.goods_price{
+  display: flex;
+  justify-content: space-between;
+  font-size: 30rpx;
+  color: #475669;
+  /* margin-top: 20rpx; */
+  height: 88rpx;
+  line-height: 88rpx;
+  border-bottom: 1rpx solid #eee;
+}
+.goods_price>text:nth-child(2){
+  color: #1F2D3D;
+}
+.goods_price_left{
+  color: #1F2D3D;
+  font-size: 28rpx;
+}
+.cart-flag{
+  padding-bottom: 68rpx;
+}
+.buy_message .weui-label{
+ font-size: 28rpx;
+ color: #1F2D3D;
+ width: 80rpx;
+ height: 88rpx;
+ line-height: 88rpx;
+}
+.buy_message .weui-cell{
+  padding: 0;
+}
+.buy_message .weui-input{
+  font-size: 28rpx;
+  padding: 0;
+  height: 88rpx;
+  line-height: 88rpx;
+  width: 630rpx;
+}
+.buy_message>text:nth-child(2){
+  color: #1F2D3D;
+}
+.practical_price{
+  height: 98rpx;
+  position: fixed;
+  width: 100%;
+  bottom: 0;
+  background-color: #000;
+  font-size: 32rpx;
+  color: #fff;
+  display: flex;
+  justify-content: space-between;
+  line-height: 98rpx;
+  z-index: 9999;
+}
+.practical_price button{
+  line-height: 98rpx;
+  width: 250rpx;
+  height: 98rpx;
+  color: #fff;
+  background-color: #E31436;
+  margin: 0;
+  border-radius: 0;
+  padding: 0;
+}
+.shifu_price text:nth-child(2){
+  font-size: 34rpx;
+}
+.shifu_price{
+  margin-left: 30rpx;
+  color: #fff;
+}
+.address_none{
+  position: relative;
+  padding-bottom: 10rpx;
+  background-color: #fff;
+}
+.address_none .border_bottom{
+  position: absolute;
+  width: 750rpx;
+  height: 8rpx;
+  bottom: 0rpx;
+  left: 0;
+}
+.address_none .weui-cell{
+  padding-left: 70rpx;
+}
+.address_none .weui-cell__bd,.address_none .weui-cell__ft{
+  font-size: 28rpx;
+  height: 80rpx;
+  line-height: 80rpx;
+}
+.address_none .weui-cell__bd{
+  color: #1F2D3D;
+}
+.total_goods{
+  height: 88rpx;
+  line-height: 88rpx;
+  color: #43576B;
+  font-size: 28rpx;
+  text-align: right;
+}
+.goods_price_right{
+  font-size: 26rpx;
+}

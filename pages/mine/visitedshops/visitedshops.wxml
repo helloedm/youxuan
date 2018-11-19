@@ -1,0 +1,16 @@
+<!-- pages/mine/visitedshops/visitedshops.wxml -->
+<header title="店铺访问"></header>
+<view class="visitedshops-info">
+    <view class="weui-cell weui-cells_after-title visitedshops-item" wx:for="{{listData}}" wx:key="key" data-id="{{item.store_uid}}" catchtap='goOtherStore'>
+        <view class="weui-cell__hd visitedshops-item-img">
+            <image src='{{item.img}}' style="margin-right: 5px;vertical-align: middle;width:80rpx; height: 80rpx;border-radius:50%;"></image>
+        </view>
+        <view class="weui-cell__bd visitedshops-item-name" style='margin-left:10rpx'>{{item.name}}</view>
+        <view class="weui-cell__ft weui-cell__ft_in-access visitedshops-item-icon"></view>
+    </view>
+</view>
+<view class='no-datas' wx:if="{{isShowNoData}}">--暂无更多数据--</view>  
+<view class="weui-loadmore no-data" wx:else>
+    <view class="weui-loading"></view>
+    <view class="weui-loadmore__tips">正在加载</view>
+</view>  

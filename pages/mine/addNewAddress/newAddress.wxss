@@ -1,0 +1,92 @@
+/* pages/mine/addNewAddress/newAddress.wxss */
+.img-box{
+  height: 300rpx;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #fff;
+}
+.info-box{
+  margin-top:16rpx;
+}
+.tag{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100rpx;
+  height: 60rpx;
+  border-radius: 5px;
+  border: 1px solid #A7B5C8;
+  margin: 0 15rpx;
+}
+.active{
+  border: 1px solid #E31436;
+  color:#E31436;
+  background-color: #FFF4F2;  
+}
+
+.add-address{
+  position: fixed;
+  bottom: 10rpx;
+  width: 100%;
+  text-align: center
+}
+.address_con{
+  height: 150rpx;
+  align-items: flex-start;
+  padding-top:20rpx; 
+  padding-bottom:20rpx; 
+}
+.address_con .weui-textarea{
+  font-size: 32rpx;
+  line-height: 34rpx;
+}
+.address_con .weui-label{
+  line-height: 34rpx;
+}
+.multiSelector{
+  width: 100%;
+  font-size: 32rpx;
+  line-height: 88rpx;
+  height: 88rpx;
+}
+.picker text+text{
+  margin-left: 10rpx;
+}
+.picker{
+  font-size: 30rpx;
+  color: #1F2D3D;
+}
+
+.df{
+  display: flex;
+  align-items: center;
+}
+.h88{
+  height: 88rpx;
+}
+.bt{
+  border-top: 1px solid #E4E7ED;
+}
+.c1{
+  color: #1F2D3D;
+  font-size: 30rpx;
+  font-family:PingFang-SC-Regular;
+}
+.c9{
+  color:#95AAC1;
+  font-size: 28rpx;
+}
+.cf{
+  color:#F09A40;
+  font-size: 32rpx;
+}
+.bgf{
+  background-color: #fff;
+}
+.w140{
+  width:140rpx;
+}
+.flex{
+  flex: 1;
+}

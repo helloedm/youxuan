@@ -1,0 +1,32 @@
+<!--pages/order/payment/payment.wxml-->
+<header title="在线支付" />
+<view class='payment'>
+  <view class='payment_time'>
+    <text>支付剩余时间</text>
+    <text class='time'>{{showTime}}</text>
+  </view>
+  <view class='payment_con'>
+    <text>{{tradeno}}</text>
+    <text>¥{{pay_money}}</text>
+  </view>
+  <view class="weui-cells__title">选择支付方式</view>
+  <view class="weui-cells weui-cells_after-title">
+      <radio-group bindchange="radioChange">
+          <label class="weui-cell weui-check__label" wx:for="{{radioItems}}" wx:key="value">
+              <radio class="weui-check" value="{{item.value}}" checked="{{item.checked}}"/>
+              <view class="weui-cell__bd">{{item.name}}</view>
+              <view class="weui-cell__ft weui-cell__ft_in-radio" wx:if="{{item.checked}}">
+                  <icon class="weui-icon-radio" type="success_no_circle" size="16"></icon>
+              </view>
+          </label>
+      </radio-group>
+      <!-- <view class="weui-cell weui-cell_link">
+          <view class="weui-cell__bd">添加更多</view>
+      </view> -->
+  </view> 
+  <view class='payment_btn'>
+  <form report-submit="{{true}}" bindsubmit="getFromId">
+    <button catchtap='pay' formType="submit">确认支付￥{{pay_money}}</button>
+  </form>
+  </view>
+</view>

@@ -1,0 +1,10 @@
+/* pages/mine/about/about.wxss */
+page{
+  background-color: #fff;
+
+}
+image{
+  width: 750rpx;
+  height: 569rpx;
+  display: block;
+}

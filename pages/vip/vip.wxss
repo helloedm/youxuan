@@ -1,0 +1,363 @@
+/* pages/vip/vip.wxss */
+.w100{
+  width: 100%;
+  display: block;
+}
+/* page{
+  padding-bottom: 200rpx;
+} */
+.h518{
+  height: 518rpx;
+}
+.h702{
+  height: 702rpx;
+}
+.h544{
+  height: 544rpx;
+}
+.h680{
+  height: 680rpx;
+}
+.h350{
+  height: 350rpx;
+}
+.info{
+  background: url('http://pax6ums6h.bkt.clouddn.com//avatar/1530512318773_9.png') no-repeat center;
+  background-size: cover;
+  margin-bottom: 20rpx;
+  position: relative;
+}
+.intro image{
+  height: 30rpx;
+  width: 150rpx;
+  margin-top:140rpx;
+  margin-left:580rpx;
+}
+.mask{
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-color: rgba(0,0,0,0.2)
+}
+.intro-box{
+  position: fixed;
+  color:#43566B;
+  font-size: 26rpx;
+  width: 100%;
+  height: 100%;
+  z-index: 99;
+}
+.intro-text{
+  height: 700rpx;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%); 
+  z-index: 99999;
+  width:80%;
+  background-color: #fff;
+  padding:20rpx 40rpx;
+  border-radius: 5px;
+  background: url("http://pax6ums6h.bkt.clouddn.com//default/1531990523406_30.png") no-repeat left top;
+  background-size: 100% 100%;
+}
+
+.title-box{
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 15rpx;
+}
+.title{
+  color:#1B2D3E;
+  font-size: 32rpx;
+  text-align: center;
+  border-bottom: 2px solid #E31436;
+}
+.del{
+  height: 75rpx;
+  margin-top: 30rpx;
+}
+.btn{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #fff;
+  height: 194rpx;
+}
+.btn image{
+   width:458rpx;
+   height:118rpx;
+}
+/*拉新*/
+.mt15{
+  margin-top: -15rpx;
+  position: relative;
+}
+.invite_btn{
+  position: absolute;
+  height: 76rpx;
+  top: 550rpx;
+  left:50%;
+  margin-left: -200rpx;
+  width: 400rpx;
+  padding: 0;
+  line-height: 76rpx;
+  color: #9B5122;
+  font-size: 34rpx;
+  border-radius: 38rpx;
+  background:linear-gradient(180deg,rgba(251,244,214,0.94),rgba(207,169,114,0.94));
+  animation:  btn 1s infinite;
+}
+.h240{
+  height: 340rpx;
+}
+.h620{
+  height: 620rpx;
+}
+.h990{
+  height: 1056rpx;
+}
+.record{
+  background: url('https://youxuan.ecbao.cn/goods/1534834042118_75.png') no-repeat center center;
+  background-size: cover;
+  box-sizing: border-box;
+  height: 744rpx;
+  width: 100%;
+  padding:220rpx 100rpx 0;
+}
+.record-info-box{
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+.record-info{
+  width: 250rpx;
+  height: 138rpx;
+  border-radius: 20rpx;
+  background-color: #EFC8A1;
+  margin-bottom: 40rpx;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  
+}
+.record-info-title{
+  color:#D0753C;
+  font-size: 30rpx;
+  font-weight: 600;
+}
+.record-info-text{
+  color:#7C3705;
+  font-size: 30rpx;
+}
+.tip{
+  text-align: center;
+  color:#9B5122;
+  font-size: 24rpx; 
+}
+.goods{
+  background-color: #fff;
+  padding:50rpx 0; 
+  margin-bottom: 20rpx;
+}
+.goods_t{
+  width:300rpx;
+  margin: 0 auto;
+  color: #2C191D;
+  font-size: 30rpx;
+  text-align: center;
+  font-weight: 600;
+}
+.goods_t .two{
+  display: block;
+  height: 5rpx;
+  background-color: #B69846;
+}
+.goods_t .three{
+  display: block;
+  height: 1rpx;
+  background-color: #B69846;
+  margin-top: 2rpx;
+}
+.goods_c{
+  width: 590rpx;
+  margin:20rpx auto 0;
+  color: #6A5629;
+  /* height: 30rpx; */
+  font-size: 26rpx;
+  text-align: center;
+}
+.goods_b{
+  width: 606rpx;
+  height: 412rpx;
+  border: 20rpx solid #C9A47A;
+  border-radius: 10rpx;
+  margin: 35rpx auto 0;
+}
+.goods_b .image{
+  display: inline-block;
+  width: 176rpx;
+  height: 176rpx;
+  margin: 15rpx 0 0 20rpx;
+  position: relative;
+}
+.image .active{
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 176rpx;
+  height: 176rpx;
+  /* background-color: rgba(0, 0, 0, 0.5) */
+  border: 1rpx solid #C9A47A;
+}
+.goods_b image{
+  width: 176rpx;
+  height: 176rpx;
+}
+.image icon{
+  position: absolute;
+  left: 10rpx;
+  top: 10rpx;
+}
+.intro_con{
+  height: 440rpx;
+  margin-top: 118rpx;
+}
+.footer_btn{
+  position:fixed;
+  bottom: 0;
+  background-color: rgba(0,0,0,0);
+  height: 150rpx;
+}
+.h976{
+  height: 976rpx;
+}
+.guize{
+  position: absolute;
+  top: 100rpx;
+  right: 0rpx;
+  width: 145rpx;
+  height: 46rpx;
+  background-color: rgba(0, 0, 0, 0.6);
+  border-radius: 10rpx 0 0 10rpx;
+  display: flex;
+  font-size: 20rpx;
+  color: #fff;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  line-height: 22rpx;
+}
+.guize image{
+  width: 145rpx;
+  height: 46rpx;
+  display: block;
+}
+.invitation{
+  position: relative;
+  height: 730rpx;
+  background: url(https://youxuan.ecbao.cn/goods/1534834007876_89.png) no-repeat center center;
+  background-size: 100% auto;
+}
+.invite_code{
+  position: absolute;
+  top: 650rpx;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  align-items: center;
+}
+.invite_code text{
+  color: #F3CFAC;
+  font-size: 24rpx;
+}
+.invite_code button{
+  width: 70rpx;
+  height: 30rpx;
+  background-color: rgba(206,154,103,1);
+  border-radius: 15rpx;
+  color: #A12415;
+  font-size: 22rpx;
+  padding: 0;
+  line-height: 30rpx;
+  margin-left: 15rpx;
+}
+.invite_list{
+  background-color: #171616;
+  padding: 0 20rpx;
+}
+.invite_item{
+  height: 130rpx;
+  border-bottom: 1rpx solid #949494;
+  display: flex;
+  align-items: center;
+  justify-content: start;
+}
+.invite1{
+  margin-right: 20rpx;
+}
+.invite1 text{
+  display: block;
+  width: 40rpx;
+  height: 40rpx;
+  text-align: center;
+  line-height: 40rpx;
+  color: #fff;
+  border-radius: 50%;
+  background-color: #B46942;
+  font-size: 26rpx;
+}
+.invite1 image{
+  width: 40rpx;
+  height: 38rpx;
+}
+.invite2{
+  margin-right: 14rpx;
+  height: 70rpx;
+  position: relative;
+}
+.invite2 .head{
+  width: 70rpx;
+  height: 70rpx;
+  border-radius: 50%;
+  background-color: #fff;
+}
+.invite2 .icon{
+  position: absolute;
+  width: 102rpx;
+  height: 51rpx;
+  left: -18rpx;
+  bottom: -20rpx;
+}
+.invite3{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 565rpx;
+}
+.invite3_name{
+  font-size: 30rpx;
+  color: #D4D4D4;
+}
+.invite3_con{
+  font-size: 24rpx;
+  color: #949494;
+
+}
+.invite3_con text{
+  color: #B46942;
+}
+
+
+@keyframes  btn 
+{
+  from{
+    transform:scaleX(1);
+  }
+  to{
+    transform: scaleX(.9);
+  }
+}

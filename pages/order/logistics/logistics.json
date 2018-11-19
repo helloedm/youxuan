@@ -1,0 +1,9 @@
+{
+  "navigationBarTitleText": "物流详情",
+  "backgroundColorTop": "#F5F8FA",
+  "backgroundColorBottom": "#F5F8FA",
+  "backgroundColor": "#F5F8FA",
+  "usingComponents": {
+    "header": "/components/header/header"
+  }
+}

@@ -1,0 +1,88 @@
+<!--pages/vip/month/month.wxml-->
+<view class='month'>
+  <view class='head' wx:if="{{user.phone}}">
+    <view class='head_img'>
+      <image src='{{user.avatar}}' wx:if="{{user.avatar}}"></image>
+      <image src='/images/mine/mine_head.png' wx:else></image>
+    </view>
+    <view class='head_con'>
+      <view class='head_c_name'>
+        <text class='name'>{{user.nickname}}</text>
+        <image src='/images/mine/svip_icon.png' class='svip_icon' wx:if="{{user.rank==2}}"></image>
+        <text class='icon_vip' wx:else>普通会员</text>
+      </view>
+      <view class='head_c_code'>
+        <text>邀请码：{{user.invite_code}}</text>
+        <button catchtap='copyInvite'>复制</button>
+      </view>
+    </view>
+  </view> 
+  <!-- 没有绑定手机号 -->
+  <view class='head no_phone' wx:else>
+    <view class='head_img'>
+      <image src='/images/mine/mine_head.png'></image>
+    </view>
+    <view class='head_con head_btn'>
+      <button open-type='getUserInfo' bindgetuserinfo="getUserInfoBtn">立即注册</button>
+    </view>
+  </view> 
+
+  <view class='con'>
+    <view class='vip_wrap'>
+      <view class='vip {{index=="1"?"active":""}}' catchtap='active' data-index='1'>
+        <view class='vip_name'>
+          <text>一元购会员</text>
+          <view class='price1'>特惠价<text>¥1</text></view>
+        </view>
+        <view class='vip_con'>
+          <text class='title'>1个月超级会员（购物返佣+邀请奖励）</text>
+          <text class='price0'>¥6</text>
+        </view>
+      </view>
+      <view class='vip {{index=="2"?"active":""}}' data-index='2' catchtap='active'>
+        <view class='vip_name'>
+          <view class='vip_title'>
+            <text>年会员</text>
+            <text>推荐</text>
+          </view>
+          <view class='price1'>特惠价<text>¥59</text></view>
+        </view>
+        <view class='vip_con'>
+          <text class='title'>一年超级会员（大礼包+购物返佣+邀请奖励）</text>
+          <text class='price0'>¥72</text>
+        </view>
+      </view>
+    </view>
+
+    <view class='goods' id='goods' wx:if="{{index==2}}">
+      <view class='goods_t'>
+        <text>超级会员专属礼包</text>
+        <text class='two'></text>
+        <text class='three'></text>
+      </view>
+      <view class='goods_c'>(礼包最高价值89元, 购买59元超级会员免费领取)</view>
+      <view class='goods_b'>
+        <view class='image' wx:for="{{rows}}" catchtap='activeGoods' data-index='{{index}}'>
+          <image src='{{item.main_pic}}' ></image>
+          <view class='active' wx:if="{{active==index}}">
+            <icon type='success'></icon>
+          </view>
+        </view>
+      </view>
+    </view>
+
+    <view class='pay'>
+      <view class='pay_num'>需支付：<text>￥{{index==1?'1.00':'59.00'}}</text></view>
+      <view class='weixin'>
+        <view class='weixin_left'>
+          <image src='/images/weixin.png'></image>
+          <text>微信支付</text>
+        </view>
+        <icon type="success" size="23"></icon>
+      </view>
+    </view>
+
+    <button class='pay_vip' catchtap='becomeVip2' wx:if="{{index==1}}">购买会员</button>
+    <button class='pay_vip' catchtap='becomeVip' wx:if="{{index==2}}">购买会员</button>
+  </view>
+</view>

@@ -1,0 +1,11 @@
+/**index.wxss**/
+ @import "/pages/index/index.wxss"; 
+ .selection_good_list{
+   margin-top: 0;
+ }
+ .good_commission{
+   margin-top: 20rpx;
+ }
+ .good_price{
+   margin-top: 25rpx;
+ }

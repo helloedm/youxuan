@@ -1,0 +1,9 @@
+{
+  "navigationBarTitleText": "商品详情",
+  "backgroundColor": "#ffffff",
+  "usingComponents": {
+    "assurance": "/components/assurance/assurance",
+    "header": "/components/header/header",
+    "share":"/components/sharePoster/sharePoster"
+  }
+}

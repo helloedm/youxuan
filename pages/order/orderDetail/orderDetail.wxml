@@ -1,0 +1,152 @@
+<!--pages/order/orderDetail/orderDetail.wxml-->
+<header title="订单详情"/>
+<view class='order_detail'>
+  <!-- head -->
+  <view class='order_head {{detail.status.code=="2020"||detail.status.code=="2030"||detail.status.code=="5000"||detail.status.code=="5010"||detail.status.code=="6030"?"h_200":""}}'>
+     <block wx:if="{{detail.status.code=='1010'}}">
+      <view class='order_hc'>
+        <view class='order_hc_l'>
+          <view>订单状态：等待买家付款</view>
+          <view>下单时间：{{detail.time.alias}}</view>
+          <view>逾期未支付订单将自动取消</view>
+        </view>
+        <view class='cancel_order' catchtap='cancelOrder' data-tid='{{detail.tid}}'>取消订单</view>
+      </view>
+      <button catchtap='gopay' data-tid='{{detail.tid}}' data-pay_money='{{detail.pay_money}}' data-pay_expire='{{detail.pay_expire.alias}}'>确认支付（剩余{{m}}分{{s}}秒）</button>
+    </block> 
+     <block wx:if="{{detail.status.code=='2030'}}">
+      <view class='order_hc'>
+        <view class='order_hc_l'>
+          <view>订单状态：等待买家收货</view>
+          <view></view>
+          <view>卖家已发货，7天自动确认收货</view>
+        </view>
+        <view class='order_hc_r'>
+          <image src='/images/mine/order_detail_02.png'></image>
+        </view>
+      </view>
+    </block> 
+     <block wx:if="{{detail.status.code=='2020'}}">
+      <view class='order_hc'>
+        <view class='order_hc_l'>
+          <view>订单状态：等待商家发货</view>
+          <view></view>
+          <view>订单支付成功，等待商家发货</view>
+        </view>
+        <view class='order_hc_r'>
+          <image src='/images/mine/order_detail_01.png'></image>
+        </view>
+      </view>
+    </block>
+    <block wx:if="{{detail.status.code=='6030'}}">
+      <view class='order_hc'>
+        <view class='order_hc_l'>
+          <view>订单状态：订单已完成</view>
+          <view></view>
+          <view>买家确认收货</view>
+        </view>
+        <view class='order_hc_r'>
+          <image src='/images/mine/order_detail_03.png'></image>
+        </view>
+      </view>
+    </block> 
+    <block wx:if="{{detail.status.code=='5000' || detail.status.code=='5010'}}">
+      <view class='order_hc'>
+        <view class='order_hc_l'>
+          <view>订单状态：订单已取消</view>
+          <view>订单编号：{{detail.tid}}</view>
+          <view>用户手动取消订单／逾期未支付，订单取消</view>
+        </view>
+        <view class='order_hc_r'>
+          <image src='/images/mine/order_detail_01.png'></image>
+        </view>
+      </view>
+    </block>
+  </view>
+  <!-- 收货地址 -->
+  <view class='address'>
+      <view class='address_name'>
+        <view>
+          <text>收货人：{{detail.receiver_name}}</text>
+        </view>
+        <view>{{detail.receiver_phone}}</view>
+      </view>
+      <view class='address_con'>
+        <text>收货地址：{{detail.receiver_state}}  {{detail.receiver_city}}  {{detail.receiver_district}} {{detail.receiver_address}}</text>
+      </view>
+      <view class='weui-cell__ft_in-access'></view>
+  </view>
+  <!-- 买家留言 -->
+  <view class='buy_message'>
+    <view class='buy_message_c'>
+      <text>买家留言：</text>
+      <text>{{detail.remark}}</text>
+    </view>
+  </view>
+  <!-- 商品列表 -->
+  <view class='goods_list'>
+    <view  wx:for="{{detail.order_ext}}" wx:for-item="item1">
+      <block wx:for="{{item1.order_detail}}" wx:for-item="item2" wx:for-key="{{index}}">
+        <view class='goods_item' catchtap='goGoodsDetail' data-goodsid="{{item2.goods_id}}">
+          <view class='goods_item_left'>
+            <image src='{{item2.goods_pic}}'></image>
+            <view class='goods_item_lc'>
+              <text>{{item2.goods_title}}</text>
+              <text>{{item2.sku_str}}</text>
+            </view>
+          </view>
+          <view class='goods_item_num'>
+              <text>¥{{item2.price}}</text>
+              <text>x{{item2.quantity}}</text>
+          </view>
+        </view>
+        <view wx:if="{{item2.status.code=='2030'||item2.status.code=='6030'}}" class='goods_status'>
+          <text wx:if="{{item2.status.code=='2030'}}">已发货</text>          
+          <text wx:if="{{item2.status.code=='6030'}}">交易完成</text>
+          <text class='btn' wx:if="{{item2.status.code=='2030'}}" catchtap='affirm' data-id="{{item2.id}}">确认收货</text>
+          <text wx:if="{{item2.status.code=='2030'||item2.status.code=='6030'}}" class='logistics' catchtap='logistics' data-id="{{item2.logistics_code}}" data-logistics_company='{{item2.logistics_company}}'>物流</text>
+        </view>
+      </block>
+    </view>
+      <!-- <view class='goods_item'>
+        <view class='goods_item_left'>
+          <image src='{{img}}'></image>
+          <text>一件拯救四季 白色搭全棉A字衬衫收腰连衣裙#</text>
+        </view>
+        <view class='goods_item_num'>
+            <text>¥75.50</text>
+            <text>x4</text>
+        </view>
+      </view> -->
+  </view>
+  <!-- 商品金额 -->
+  <view class='goods_price_wrap'>
+    <view class='goods_price'>
+      <text class='goods_price_left'>商品金额</text>
+      <text class='goods_price_right'>¥{{detail.total_goods_money}}</text>
+    </view>
+    <view class='goods_price' wx:if="{{detail.platform_discount_money}}">
+      <text>优惠券</text>
+      <text>{{detail.platform_discount_money}}元</text>
+    </view>
+    <!-- <view class='goods_price'>
+      <text>折后价</text>
+      <text>¥{{detail.pay_money}}</text>
+    </view> -->
+    <view class='goods_price'>
+      <text>运费</text>
+      <text>¥0.00</text>
+    </view>
+    <view class='goods_price' style='font-size:30rpx;color:#43576B;'>
+      <text>订单总价</text>
+      <text>¥{{detail.pay_money}}</text>
+    </view>
+    <!-- 定单编号 -->
+    <view class='order_number'>
+      <view class='order_no'><text>订单编号：{{detail.tid}} </text><button class='order_number_btn' catchtap='copyNo' data-no="{{detail.tid}}">复制</button></view>
+      <view wx:if="{{detail.status.code=='2030'||detail.status.code=='2020'||detail.status.code=='6030'}}">支付方式：微信</view>
+      <view>下单时间：{{detail.time.alias}}</view>
+      <view wx:if="{{detail.status.code=='2030'||detail.status.code=='2020'||detail.status.code=='6030'}}">付款时间：{{detail.pay_time.alias}}</view>
+    </view>
+  </view>
+</view>

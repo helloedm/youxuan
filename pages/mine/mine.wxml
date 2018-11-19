@@ -1,0 +1,513 @@
+<import src="/template/tabbar/tabbar.wxml" />
+<header title="个人中心" back-num="0" />
+<view class='mine'>
+<!-- 信息 -->
+  <!-- 没有注册 -->
+  <view class="mystore-title" wx:if="{{ismyinfo || isgomystore}}">
+    <view class="mystore-titleleft" wx:if="{{ismyinfo}}">你正在浏览{{storename}}</view>
+    <view class="mystore-titleright" wx:if="{{isgomystore}}" catchtap="goMystores">回自己的店铺</view>
+  </view>
+  <view class="no-register" wx:if="{{phone ==''}}">
+    <view class="header header_none">
+      <image src='/images/mine/mine_head.png'></image>
+      <view class='header_right zhuce_btn'>
+        <button open-type='getUserInfo' bindgetuserinfo="getUserInfoBtn">立即注册</button>
+      </view>
+    </view>
+      <!-- 订单 -->
+    <view class='order'>
+      <view class="weui-cells weui-cells_after-title">
+          <navigator url="/pages/order/list/list" class="weui-cell weui-cell_access" hover-class="none">
+              <view class="weui-cell__bd">我的订单</view>
+              <view class="weui-cell__ft weui-cell__ft_in-access">全部订单</view>
+          </navigator>
+      </view>
+      <view class="weui-flex order_l">
+        <view class="weui-flex__item" catchtap='goOrderList' data-ordertype='1'>
+            <view class='order_l_item'>
+              <view class='order_l_icon'>
+                <image src='/images/mine/order_01.png'></image>
+                <view class='weui-badge ' wx:if="{{user && user.order.pay_count!=0}}">{{user.order.pay_count}}</view>
+              </view>
+              <text class='ft26'>待付款</text>
+            </view>
+        </view>
+        <view class="weui-flex__item" catchtap='goOrderList' data-ordertype='2'>
+            <view class='order_l_item'>
+              <view class='order_l_icon'>
+                <image src='/images/mine/order_02.png'></image>
+                <view class='weui-badge' wx:if="{{user && user.order.send_count!=0}}">{{user.order.send_count}}</view>
+              </view>
+              <text class='ft26'>待发货</text>
+            </view>
+        </view>
+        <view class="weui-flex__item" catchtap='goOrderList' data-ordertype='3'>
+            <view class='order_l_item'>
+              <view class='order_l_icon'>
+                <image src='/images/mine/order_03.png'></image>
+                <view class='weui-badge' wx:if="{{user && user.order.accept_count!=0}}">{{user.order.accept_count}}</view>
+              </view>
+              <text class='ft26'>待收货</text>
+            </view>
+        </view>
+        <view class="weui-flex__item" catchtap='goOrderList' data-ordertype='4'>
+            <view class='order_l_item'>
+              <view class='order_l_icon'>
+                <image src='/images/mine/order_04.png'></image>
+                <!-- <view class='weui-badge' wx:if="{{user && user.order.complete_count!=0}}">{{user.order.complete_count}}</view> -->
+              </view>
+              <text class='ft26'>已完成</text>
+            </view>
+        </view>
+      </view>
+    </view>
+    <!-- 群红包 -->
+    <view class='envelopes'>
+    <navigator url="/pages/mine/invitation/invitation" class="weui-cell weui-cell_access envelopes-nav"  hover-class="none" style='height:180rpx;'>
+        </navigator>
+    </view>
+    <!-- 跳转list -->
+    <view class="weui-cells weui-cells_after-title skip_wrap">
+        <navigator class="weui-cell weui-cell_access " url="/pages/mine/share/share" hover-class="none">
+            <view class="weui-cell__hd">
+                <image src="/images/mine/share.png" style="margin-right: 5px;vertical-align: middle;width:20px; height: 20px;"></image>
+            </view>
+            <view class="weui-cell__bd" style='margin-left:10rpx'>邀请分享</view>
+            <view class="weui-cell__ft weui-cell__ft_in-access"></view>
+        </navigator>
+        <navigator url="/pages/mine/reward/reward" class="weui-cell weui-cell_access " wx:if="{{user.rank==2|| (user.rank==1 && user.is_expired==1)}}" hover-class="none">
+            <view class="weui-cell__hd">
+                <image src="/images/mine/mine_01.png" style="margin-right: 5px;vertical-align: middle;width:20px; height: 20px;"></image>
+            </view>
+            <view class="weui-cell__bd" style='margin-left:10rpx'>邀请奖励</view>
+            <view class="weui-cell__ft weui-cell__ft_in-access"></view>
+        </navigator>
+        <navigator class="weui-cell weui-cell_access " url="/pages/mine/address/address" hover-class="none">
+            <view class="weui-cell__hd">
+                <image src="/images/mine/mine_02.png" style="margin-right: 5px;vertical-align: middle;width:20px; height: 20px;"></image>
+            </view>
+            <view class="weui-cell__bd" style='margin-left:10rpx'>收货地址</view>
+            <view class="weui-cell__ft weui-cell__ft_in-access"></view>
+        </navigator>
+        <navigator class="weui-cell weui-cell_access " url="/pages/mine/visitedshops/visitedshops" hover-class="none">
+            <view class="weui-cell__hd">
+                <image src="/images/mine/mine_07.png" style="margin-right: 5px;vertical-align: middle;width:20px; height: 20px;"></image>
+            </view>
+            <view class="weui-cell__bd" style='margin-left:10rpx'>访问过的店铺</view>
+            <view class="weui-cell__ft weui-cell__ft_in-access"></view>
+        </navigator>
+        <navigator url="/pages/mine/coupon/coupon" class="weui-cell weui-cell_access " hover-class="none">
+            <view class="weui-cell__hd">
+                <image src="/images/mine/mine_03.png" style="margin-right: 5px;vertical-align: middle;width:20px; height: 20px;"></image>
+            </view>
+            <view class="weui-cell__bd" style='margin-left:10rpx'>优惠券</view>
+            <view class="weui-cell__ft weui-cell__ft_in-access"></view>
+        </navigator>
+    </view>
+    <view class="weui-cells weui-cells_after-title skip_wrap">
+        <navigator url="/pages/mine/userSet/userSet" class="weui-cell weui-cell_access  " hover-class="none">
+            <view class="weui-cell__hd">
+                <image src="/images/mine/mine_04.png" style="margin-right: 5px;vertical-align: middle;width:20px; height: 20px;"></image>
+            </view>
+            <view class="weui-cell__bd" style='margin-left:10rpx'>用户设置</view>
+            <view class="weui-cell__ft weui-cell__ft_in-access"></view> 
+        </navigator>
+        <navigator url="/pages/mine/buygroup/buygroup" class="weui-cell weui-cell_access  " hover-class="none">
+            <view class="weui-cell__hd">
+                <image src="/images/mine/mine_99.png" style="margin-right: 5px;vertical-align: middle;width:20px; height: 20px;"></image>
+            </view>
+            <view class="weui-cell__bd" style='margin-left:10rpx'>购物优惠群</view>
+            <view class="weui-cell__ft weui-cell__ft_in-access"></view> 
+        </navigator>
+        <view class="weui-cell weui-cell_access ">
+            <view class="weui-cell__hd">
+                <image src="/images/mine/mine_05.png" style="margin-right: 5px;vertical-align: middle;width:20px; height: 20px;"></image>
+            </view>
+            <view class="weui-cell__bd" style='margin-left:10rpx'>联系客服</view>
+            <!-- <view class="weui-cell__ft" style='color:#47AEFA;'>{{tel}}</view> -->
+            <button open-type='contact' class='kefu_btn'></button>
+        </view>
+        <navigator url="/pages/mine/about/about" class="weui-cell weui-cell_access  " hover-class="none">
+            <view class="weui-cell__hd">
+                <image src="/images/mine/mine_06.png" style="margin-right: 5px;vertical-align: middle;width:20px; height: 20px;"></image>
+            </view>
+            <view class="weui-cell__bd" style='margin-left:10rpx'>关于爱聚优选</view>
+            <view class="weui-cell__ft weui-cell__ft_in-access"></view>
+        </navigator>
+        
+    </view>
+  </view>
+  <!-- 超级会员 -->
+  <view class="vip" wx:if="{{user.rank==2}}">
+    <view class="vip-tab" wx:if="{{ismypage}}">
+      <view class="vip-tab-content">
+        <view bindtap="switchSalesAndPersonal" id="1" class="vip-tab-sales {{tabswitch == 1?'vip-tabpublic':''}}">
+            <text>销售管理</text>
+            <view class="title-line {{tabswitch == 1?'line-show':''}}"></view>
+        </view>
+        <view bindtap="switchSalesAndPersonal" id="2" class="vip-tab-personal {{tabswitch == 2?'vip-tabpublic':''}}">
+            <text>个人中心</text>
+            <view class="title-line {{tabswitch == 2?'line-show':''}}"></view>
+        </view>
+      </view>
+    </view>
+    <view class="vip-contant">
+      <view class="vip-contant-sales" wx:if="{{tabswitch == 1}}">
+        <view class="vip-header">
+          <image src='{{user.avatar}}' ></image>
+          <view class='header_right' >
+            <view class='name'>
+              <text class='name_t'>{{user.nickname}}</text>
+              <text class='name_icon1'>店主</text>
+            </view>
+            <view class='code'>
+              <text>邀请码：{{user.invite_code}}</text>
+              <button hover-class="none" catchtap='copyInvite' data-invite='{{user.invite_code}}'>复制</button>
+            </view>
+            <view class='due'>{{user.expired_time}}会员到期</view>
+          </view>
+        </view>
+        <view class="vip-sales-info">
+          粉丝购物您都可获得佣金奖励哦
+        </view>
+        <!-- 提现信息 -->
+        <view class='tixian' catchtap='toEarnings' wx:if="{{user.rank==2 || user.rank==3 || (user.rank==1 && user.is_expired==1)}}">
+          <view class='tixian_t'>
+            <view class='tixian_title'>可提现金额：<text class='font-weight_600'>￥{{user.balance}}</text></view>
+            <form report-submit="{{true}}" bindsubmit="getFromId">
+              <button hover-class="none" catchtap='toTixian' form-type="submit">提现</button>
+            </form>
+          </view>
+          <view class="weui-flex tixian_c">
+            <view class="weui-flex__item">
+              <view class='tixian_i'>
+                <text class='font-weight_600'>￥{{user.curmonth_income}}</text>
+                <text>本月预估</text>
+              </view>
+            </view>
+            <view class="weui-flex__item">
+              <view class='tixian_i tixian_b'>
+                <text class='font-weight_600'>￥{{user.preMonthIncome}}</text>
+                <text>上月预估</text>
+              </view>
+            </view>
+          </view>
+          <view class="weui-flex tixian_h">
+            <view class="weui-flex__item">
+              <view class='tixian_i'>
+                <text class='font-weight_600'>￥{{user.inviteReward}}</text>
+                <text>邀请奖励</text>
+              </view>
+            </view>
+            <view class="weui-flex__item" catchtap='toFans'>
+              <view class='tixian_i tixian_b'>
+                <text class='font-weight_600'>{{user.fans_total}}</text>
+                <text>我的粉丝</text>
+              </view>
+            </view>
+          </view>
+        </view>
+        <view class="weui-cells weui-cells_after-title skip_wrap">
+            <navigator class="weui-cell weui-cell_access " url="/pages/mine/share/share" hover-class="none">
+                <view class="weui-cell__hd">
+                    <image src="/images/mine/share.png" style="margin-right: 5px;vertical-align: middle;width:20px; height: 20px;"></image>
+                </view>
+                <view class="weui-cell__bd" style='margin-left:10rpx'>邀请分享</view>
+                <view class="weui-cell__ft weui-cell__ft_in-access"></view>
+            </navigator>
+            <navigator url="/pages/mine/buygroup/buygroup" class="weui-cell weui-cell_access  " hover-class="none">
+                <view class="weui-cell__hd">
+                    <image src="/images/mine/mine_99.png" style="margin-right: 5px;vertical-align: middle;width:20px; height: 20px;"></image>
+                </view>
+                <view class="weui-cell__bd" style='margin-left:10rpx'>购物优惠群</view>
+                <view class="weui-cell__ft weui-cell__ft_in-access"></view> 
+            </navigator>
+            <view class="weui-cell weui-cell_access ">
+                <view class="weui-cell__hd">
+                    <image src="/images/mine/mine_05.png" style="margin-right: 5px;vertical-align: middle;width:20px; height: 20px;"></image>
+                </view>
+                <view class="weui-cell__bd" style='margin-left:10rpx'>联系客服</view>
+                <button open-type='contact' class='kefu_btn'></button>
+            </view>   
+        </view>
+      </view>
+      <view class="vip-contant-personal" wx:if="{{tabswitch == 2}}">
+        <view class="vip-header">
+          <image src='{{user.avatar}}' ></image>
+          <view class='header_right' >
+            <view class='name'>
+              <text class='name_t'>{{user.nickname}}</text>
+              <text class='name_icon1'>店主</text>
+            </view>
+            <view class='code'>
+              <text>邀请码：{{user.invite_code}}</text>
+              <button hover-class="none" catchtap='copyInvite' data-invite='{{user.invite_code}}'>复制</button>
+            </view>
+            <view class='due'>{{user.expired_time}}会员到期</view>
+          </view>
+        </view>
+        <!-- 订单 -->
+        <view class='order'>
+          <view class="weui-cells weui-cells_after-title">
+              <navigator url="/pages/order/list/list" class="weui-cell weui-cell_access" hover-class="none">
+                  <view class="weui-cell__bd">我的订单</view>
+                  <view class="weui-cell__ft weui-cell__ft_in-access">全部订单</view>
+              </navigator>
+          </view>
+          <view class="weui-flex order_l">
+            <view class="weui-flex__item" catchtap='goOrderList' data-ordertype='1'>
+                <view class='order_l_item'>
+                  <view class='order_l_icon'>
+                    <image src='/images/mine/order_01.png'></image>
+                    <view class='weui-badge ' wx:if="{{user && user.order.pay_count!=0}}">{{user.order.pay_count}}</view>
+                  </view>
+                  <text class='ft26'>待付款</text>
+                </view>
+            </view>
+            <view class="weui-flex__item" catchtap='goOrderList' data-ordertype='2'>
+                <view class='order_l_item'>
+                  <view class='order_l_icon'>
+                    <image src='/images/mine/order_02.png'></image>
+                    <view class='weui-badge' wx:if="{{user && user.order.send_count!=0}}">{{user.order.send_count}}</view>
+                  </view>
+                  <text class='ft26'>待发货</text>
+                </view>
+            </view>
+            <view class="weui-flex__item" catchtap='goOrderList' data-ordertype='3'>
+                <view class='order_l_item'>
+                  <view class='order_l_icon'>
+                    <image src='/images/mine/order_03.png'></image>
+                    <view class='weui-badge' wx:if="{{user && user.order.accept_count!=0}}">{{user.order.accept_count}}</view>
+                  </view>
+                  <text class='ft26'>待收货</text>
+                </view>
+            </view>
+            <view class="weui-flex__item" catchtap='goOrderList' data-ordertype='4'>
+                <view class='order_l_item'>
+                  <view class='order_l_icon'>
+                    <image src='/images/mine/order_04.png'></image>
+                    <!-- <view class='weui-badge' wx:if="{{user && user.order.complete_count!=0}}">{{user.order.complete_count}}</view> -->
+                  </view>
+                  <text class='ft26'>已完成</text>
+                </view>
+            </view>
+          </view>
+        </view>
+        <!-- 跳转list -->
+        <view class="weui-cells weui-cells_after-title skip_wrap">
+            <navigator class="weui-cell weui-cell_access " url="/pages/mine/share/share" hover-class="none">
+                <view class="weui-cell__hd">
+                    <image src="/images/mine/share.png" style="margin-right: 5px;vertical-align: middle;width:20px; height: 20px;"></image>
+                </view>
+                <view class="weui-cell__bd" style='margin-left:10rpx'>邀请分享</view>
+                <view class="weui-cell__ft weui-cell__ft_in-access"></view>
+            </navigator>
+            <navigator url="/pages/mine/reward/reward" class="weui-cell weui-cell_access " wx:if="{{user.rank==2|| (user.rank==1 && user.is_expired==1)}}" hover-class="none">
+                <view class="weui-cell__hd">
+                    <image src="/images/mine/mine_01.png" style="margin-right: 5px;vertical-align: middle;width:20px; height: 20px;"></image>
+                </view>
+                <view class="weui-cell__bd" style='margin-left:10rpx'>邀请奖励</view>
+                <view class="weui-cell__ft weui-cell__ft_in-access"></view>
+            </navigator>
+            <navigator class="weui-cell weui-cell_access " url="/pages/mine/address/address" hover-class="none">
+                <view class="weui-cell__hd">
+                    <image src="/images/mine/mine_02.png" style="margin-right: 5px;vertical-align: middle;width:20px; height: 20px;"></image>
+                </view>
+                <view class="weui-cell__bd" style='margin-left:10rpx'>收货地址</view>
+                <view class="weui-cell__ft weui-cell__ft_in-access"></view>
+            </navigator>
+            <navigator class="weui-cell weui-cell_access " url="/pages/mine/visitedshops/visitedshops" hover-class="none">
+                <view class="weui-cell__hd">
+                    <image src="/images/mine/mine_07.png" style="margin-right: 5px;vertical-align: middle;width:20px; height: 20px;"></image>
+                </view>
+                <view class="weui-cell__bd" style='margin-left:10rpx'>访问过的店铺</view>
+                <view class="weui-cell__ft weui-cell__ft_in-access"></view>
+            </navigator>
+            <navigator url="/pages/mine/coupon/coupon" class="weui-cell weui-cell_access " hover-class="none">
+                <view class="weui-cell__hd">
+                    <image src="/images/mine/mine_03.png" style="margin-right: 5px;vertical-align: middle;width:20px; height: 20px;"></image>
+                </view>
+                <view class="weui-cell__bd" style='margin-left:10rpx'>优惠券</view>
+                <view class="weui-cell__ft weui-cell__ft_in-access"></view>
+            </navigator>
+        </view>
+        <view class="weui-cells weui-cells_after-title skip_wrap">
+            <navigator url="/pages/mine/userSet/userSet" class="weui-cell weui-cell_access  " hover-class="none">
+                <view class="weui-cell__hd">
+                    <image src="/images/mine/mine_04.png" style="margin-right: 5px;vertical-align: middle;width:20px; height: 20px;"></image>
+                </view>
+                <view class="weui-cell__bd" style='margin-left:10rpx'>用户设置</view>
+                <view class="weui-cell__ft weui-cell__ft_in-access"></view> 
+            </navigator>
+            <navigator url="/pages/mine/buygroup/buygroup" class="weui-cell weui-cell_access  " hover-class="none">
+                <view class="weui-cell__hd">
+                    <image src="/images/mine/mine_99.png" style="margin-right: 5px;vertical-align: middle;width:20px; height: 20px;"></image>
+                </view>
+                <view class="weui-cell__bd" style='margin-left:10rpx'>购物优惠群</view>
+                <view class="weui-cell__ft weui-cell__ft_in-access"></view> 
+            </navigator>
+            <view class="weui-cell weui-cell_access ">
+                <view class="weui-cell__hd">
+                    <image src="/images/mine/mine_05.png" style="margin-right: 5px;vertical-align: middle;width:20px; height: 20px;"></image>
+                </view>
+                <view class="weui-cell__bd" style='margin-left:10rpx'>联系客服</view>
+                <!-- <view class="weui-cell__ft" style='color:#47AEFA;'>{{tel}}</view> -->
+                <button open-type='contact' class='kefu_btn'></button>
+            </view>
+            <navigator url="/pages/mine/about/about" class="weui-cell weui-cell_access  " hover-class="none">
+                <view class="weui-cell__hd">
+                    <image src="/images/mine/mine_06.png" style="margin-right: 5px;vertical-align: middle;width:20px; height: 20px;"></image>
+                </view>
+                <view class="weui-cell__bd" style='margin-left:10rpx'>关于爱聚优选</view>
+                <view class="weui-cell__ft weui-cell__ft_in-access"></view>
+            </navigator>  
+        </view>
+      </view>
+    </view>
+  </view>
+  <!-- 普通会员 -->
+  <view class="no-vip" wx:if="{{user.rank != 2}}" >
+    <view class="no-vip-header">
+      <image src='{{user.avatar}}' ></image>
+      <view class='header_right' >
+        <view class='name'>
+          <text class='name_t'>{{user.nickname}}</text>
+        </view>
+        <view class='code'>
+          <text>邀请码：{{user.invite_code}}</text>
+          <button hover-class="none" catchtap='copyInvite' data-invite='{{user.invite_code}}'>复制</button>
+        </view>
+      </view>
+    </view>
+    <!-- 订单 -->
+    <view class='order'>
+      <view class="weui-cells weui-cells_after-title">
+          <navigator url="/pages/order/list/list" class="weui-cell weui-cell_access" hover-class="none">
+              <view class="weui-cell__bd">我的订单</view>
+              <view class="weui-cell__ft weui-cell__ft_in-access">全部订单</view>
+          </navigator>
+      </view>
+      <view class="weui-flex order_l">
+        <view class="weui-flex__item" catchtap='goOrderList' data-ordertype='1'>
+            <view class='order_l_item'>
+              <view class='order_l_icon'>
+                <image src='/images/mine/order_01.png'></image>
+                <view class='weui-badge ' wx:if="{{user && user.order.pay_count!=0}}">{{user.order.pay_count}}</view>
+              </view>
+              <text class='ft26'>待付款</text>
+            </view>
+        </view>
+        <view class="weui-flex__item" catchtap='goOrderList' data-ordertype='2'>
+            <view class='order_l_item'>
+              <view class='order_l_icon'>
+                <image src='/images/mine/order_02.png'></image>
+                <view class='weui-badge' wx:if="{{user && user.order.send_count!=0}}">{{user.order.send_count}}</view>
+              </view>
+              <text class='ft26'>待发货</text>
+            </view>
+        </view>
+        <view class="weui-flex__item" catchtap='goOrderList' data-ordertype='3'>
+            <view class='order_l_item'>
+              <view class='order_l_icon'>
+                <image src='/images/mine/order_03.png'></image>
+                <view class='weui-badge' wx:if="{{user && user.order.accept_count!=0}}">{{user.order.accept_count}}</view>
+              </view>
+              <text class='ft26'>待收货</text>
+            </view>
+        </view>
+        <view class="weui-flex__item" catchtap='goOrderList' data-ordertype='4'>
+            <view class='order_l_item'>
+              <view class='order_l_icon'>
+                <image src='/images/mine/order_04.png'></image>
+              </view>
+              <text class='ft26'>已完成</text>
+            </view>
+        </view>
+      </view>
+    </view>
+    <!-- 群红包 -->
+    <view class='envelopes'>
+      <navigator url="/pages/mine/invitation/invitation" class="weui-cell weui-cell_access envelopes-nav"  hover-class="none" style='height:180rpx;'>
+      </navigator>
+    </view>
+    <!-- 跳转list -->
+    <view class="weui-cells weui-cells_after-title skip_wrap">
+        <navigator class="weui-cell weui-cell_access " url="/pages/mine/share/share" hover-class="none">
+            <view class="weui-cell__hd">
+                <image src="/images/mine/share.png" style="margin-right: 5px;vertical-align: middle;width:20px; height: 20px;"></image>
+            </view>
+            <view class="weui-cell__bd" style='margin-left:10rpx'>邀请分享</view>
+            <view class="weui-cell__ft weui-cell__ft_in-access"></view>
+        </navigator>
+        <navigator url="/pages/mine/reward/reward" class="weui-cell weui-cell_access " wx:if="{{user.rank==2|| (user.rank==1 && user.is_expired==1)}}" hover-class="none">
+            <view class="weui-cell__hd">
+                <image src="/images/mine/mine_01.png" style="margin-right: 5px;vertical-align: middle;width:20px; height: 20px;"></image>
+            </view>
+            <view class="weui-cell__bd" style='margin-left:10rpx'>邀请奖励</view>
+            <view class="weui-cell__ft weui-cell__ft_in-access"></view>
+        </navigator>
+        <navigator class="weui-cell weui-cell_access " url="/pages/mine/address/address" hover-class="none">
+            <view class="weui-cell__hd">
+                <image src="/images/mine/mine_02.png" style="margin-right: 5px;vertical-align: middle;width:20px; height: 20px;"></image>
+            </view>
+            <view class="weui-cell__bd" style='margin-left:10rpx'>收货地址</view>
+            <view class="weui-cell__ft weui-cell__ft_in-access"></view>
+        </navigator>
+        <navigator class="weui-cell weui-cell_access " url="/pages/mine/visitedshops/visitedshops" hover-class="none">
+            <view class="weui-cell__hd">
+                <image src="/images/mine/mine_07.png" style="margin-right: 5px;vertical-align: middle;width:20px; height: 20px;"></image>
+            </view>
+            <view class="weui-cell__bd" style='margin-left:10rpx'>访问过的店铺</view>
+            <view class="weui-cell__ft weui-cell__ft_in-access"></view>
+        </navigator>
+        <navigator url="/pages/mine/coupon/coupon" class="weui-cell weui-cell_access " hover-class="none">
+            <view class="weui-cell__hd">
+                <image src="/images/mine/mine_03.png" style="margin-right: 5px;vertical-align: middle;width:20px; height: 20px;"></image>
+            </view>
+            <view class="weui-cell__bd" style='margin-left:10rpx'>优惠券</view>
+            <view class="weui-cell__ft weui-cell__ft_in-access"></view>
+        </navigator>
+    </view>
+    <view class="weui-cells weui-cells_after-title skip_wrap">
+        <navigator url="/pages/mine/userSet/userSet" class="weui-cell weui-cell_access  " hover-class="none">
+            <view class="weui-cell__hd">
+                <image src="/images/mine/mine_04.png" style="margin-right: 5px;vertical-align: middle;width:20px; height: 20px;"></image>
+            </view>
+            <view class="weui-cell__bd" style='margin-left:10rpx'>用户设置</view>
+            <view class="weui-cell__ft weui-cell__ft_in-access"></view> 
+        </navigator>
+        <navigator url="/pages/mine/buygroup/buygroup" class="weui-cell weui-cell_access  " hover-class="none">
+            <view class="weui-cell__hd">
+                <image src="/images/mine/mine_99.png" style="margin-right: 5px;vertical-align: middle;width:20px; height: 20px;"></image>
+            </view>
+            <view class="weui-cell__bd" style='margin-left:10rpx'>购物优惠群</view>
+            <view class="weui-cell__ft weui-cell__ft_in-access"></view> 
+        </navigator>
+        <view class="weui-cell weui-cell_access ">
+            <view class="weui-cell__hd">
+                <image src="/images/mine/mine_05.png" style="margin-right: 5px;vertical-align: middle;width:20px; height: 20px;"></image>
+            </view>
+            <view class="weui-cell__bd" style='margin-left:10rpx'>联系客服</view>
+            <!-- <view class="weui-cell__ft" style='color:#47AEFA;'>{{tel}}</view> -->
+            <button open-type='contact' class='kefu_btn'></button>
+        </view>
+        <navigator url="/pages/mine/about/about" class="weui-cell weui-cell_access  " hover-class="none">
+            <view class="weui-cell__hd">
+                <image src="/images/mine/mine_06.png" style="margin-right: 5px;vertical-align: middle;width:20px; height: 20px;"></image>
+            </view>
+            <view class="weui-cell__bd" style='margin-left:10rpx'>关于爱聚优选</view>
+            <view class="weui-cell__ft weui-cell__ft_in-access"></view>
+        </navigator> 
+    </view>
+  </view>
+  <!--
+    成为超级会员提示
+  -->
+  <view class='dialog_bg' wx:if="{{becomeVip}}"></view>
+  <view class='dialog_vip' wx:if="{{becomeVip}}">
+    <image src='/images/mine/become_vip.png'></image>
+    <view class='dialog_btn' catchtap='close'>好的</view>
+  </view>
+</view>
+
+

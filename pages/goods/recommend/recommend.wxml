@@ -1,0 +1,37 @@
+<!-- pages/mine/recommend/recommend.wxml -->
+<wxs module="splitD">
+  module.exports=function(price,num){
+    if(!num){
+      num=0
+    }
+    return price.split('.')[num];
+  }
+</wxs>
+<header title="商品推荐"></header>
+<view class="recommend-info">
+   <view class="recommend-introduction">
+       <view class="recommend-introduction-title">推荐语</view>
+       <textarea value="{{recommendation}}" bindinput="changerecommendtext"class="recommend-introduction-contant" placeholder="请输入推荐语，可以带来更多的销售哦~"></textarea>
+       <view class="recommend-introduction-size">
+           <text>{{fontNum}}/100</text>
+       </view>
+   </view>
+   <view class="recommend-info-shop">
+       <view class="goods-left">
+        <image src="{{shopdata.main_pic}}"></image>
+       </view>
+       <view class="goods-right">
+           <view class="goods-name">
+               {{shopdata.title}}
+           </view>
+           <view class="goods-price">
+               <text class="original-price"><text>￥</text>{{shopdata.inner_price}}</text>
+               <text class="present-price">¥{{shopdata.outer_price}}</text>
+           </view>
+           <view class="goods-share">
+               立即分享，最高可得9元佣金
+           </view>
+       </view>
+   </view>
+   <view class="recommend-info-btn" catchtap="recommendationShop">推荐到首页</view>
+</view>

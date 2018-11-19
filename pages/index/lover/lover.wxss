@@ -1,0 +1,106 @@
+@import "../index.wxss";
+.banner image{
+  width: 100%;
+}
+.bg .good {
+  padding:36rpx;
+  background-color:#fff;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  height:338rpx;
+  box-sizing:border-box;
+  border:6rpx solid #FC5976;
+  border-radius:20rpx;
+  margin:0 20rpx 30rpx 20rpx;
+}
+.bg .good:last-child{
+  margin-bottom:0;
+}
+.good-info {
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  margin-left:30rpx;
+  width:337rpx;
+}
+.good-info .title {
+  font-weight:600;
+  text-overflow:-o-ellipsis-lastline;
+  overflow:hidden;
+  text-overflow:ellipsis;
+  display:-webkit-box;
+  -webkit-line-clamp:2;
+  -webkit-box-orient:vertical;
+  line-height:34rpx;
+}
+.huiyuanzhuan {
+  display:flex;
+  margin-top:60rpx;
+}
+.huiyuanzhuan text:nth-child(1) {
+  display:block;
+  width:100rpx;
+  height:40rpx;
+  background-color:#E31436;
+  color:#fff;
+  font-size:28rpx;
+  text-align:center;
+  line-height:40rpx;
+  position:relative;
+  border-radius:3rpx;
+}
+.huiyuanzhuan text:nth-child(2) {
+  padding:0 20rpx 0 10rpx;
+  color:#E31436;
+  border:1rpx solid #E31436;
+  border-left:none;
+  line-height:38rpx;
+  font-size:28rpx;
+  border-radius:3rpx;
+}
+.price {
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  margin-top:20rpx;
+}
+.goods_btn button {
+  width:128rpx;
+  height:60rpx;
+  background:linear-gradient(to bottom right,#E31436 ,#F46262);
+  box-shadow:2px 0px 9px rgba(227,20,54,0.38);
+  color:#fff;
+  line-height:60rpx;
+  padding:0;
+  margin:0 auto;
+  font-size:28rpx;
+  border-radius:30rpx;
+}
+
+.banner .end{
+  background: #FFBABB;
+}
+.check_more{
+  width:332rpx;
+  height:70rpx;
+  text-align: center;
+  line-height: 70rpx;
+  font-size:26rpx;
+  color:rgba(255,255,255,1);
+  margin: 0 auto;
+  border: 6rpx solid #FFC5D0;
+  background: #F87991;
+  margin-top:40rpx;
+}
+.huiyuanzhuan text:nth-child(1)::before{
+  position: absolute;
+  content: " ";
+  width: 0;
+  height: 0;
+  border-width: 15rpx 0 15rpx 15rpx;
+  border-style: solid;
+  border-color: transparent transparent transparent #E31436;
+  left: 0;
+  bottom: -8rpx;
+}

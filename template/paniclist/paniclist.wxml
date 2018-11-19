@@ -1,0 +1,125 @@
+<!--template/paniclist/paniclist.wxml-->
+
+<wxs module="date">
+module.exports=function(){
+  var nowD= getDate();
+  return nowD.getTime();
+}
+</wxs>
+<!-- 去掉小数点 -->
+
+<wxs module="splitD">
+  module.exports=function(price,num){
+    if(!num){
+      num=0
+    }
+    return price.split('.')[num];
+  }
+</wxs>
+<!--  -->
+<wxs module="toFixed2">
+module.exports=function(v){
+  var v2=  v * 2 / 300;
+  return v2.toFixed(2);
+}
+</wxs>
+<!-- 前面的数 -->
+<wxs module="front">
+module.exports=function(v){
+  var v2=  v.split(".")[0];
+  return v2;
+}
+</wxs>
+<!-- 前面的数 -->
+<wxs module="after">
+module.exports=function(v){
+  var v2=  v.split(".")[1];
+  return v2;
+}
+</wxs>
+
+<template name="paniclist">
+  <view class='paniclist'>
+    <image src='{{main_pic}}' class='panic_img'></image>
+    <view class='panic_right'>
+      <view class='title'>{{title}}</view>
+      <view class='schedule {{specialType==2?"opacity":""}}'>
+        <view class='schedule_c'>
+          <text style='background-position:{{(1-special_sale_num / (special_sale_num*1 + stock_num*1))*100 > 97 ? 97 * -260/100 : (1-special_sale_num /            (special_sale_num*1 + stock_num*1)) * -260}}rpx 0;'></text>
+        </view>
+        <text class='schedule_n'>已抢 <text>{{special_sale_num}}</text> 件</text>
+      </view>
+      <view class='panic_price'>
+        <view class='price'>
+          <text><text>¥</text>{{splitD(inner_price)}}<text>.{{splitD(inner_price,1)}}</text></text>
+          <text>¥{{outer_price}}</text>
+        </view>
+        <image class="panic_remmond" wx:if="{{(date() >= startTime1 || date() >= startTime2 || date() >= startTime3) && !ismypage}}" src="/images/mine/remmond.png" data-id="{{id}}" catchtap='goRecommend'></image>
+        <button class='panic_btn2 panic_btn' wx:if="{{stock_num==0}}">抢光了</button>
+        <button class='panic_btn1 panic_btn' wx:elif="{{date() >= startTime1 || date() >= startTime2 || date() >= startTime3}}">马上抢</button>
+        <button class='panic_btn3 panic_btn' wx:else>即将开始</button>
+      </view>
+    </view>
+  </view>
+</template>
+
+<!-- 分类商品列表item -->
+<template name="classifylist">
+  <view class='classifylist'>
+    <image src='https://youxuan.ecbao.cn/default/1533377607079_53.png' class='sell_out' wx:if="{{item.sell_out==1}}"></image>
+    <image src='{{item.main_pic}}' class='classify_img'></image>
+    <view class='classify_right'>
+      <view class='classify_title'>{{item.title}}</view>
+      <view class='classify_price'>
+        <text class='inner_price'><text>¥</text>{{splitD(item.inner_price)}}<text>.{{splitD(item.inner_price,1)}}</text></text>
+        <text class='outer_price'>¥{{splitD(item.outer_price)}}</text>
+      </view>
+      <!-- <image src='https://youxuan.ecbao.cn/goods/1534925168339_54.png' class='classify_btn' data-item="{{item}}" catchtap='shareGoods'></image> -->
+    </view>
+    <view wx:if='{{!ismypage}}' class="classifylist_btns">
+      <view class="indexlist_recommend_btn" data-id="{{item.id}}" wx:if="{{item.isStoreGoods == 0}}" catchtap='goRecommend'>推荐到首页</view>
+      <view class="indexlist_recommends_btn" wx:else>已推荐</view>
+    </view>
+  </view>
+</template>
+
+<!-- 首页所有商品列表 -->
+<template name="indexlist">
+    <view class='indexlist'>
+      <image src='https://youxuan.ecbao.cn/default/1533377607079_53.png' class='sell_out' wx:if="{{item.sell_out==1}}"></image>
+      <image src='{{item.main_pic}}' class='indexlist_img'></image>
+      <view class='indexlist_con'>
+        <view class='indexlist_title'>{{item.title}}</view>
+        <view class='indexlist_price'>
+          <text><text>¥</text>{{splitD(item.inner_price)}}<text>.{{splitD(item.inner_price,1)}}</text></text>
+          <text>¥{{splitD(item.outer_price)}}</text>
+        </view>
+      </view>
+      <view class="indexlist_share" catchtap='shareGoods' data-item="{{item}}">分享</view>
+      <!-- <image src='http://youxuan.ecbao.cn/material/1535357532189_37.png' class='indexlist_share' catchtap='shareGoods' data-item="{{item}}"></image> -->
+    </view>
+</template>
+
+<!-- 选货中心商品列表 -->
+<template name="selected_center">
+      <view class='good'>
+        <image src='{{item.main_pic}}' style='min-width:240rpx;max-width:240rpx;height:240rpx;'></image>
+        <view class='good-info'>
+          <view class='title_select'>{{item.title}}</view>
+          <view class='price' style='color:#1A2D3E;font-size:32rpx;'>
+              <text class='inner_price_select'><text style='font-size:32rpx;'>¥</text>{{splitD(item.inner_price)}}<text style='font-size:32rpx;'>.{{splitD(item.inner_price,1)}}</text></text>
+            <view class='huiyuanzhuan'>
+                <text>会员返</text>
+                <text>￥{{toFixed2(item.inner_price * item.rebate_percent)}}</text>
+            </view>
+          </view>
+        </view>
+      </view>
+      <view class='select_bottom'>
+        <view wx:if="{{!ismypage}}">
+          <view data-id="{{item.id}}" data-key="{{index}}" wx:if="{{item.isStoreGoods == 0}}" catchtap='goRecommend' class='recommend_button'>推荐到首页</view>
+          <view style="color:#96AAC2;" data-id="{{item.id}}" data-key="{{index}}" wx:else class='recommend_button'>已推荐</view>
+        </view>
+        <view class='button' catchtap='shareGoods' data-item="{{item}}">卖</view>
+      </view>
+</template>

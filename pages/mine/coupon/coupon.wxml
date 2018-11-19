@@ -1,0 +1,54 @@
+<!--pages/mine/coupon/coupon.wxml-->
+<wxs module="slice">
+  module.exports=function(str){
+    return str.slice(0,10);
+  }
+</wxs>
+<header title="优惠券"></header>
+<view class='order_list'>
+  <view class="weui-tab">
+      <view class="weui-navbar">
+          <block wx:for="{{tabs}}" wx:key="*this">
+              <view id="{{index}}" class="weui-navbar__item {{activeIndex == index ? 'weui-bar__item_on' : ''}}" bindtap="tabClick">
+                  <view class="weui-navbar__title">{{item}}</view>
+              </view>
+          </block>
+          <view class="weui-navbar__slider" style="left: {{sliderLeft}}px; transform: translateX({{sliderOffset}}px); -webkit-transform: translateX({{sliderOffset}}px);"><view></view></view>
+      </view>
+      <view class="weui-tab__panel">
+        <!-- 优惠券列表 -->
+        <view class='coupon_list'>
+          <view wx:for="{{list}}" style="margin-top:20rpx;">
+            <view class='coupon_item'>
+              <view class='coupon_item_left'>
+                  <view class='num'><text>￥</text>{{item.reduce_money}}</view>
+                  <view class='tiaojian'>满{{item.least_money}}元可用</view>
+              </view>
+              <view class='coupon_item_right'>
+                  <view class='coupon_name'>
+                    <!-- <view>平台券</view> -->
+                    <view>{{item.coupon_name}}</view>
+                    <button catchtap='goindex' wx:if="{{activeIndex=='0'}}">立即使用</button>
+                  </view>
+                  <view class='coupon_time'>
+                    <text>有效期：{{slice(item.create_time)}}-{{slice(item.expire_time)}}</text>
+                  </view>
+                  <view class='coupon_detailed {{open==item.id?"open":""}}' catchtap='openCoupon' data-id='{{item.id}}'>
+                    <text>详细信息</text>
+                    <text class='icon'></text>
+                  </view>
+                  <image src='/images/mine/yishiyong.png' wx:if="{{activeIndex=='1'}}" class='coupon_img'></image>
+                  <image src='/images/mine/yiguoqi.png' wx:if="{{activeIndex=='2'}}" class='coupon_img'></image>
+              </view>
+            </view>
+            <view class='coupon_shuoming {{open==item.id?"open":""}}'><view class='content'>满{{item.least_money}}元可用</view></view>
+          </view>
+          <view class='none' wx:if="{{list.length==0||!list}}">
+            <image src='https://youxuan.ecbao.cn/none_01.png'></image>
+            <text>暂无数据</text>
+          </view>
+        </view>
+      </view>
+  </view>
+</view>
+

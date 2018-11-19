@@ -1,0 +1,54 @@
+<template name="tabbar">
+<view class='tabbar'>
+    <view class='tabbar_item {{type==1?"active":""}}' hover-class="none"  wx:if="{{type==1}}">
+      <image src='/images/index_1.png' wx:if="{{type==1}}"></image>
+      <image src='/images/index_0.png' wx:else></image>
+      <text>首页</text>
+    </view> 
+    <navigator class='tabbar_item {{type==1?"active":""}}' url="/pages/index/index" hover-class="none"  wx:else>
+      <image src='/images/index_1.png' wx:if="{{type==1}}"></image>
+      <image src='/images/index_0.png' wx:else></image>
+      <text>首页</text>
+    </navigator> 
+    <view class='tabbar_item {{type==2?"active":""}}' url="/pages/cornucopia/cornucopia" hover-class="none"  wx:if="{{type==2}}">
+      <image src='/images/cornucopia_1.png' wx:if="{{type==2}}"></image>
+      <image src='/images/cornucopia_0.png' wx:else></image>
+      <text>聚宝盆</text>
+    </view>
+    <navigator class='tabbar_item {{type==2?"active":""}}' url="/pages/cornucopia/cornucopia" hover-class="none"  wx:else>
+      <image src='/images/cornucopia_1.png' wx:if="{{type==2}}"></image>
+      <image src='/images/cornucopia_0.png' wx:else></image>
+      <text>聚宝盆</text>
+    </navigator> 
+    <!-- <view class='tabbar_item svip {{type==3?"active":""}}'  url="/pages/vip/vip" hover-class="none" wx:if="{{type==3}}">
+      <image src='/images/svip.png'></image>
+      <text>超级会员</text>
+    </view>
+    <navigator class='tabbar_item svip {{type==3?"active":""}}'  url="/pages/vip/vip" hover-class="none" wx:else>
+      <image src='/images/svip.png'></image>
+      <text>超级会员</text>
+    </navigator>  -->
+    <view class='tabbar_item  {{type==4?"active":""}}' url="/pages/cart/cart" hover-class="none" wx:if="{{type==4}}">
+      <view class='car' wx:if="{{num!=0&&num}}">{{num}}</view>
+      <image src='/images/cart_1.png' wx:if="{{type==4}}"></image>
+      <image src='/images/cart_0.png' wx:else></image>
+      <text>购物车</text>
+    </view>
+    <navigator class='tabbar_item  {{type==4?"active":""}}' url="/pages/cart/cart" hover-class="none" wx:else>
+      <view class='car' wx:if="{{num!=0&&num}}">{{num}}</view>
+      <image src='/images/cart_1.png' wx:if="{{type==4}}"></image>
+      <image src='/images/cart_0.png' wx:else></image>
+      <text>购物车</text>
+    </navigator> 
+    <view class='tabbar_item {{type==5?"active":""}}' url="/pages/mine/mine" hover-class="none" open-type="redirect" wx:if="{{type==5}}">
+      <image src='/images/mine_1.png' wx:if="{{type==5}}"></image>
+      <image src='/images/mine_0.png' wx:else></image>
+      <text>我的</text>
+    </view>
+    <navigator class='tabbar_item {{type==5?"active":""}}' url="/pages/mine/mine" hover-class="none" wx:else>
+      <image src='/images/mine_1.png' wx:if="{{type==5}}"></image>
+      <image src='/images/mine_0.png' wx:else></image>
+      <text>我的</text>
+    </navigator> 
+</view>
+</template>

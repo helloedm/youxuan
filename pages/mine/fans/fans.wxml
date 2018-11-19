@@ -1,0 +1,32 @@
+<!--pages/mine/fans/fans.wxml-->
+<header title="粉丝"></header>
+<view class='fans-info bgf  ' >
+  <view class='h148 df {{index!=0?"bt":""}} '  wx:for="{{listData}}" wx:key="index">
+      <image src='{{item.avatar}}' class='img'></image>
+      <view class='detail-info'>
+        <view>
+         <!-- <image src='/images/mine/svip_icon.png' class='svip_icon' wx:if="{{item.rank==2}}"></image> -->
+         <text class='svip_icon2' wx:if="{{item.rank==2 && item.rank_type==1}}">体验超级会员</text>
+         <text class='svip_icon2' wx:elif="{{item.rank==2 && item.rank_type==2}}">超级会员</text>
+         <text class='name_icon1' wx:elif="{{item.rank==1}}">普通会员</text>
+          <text class='c1 '>{{item.nickname}}</text>
+        </view>
+        <view class='c9 dfsb'>
+          <text>{{item.phone}}</text>
+          <text>{{item.create_time}}</text>
+        </view>
+      </view>
+  </view>
+</view>
+<view class='no-data' wx:if="{{isShowNoData}}">--暂无更多数据--</view>  
+  <view class="weui-loadmore no-data" wx:else>
+      <view class="weui-loading"></view>
+      <view class="weui-loadmore__tips">正在加载</view>
+  </view>  
+ <view class='tab-bar bgf'>
+  <view class='c1'> <text class=' font-weight_600'>超级会员：</text>  <text class='cf'>{{superUserCount}}位</text>  </view>
+  <view class='c1 '><text class='font-weight_600'>普通会员： </text><text class='cf'>{{normalUserCount}}位</text>  </view>
+</view> 
+  <view class='seize_a_seat'>
+    
+  </view>

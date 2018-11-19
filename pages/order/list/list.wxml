@@ -1,0 +1,74 @@
+<!--pages/order/list/list.wxml-->
+<wxs module="two">
+module.exports=function(price,num){
+  var price1=price / num;
+  return price1.toFixed(2)
+}
+</wxs>
+<header title="{{orderHead}} "/>
+<view class='order_list'>
+  <view class="weui-tab">
+      <view class="weui-navbar">
+          <block wx:for="{{tabs}}" wx:key="*this">
+              <view id="{{index}}" class="weui-navbar__item {{activeIndex == index ? 'weui-bar__item_on' : ''}}" bindtap="tabClick">
+                  <view class="weui-navbar__title">{{item}}</view>
+              </view>
+          </block>
+          <view class="weui-navbar__slider" style="left: {{sliderLeft}}px; transform: translateX({{sliderOffset}}px); -webkit-transform: translateX({{sliderOffset}}px);"><view></view></view>
+      </view>
+      <view class="weui-tab__panel">
+        <view class='list_item' catchtap='orderDetail' wx:for="{{orderList}}" wx:for-item="item1" data-tid="{{item1.tid}}">
+          <view class='list__hd'>
+              <view><text>订单编号：{{item1.tid}}</text></view>
+              <view>{{item1.status.alias}}</view>
+          </view>
+          <view class='goods_list'>
+            <block wx:for="{{item1.order_ext}}" wx:for-item="item2">
+                <view class='goods_item' wx:for="{{item2.order_detail}}" wx:for-item="item3">
+                    <view class='goods_item_left'>
+                    <image src='{{item3.goods_pic}}'></image>
+                    <view class='goods_item_lc' wx:if="{{item3.sku_str}}">
+                      <text>{{item3.goods_title}}</text>
+                      <text>{{item3.sku_str}}</text>
+                    </view>
+                    <text wx:else>{{item3.goods_title}}</text>
+                    </view>
+                    <view class='goods_item_num'>
+                        <text>¥{{two(item3.pay_money,item3.quantity)}}</text>
+                        <text>x{{item3.quantity}}</text>
+                    </view>
+                </view>
+            </block>
+          </view>
+          <!-- 结算 -->
+          <view class='list_bottom'>
+            <view class='list_bottom_heji'>
+                <text>合计：</text>
+                <text>¥{{item1.pay_money}}</text>
+            </view>
+            <view class='list__btn' wx:if="{{item1.status.code=='1010'||item1.status.code=='6030'||item1.status.code=='2030'}}">
+                <button wx:if="{{item1.status.code=='1010'}}" catchtap='cancelOrder' data-tid='{{item1.tid}}'>取消</button>
+                <button class='color_F03914' wx:if="{{item1.status.code=='1010'}}" catchtap='gopay' data-tid='{{item1.tid}}' data-pay_money='{{item1.pay_money}}' data-pay_expire='{{item1.pay_expire.alias}}'>付款</button>
+                 <button class='color_F03914' wx:if="{{item1.status.code=='6030'}}" catchtap='again' data-item="{{item1.order_ext}}">再来一单</button>
+                <button class='color_F03914' wx:if="{{item1.status.code=='2030'}}" catchtap='confirmReceived' data-tid='{{item1.tid}}'>确认收货</button> 
+            </view>
+          </view>
+
+        </view>
+        <!-- 没有订单展示图 -->
+        <view class='no_goods' wx:if="{{orderList&&orderList.length==0 || !orderList}}">
+          <image src='/images/wujilu.png' wx:if="{{activeIndex==0}}"></image>
+          <image src='/images/mine/daifahuo.png' wx:if="{{activeIndex==1}}"></image>
+          <image src='/images/mine/daifukuan_none.png' wx:if="{{activeIndex==2}}"></image>
+          <image src='/images/mine/daishouhuo_none.png' wx:if="{{activeIndex==3}}"></image>
+          <image src='/images/mine/yiwancheng_none.png' wx:if="{{activeIndex==4}}"></image>
+          <view wx:if="{{activeIndex==0}}">您还没有订单哦~</view>
+          <view wx:if="{{activeIndex==1}}">您还没有待付款订单哦~</view>
+          <view wx:if="{{activeIndex==2}}">您还没有待发货订单哦~</view>
+          <view wx:if="{{activeIndex==3}}">您还没有待收货订单哦~</view>
+          <view wx:if="{{activeIndex==4}}">您还没有已完成订单哦~</view>
+          <button catchtap='goindex'>去逛逛精选特卖</button>
+        </view>
+      </view>
+  </view>
+</view>

@@ -1,0 +1,56 @@
+.tabbar{
+  display: flex;
+  justify-content: space-around;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  height: 98rpx;
+  background-color: #fff;
+  box-shadow:4px 0px 6px rgba(224,230,237,0.49);
+  align-items: flex-end;
+  z-index: 99999;
+}
+.tabbar_item{
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 85rpx;
+  position: relative
+  
+}
+.tabbar_item.svip{
+  height: 125rpx;
+}
+.tabbar_item.svip image{
+  width:80rpx;
+  height:80rpx;
+}
+.tabbar_item image{
+  width: 40rpx;
+  height: 40rpx;
+}
+.tabbar_item text{
+  font-size: 20rpx;
+  color: #95AAC1;
+  margin-top: 5rpx;
+}
+.tabbar_item.active text{
+  color: #E31436;
+}
+page{
+  padding-bottom: 125rpx;
+}
+.car{
+  color:#fff;
+  background-color: #E31436;
+  min-width: 32rpx;
+  /* height: 32px; */
+  line-height: 32rpx;
+  text-align: center;
+  border-radius: 50%;
+  font-size: 20rpx;
+  position: absolute;
+  top:-10rpx;
+  right: 26rpx;
+}

@@ -1,0 +1,101 @@
+/* pages/index/freeShipping/freeShipping.wxss */
+@import "../index.wxss";
+.good-box{
+  padding: 0 20rpx;
+  background-color: #fff;
+}
+.good-list{
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  height: 254rpx;
+  width: 100%;
+  border-bottom: 1px solid #e6e6e6;
+}
+good-list:last-child{
+  border: 0;
+}
+.good-list-left{
+  flex: 1;
+  margin-left: 20rpx;
+}
+.mid{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+}
+.foot{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  
+}
+.good_price_btn{
+  background-color:#E31436;
+  border:none;
+  color:#fff;
+  font-size:26rpx;
+  margin:0;
+  width:138rpx;
+  height:50rpx;
+  box-sizing:border-box;
+  text-align:center;
+  line-height:50rpx;
+  padding:0;
+
+}
+.no-data{
+  margin-bottom: 110rpx;
+  text-align: center;
+  color:#C0CCDA;
+  font-size: 22rpx;
+}
+.c1{
+  color:#1F2D3D;
+  font-size: 28rpx;
+}
+.cE{
+  color:#E31436;
+  font-size: 43rpx;
+}
+.c9{
+  color: #95AAC1;
+  font-size: 24rpx;
+}
+.cc{
+  color:#CCAD6E;
+  font-size: 26rpx;
+}
+.share-btn{
+  position: fixed;
+  bottom:200rpx;
+  right:20rpx;
+  background-color:transparent;
+  padding: 0;
+  width: 80rpx;
+  height: 80rpx;
+}
+.share-btn image{
+  width: 80rpx;
+  height: 80rpx;
+  margin-right:10rpx;
+  vertical-align:middle;
+  line-height:80rpx;
+}
+.index{
+  width: 80rpx;
+  height: 80rpx;
+  position: fixed;
+  bottom: 100rpx;
+  right: 20rpx;
+  background-color: transparent;
+  padding: 0;
+}
+.index image{
+  width: 80rpx;
+  height: 80rpx;
+  margin-right:10rpx;
+  vertical-align:middle;
+  line-height:80rpx;
+}

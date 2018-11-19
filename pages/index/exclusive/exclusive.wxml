@@ -1,0 +1,27 @@
+<!--pages/index/exclusive/exclusive.wxml-->
+<view class='exclusive'>
+  <image src='https://youxuan.ecbao.cn/default/1532518655641_89.png' class='exclusive_head'></image>
+  <view class='exclusive_con'>
+    <view class='exclusive_item' wx:for="{{lists}}" wx:key="{{index}}" catchtap='detail' data-id='{{item.id}}'>
+      <image src='{{item.main_pic}}' class='exclusive_item_l'></image>
+      <view class='exclusive_item_r'>
+        <view class='exclusive__title'>{{item.title}}</view>
+        <view class='exclusive__dayprice'>日常价：{{item.outer_price}}</view>
+        <view class='exclusive__price'>
+          <text class='price_num'>¥{{item.inner_price}}</text>
+          <text class='price_icon'>券后价</text>
+        </view>
+        <view class='exclusive__btn '>
+          <button hover-class='none'>立即购买</button>
+        </view>
+      </view>
+    </view>
+    <view class="weui-loadmore bottom-no-data" wx:if="{{!nonemore}}">
+      <view class="weui-loading"></view>
+      <view class="weui-loadmore__tips">正在加载</view>
+    </view>
+    <view class="weui-loadmore weui-loadmore_line bottom-no-data" wx:else>
+      <view class="weui-loadmore__tips weui-loadmore__tips_in-line">暂无更多数据</view>
+    </view>
+  </view>
+</view>

@@ -1,0 +1,9 @@
+<!--components/header/header.wxml-->
+<!-- <view class='header'> -->
+  <!-- 返回 -->
+  <!-- <view class='back' catchtap='back' wx:if="{{backNum!='0'}}"></view> -->
+  <!-- 标题 -->
+  <!-- <view class='content'>{{title}}</view> -->
+<!-- </view> -->
+<!-- <view class='header_placeholder'></view> -->
+

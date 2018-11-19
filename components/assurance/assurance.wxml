@@ -1,0 +1,12 @@
+<!--components/assurance/assurance.wxml-->
+<view class='assurance' wx:if="{{show}}" bindtap='cancel'>
+  <view class='assurance_con'>
+    <view class='head'>服务保障</view>
+    <view class='content'>
+      <view class='con_item' wx:for="{{arr}}" wx:key="{{index}}">
+        <view class='con_item_head'>{{item.key}}</view>
+        <view class='con_item_con'>{{item.con}}</view>
+      </view>
+    </view>
+  </view>
+</view>

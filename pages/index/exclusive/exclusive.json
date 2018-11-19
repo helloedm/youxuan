@@ -1,0 +1,8 @@
+{
+  "navigationBarTitleText": "新人专享",
+  "navigationBarTextStyle": "black",
+  "enablePullDownRefresh": false,
+  "backgroundTextStyle": "light",
+  "backgroundColorTop": "#ffffff",
+  "backgroundColorBottom": "#ffffff"
+}

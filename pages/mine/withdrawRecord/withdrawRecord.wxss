@@ -1,0 +1,50 @@
+/* pages/mine/withdrawRecord/withdrawRecord.wxss */
+.weui-navbar__slider{
+  width: 375rpx;
+  height: 4rpx;
+  background-color: #F09A40;
+}
+.weui-navbar{
+  background-color: #fff;
+  border-color: #E0E6ED
+}
+.weui-navbar__item.weui-bar__item_on{
+  color: #121C28;
+}
+.weui-navbar__item{
+  color: #475669;
+}
+.weui-tab{
+  margin-top: 20rpx;
+}
+.weui-tab__content{
+  background-color: #fff;
+  padding:0rpx 20rpx;
+}
+.commission_c{
+  display: flex;
+  justify-content: space-between;
+  font-size: 32rpx;
+  color: #1A2D3E;
+  padding: 30rpx 0;
+  border-top: 1rpx solid #E0E6ED;
+}
+.commission_c>text:nth-child(2){
+  color: #1B2D3E;
+  font-weight: 600;
+}
+.commission_b{
+  border: none;
+}
+.weui-navbar__item.weui-bar__item_on{
+  color: #121C28;
+}
+.weui-navbar__item{
+  color: #475669;
+}
+.commission_f{
+  margin-top: 30rpx;
+  color: #C0CCDA;
+  font-size: 22rpx;
+  text-align: center;
+}

@@ -1,0 +1,8 @@
+{
+  "navigationBarTitleText": "店铺所有商品",
+  "backgroundColor":"#ffffff",
+  "usingComponents": {
+    "header": "/components/header/header",
+    "share": "/components/sharePoster/sharePoster"
+  }
+}

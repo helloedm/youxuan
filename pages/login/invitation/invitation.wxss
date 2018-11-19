@@ -1,0 +1,62 @@
+/* pages/login/invitation/invitation.wxss */
+.invitation{
+  background-color: #fff;
+  margin-top:20rpx;
+  padding: 20rpx 0 100rpx;
+}
+.weui-input{
+  font-size: 32rpx;
+  text-align: center;
+}
+.c9{
+  font-size: 32rpx;
+  color: #99A9BF;  
+}
+.weui-cell_input{
+  margin-top: 20rpx;
+}
+.weui-input{
+  border-bottom: 1rpx solid #E0E6ED;
+}
+.invitation_btn{
+  background-color: #CCD4DF;
+}
+.bg_f.invitation_btn{
+  background-color: #E31436;
+}
+.color_F03914{
+  color: #E31436;
+  line-height: 40rpx;
+  vertical-align: top;
+}
+.jiangli{
+  text-align: center;
+  color: #1B2E3F;
+  font-size: 28rpx;
+  margin-top: 20rpx;
+  line-height: 34rpx;
+}
+.jiangli image{
+  width: 35rpx;
+  height: 34rpx;
+  line-height: 40rpx;
+  vertical-align: middle;
+}
+.jiangli_c{
+  display: inline-block;
+  vertical-align: middle;
+  line-height: 40rpx;
+}
+.jiangli_c text{
+  display: inline-block;
+  line-height: 40rpx;
+  vertical-align: top;
+}
+.guize{
+  width: 710rpx;
+  margin: 60rpx auto;
+  color: #95A9C1;
+  font-size: 26rpx;
+  display: flex;
+  flex-direction: column;
+}

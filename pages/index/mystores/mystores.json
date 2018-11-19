@@ -1,0 +1,10 @@
+{
+    "navigationBarTitleText": "编辑店铺",
+    "backgroundColorTop": "#F5F8FA",
+    "backgroundColorBottom": "#F5F8FA",
+    "backgroundColor": "#F5F8FA",
+    "enablePullDownRefresh": true,
+    "usingComponents": {
+      "header": "/components/header/header"
+    }
+  }

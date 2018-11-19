@@ -1,0 +1,86 @@
+<!-- <view class='img-box'>
+<image src='{{img}}' style='width:160rpx;height:160rpx'></image>
+</view> -->
+<header title="新增收货地址"></header>
+<view class='bgf info-box'>
+  <view class="weui-cell weui-cell_input h88">
+          <text class="weui-label c1  w140">联系人</text>
+      <view class="weui-cell__bd c1">
+          <input class="weui-input" 
+          placeholder="输入联系姓名" 
+          placeholder-class="c9" 
+          value='{{name}}'
+          bindinput="getName"  />
+      </view>
+  </view>
+  <view class="weui-cell weui-cell_input h88">
+        <view class="weui-cell__hd w140">
+            <view class="weui-label c1 ">手机号</view>
+        </view>
+        <view class="weui-cell__bd c1">
+            <input class="weui-input" 
+            placeholder="输入手机号码" 
+            type='number'
+            placeholder-class="c9" 
+            value='{{tel}}'
+            bindinput="getTel"  />
+        </view>
+  </view>
+  <!-- <view class="weui-cell weui-cell_input h88">
+        <view class="weui-cell__hd w140">
+            <view class="weui-label c1 ">所在地区</view>
+        </view>
+        <view class="weui-cell__bd c1">
+            <input class="weui-input" 
+            placeholder="输入手机号码" 
+            type='number'
+            placeholder-class="c9" 
+            bindinput="getTel"  />
+        </view>
+  </view> -->
+  <view class="weui-cell weui-cell_input h88" hover-class="weui-cell_active">
+      <!-- <view class="section__title">所在地区</view> -->
+      <picker mode="region" bindchange="bindMultiPickerChange" class='multiSelector'>
+        <view class="picker">
+          <text>所在地区</text>
+          <text wx:for="{{addressArr}}">{{item}}</text>
+          <text class=''></text>
+        </view>
+      </picker>
+      <!-- <view class="weui-cell__bd">所在地区</view>
+      <view class="weui-cell__ft weui-cell__ft_in-access"></view> -->
+  </view>
+  <view class="weui-cell weui-cell_input address_con">
+        <view class="weui-label c1  w140" >地址</view>
+        <view class="weui-cell__bd c1 flex">
+            <textarea class="weui-textarea" 
+            style='height:150rpx'
+            placeholder="请输入收货地址" 
+            placeholder-class="c9" 
+            value='{{address}}'
+            bindinput="getAddress"  />
+        </view>
+  </view>
+  <view class="weui-cell weui-cell_switch">
+      <view class="weui-cell__bd c1">是否设置为默认地址</view>
+      <view class="weui-cell__ft">
+          <switch  bindchange="switchChange" checked="{{is_default==1}}" />
+      </view>
+  </view>
+  <view class="weui-cell weui-cell_input " style='height:120rpx;'>
+        <view class="weui-label c1  w140" >标签</view>
+        <view class="weui-cell__bd c1 flex df">
+           <view  class='tag {{selectIndex==item?"active":""}}' 
+                  data-index="{{item}}" 
+                   wx:for="{{tagData}}" 
+                   wx:key="{{index}}"
+                   bindtap='selectTag' >
+              <text>{{item}}</text>
+           </view>
+        </view>
+  </view>
+</view>
+<view class='add-address' >
+    <button type="warn" style='width:90%;border-radius:50px;background:#E31436;' bindtap="save" wx:if="{{id}}">保存 </button>
+    <button type="warn" style='width:90%;border-radius:50px;background:#E31436;' bindtap="add" wx:else>添加 </button>
+</view>
